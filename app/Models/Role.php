@@ -4,7 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class role extends Model
+class Role extends Model
 {
-    //
+    protected $fillable =['name'];
+     protected $primaryKey = 'id';
+
+
+    public function permissions()
+    {
+        return $this->belongsToMany( Permission::class, 'role_permissions');
+    }
 }
