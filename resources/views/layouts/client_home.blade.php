@@ -20,19 +20,21 @@
     <link rel="stylesheet" href="{{ asset('assets/clients/css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/clients/css/responsive.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
-<body>   
-    
-    <div class="body-wrapper">
-    @include('clients.partials.header_home')
-    <main>
-        @yield('content')
-    </main>
+<body>
 
-    @include('clients.partials.footer_home')
+    <div class="body-wrapper">
+        @include('clients.partials.header_home')
+        <main>
+            @yield('content')
+        </main>
+
+        @include('clients.partials.footer_home')
     </div>
-   
+
     <div class="preloader d-none" id="preloader">
         <div class="preloader-inner">
             <div class="spinner">
@@ -41,9 +43,17 @@
             </div>
         </div>
     </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Local files -->
     <script src="{{ asset('assets/clients/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/clients/js/main.js') }}"></script>
 
+    <!-- jQuery Validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- javaScript -->
+    <script src="{{ asset('assets/clients/js/custom.js') }}"></script>
 </body>
 
 </html>
