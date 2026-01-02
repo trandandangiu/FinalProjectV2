@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
+use function Flasher\Toastr\Prime\toastr;
 
 class AuthController extends Controller
 {
@@ -24,7 +27,7 @@ class AuthController extends Controller
             [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|', 
+                'password' => 'required|string|min:6|',
             ],
             [
                 'name.required' => 'Tên không được để trống',
@@ -56,7 +59,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'status' => 'pending',
-            'role_id' => 4,
+            'role_id' => 3,
             'activation_token' => $token,
         ]);
 
@@ -68,6 +71,67 @@ class AuthController extends Controller
 
     public function activate($token)
     {
+        $user = User::where('activation_token', $token)->first();
 
+        if ($user) {
+            $user->status = 'active';
+            $user->activation_token = null;
+            $user->save();
+
+            toastr()->success('Kích hoạt tài khoản thành công');
+            return redirect()->route('login');
+        }
+        toastr()->error('Token không hợp lệ');
+        return redirect()->back();
+    }
+
+    public function showloginform()
+    {
+        return view('clients.pages.login');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate(
+            [
+                'email' => 'required|string|email|max:255|',
+                'password' => 'required|string|min:6|',
+            ],
+            [
+                'email.required' => 'Email là bắt buộc',
+                'email.email' => 'Định dạng email không hợp lệ',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
+            ]);
+
+        //check login information. 
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active'])) {
+            if (in_array(Auth::user()->role->name, ['customer'])) 
+            {
+                $request->session()->regenerate();
+                toastr()->success('Đăng nhập thành công');
+
+                return redirect()->route('home');
+            } 
+            else 
+            {
+                Auth::logout();
+                toastr()->warning('Bạn không có quyền truy cập vào tài khoản này');
+                return redirect()->back();
+            }
+        }
+        toastr()->error('Thông tin đăng nhập không chính xác hoặc tài khoản chưa kích hoạt');
+        return redirect()->back();
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        toastr()->success('Đăng xuất thành công');
+        return redirect()->route('login');
     }
 }
+

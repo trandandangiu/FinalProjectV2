@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             'status'=>'pending',
             'avatar'=>'',
             'address'=>'Ho Chi Minh City',
-            'role_id'=>4,
+            'role_id'=>1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
             'status'=>'pending',
             'avatar'=>'',
             'address'=>'Ha Noi City',
-            'role_id'=>5,
+            'role_id'=>2,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -46,7 +46,7 @@ class UserTableSeeder extends Seeder
             'status'=>'pending',
             'avatar'=>'',
             'address'=>'Da Nang City',
-            'role_id'=>6,
+            'role_id'=>3,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

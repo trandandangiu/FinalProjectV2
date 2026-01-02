@@ -20,7 +20,7 @@ class AdminStaffTableSeeder extends Seeder
             'status'=>'active',
             'avatar'=>'',
             'address'=>'Ho Chi Minh City',
-            'role_id'=>4,
+            'role_id'=>'',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
