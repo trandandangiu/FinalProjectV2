@@ -6,17 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-
 
 class AccountController extends Controller
 {
     public function index()
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         return view('clients.pages.account', compact('user'));
     }
 
+    // Update information
     public function update(Request $request)
     {
         $request->validate([
@@ -26,32 +28,73 @@ class AccountController extends Controller
             "avatar" => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        /** @var \App\Models\User $user */
         $user = Auth::user();
-        //handle avatar
 
+        // Xử lý avatar: Chỉ chạy khi có file upload lên
         if ($request->hasFile('avatar')) {
-            //delete old photo if exists
+            // Xóa ảnh cũ nếu tồn tại
             if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
                 Storage::disk('public')->delete($user->avatar);
             }
 
             $file = $request->file('avatar');
-            //create new name with timesamp
-$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-            //
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $avatarPath = $file->storeAs('uploads/users', $filename, 'public');
+            
+            // Cập nhật thuộc tính avatar
             $user->avatar = $avatarPath;
         }
 
+        // Gán giá trị trực tiếp để tránh lỗi Mass Assignment của update()
         $user->name = $request->input('ltn__name');
         $user->phone_number = $request->input('ltn__phone_number');
         $user->address = $request->input('ltn__address');
+
+        // Quan trọng: Gọi save() trên instance cụ thể
         $user->save();
 
         return response()->json([
             'success' => true,
-            'message' => 'Cật nhập thông tin thành công',
-            'avatar' => asset('storage/'  . $user->avatar),
+            'message' => 'Cập nhật thông tin thành công',
+            'avatar' => asset('storage/' . $user->avatar),
+        ]);
+    }
+
+    // Change password
+    public function ChangePassword(Request $request)    
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6',
+            'confirm_new_password' => 'required|same:new_password',
+        ], [
+            'current_password.required' => 'Vui lòng nhập mật khẩu hiện tại',
+            'new_password.required' => 'Mật khẩu không được bỏ trống',
+            'new_password.min' => 'Mật khẩu mới phải có ít nhất 6 ký tự',
+            'confirm_new_password.required' => 'Vui lòng nhập mật khẩu mới',
+            'confirm_new_password.same' => 'Mật khẩu nhập lại không khớp',
+        ]);
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        // Kiểm tra mật khẩu hiện tại
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['errors' => ['current_password' => ['Mật khẩu hiện tại không khớp!']]], 422);
+        }
+
+        // SỬA LỖI TẠI ĐÂY: 
+        // Vì Model User đã có 'password' => 'hashed' trong casts()
+        // Bạn KHÔNG được dùng Hash::make() vì nó sẽ bị hash 2 lần.
+        $user->password = $request->new_password; 
+        
+        // Dùng save() để kích hoạt cơ chế Hashed Cast của Model
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cập nhật mật khẩu thành công',
         ]);
     }
 }

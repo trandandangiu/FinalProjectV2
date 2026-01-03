@@ -96,69 +96,132 @@ $(document).ready(function () {
 
     });
 
-   // page account
+    // page account
 
-//where clicking on the image => open input file
-$(".profile-pic").click(function(){
-    $("#avatar").click();
-});
+    //where clicking on the image => open input file
+    $(".profile-pic").click(function () {
+        $("#avatar").click();
+    });
 
-// khi chon 1 tam hinh => no hien len hinh anh 
-$("#avatar").change(function(){
-    let input = this; 
-    if(input.files && input.files[0]){
-        let reader = new FileReader();
-        reader.onload = function(e){
-            $('#preview-image').attr('src', e.target.result); 
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-});
-
-$("#update-account").on("submit",function(e){
-    e.preventDefault();
-
-    let formData = new FormData(this); // Fixed: formDara -> formData
-    let urlUpdate = $(this).attr('action'); // Fixed: urlupdate -> urlUpdate
-
-    $.ajaxSetup({ // Fixed: $.ajxaSetup -> $.ajaxSetup
-        headers:{
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+    // khi chon 1 tam hinh => no hien len hinh anh 
+    $("#avatar").change(function () {
+        let input = this;
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                $('#preview-image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
         }
     });
 
-   $.ajax({
-    url: urlUpdate,
-    type: 'POST', 
-    data: formData,
-    processData: false, 
-    contentType: false, // Fixed: contenType -> contentType
-    beforeSend: function(){ // Fixed: beforSend -> beforeSend
-        $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); // Fixed: disable -> disabled
-    },
-    success: function(response){
-        if(response.success){
-            toastr.success(response.message);
-            //upload new image
-            if(response.avatar){
-                $('#preview-image').attr('src', response.avatar);
-            }
-        }else{
-            toastr.error(response.message);          
-        }
-    },
-    error: function(xhr){
-        let errors = xhr.responseJSON.errors; // Fixed: responseJASON -> responseJSON
-        $.each(errors, function(key,value) {
-            toastr.error(value[0]); // Fixed: toastr.errors -> toastr.error
-        });
-    }, 
-    complete: function() {
-        $(".btn-wrapper button")
-        .text("cập nhập")
-        .attr("disabled", false); // Fixed: disable -> disabled
-    },
-   });
-});
+    $("#update-account").on("submit", function (e) {
+        e.preventDefault();
 
-});
+        let formData = new FormData(this);
+        let urlUpdate = $(this).attr('action');
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url: urlUpdate,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); // Fixed: disable -> disabled
+            },
+            success: function (response) {
+                if (response.success) {
+                    toastr.success(response.message);
+                    //upload new image
+                    if (response.avatar) {
+                        $('#preview-image').attr('src', response.avatar);
+                    }
+                } else {
+                    toastr.error(response.message);
+                }
+            },
+            error: function (xhr) {
+                let errors = xhr.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    toastr.error(value[0]);
+                });
+            },
+            complete: function () {
+                $(".btn-wrapper button")
+                    .text("cập nhập")
+                    .attr("disabled", false);
+            },
+        });
+    });
+
+    //validate change-password account
+    $("#change-password-form").submit(function (e) {
+        e.preventDefault();
+        let cureent_password = $('input[name="current_password"]').val().trim();
+        let new_password = $('input[name="new_password"]').val().trim();
+        let confirm_new_password = $('input[name="confirm_new_password"]').val().trim();
+
+        let erroMessage = "";
+
+
+        if (cureent_password.length < 6) {
+            erroMessage += "Mật khẩu cũ có ít nhất 6 ký tự.<br/>";
+        }
+
+        if (new_password.length < 6) {
+            erroMessage += "Mật khẩu mới có ít nhất 6 ký tự.<br/>";
+        }
+
+        if (new_password !== confirm_new_password) {
+            erroMessage += "Mật khẩu xác nhận không khớp.<br/>";
+        }
+        if (erroMessage !== "") {
+            toastr.error(erroMessage, "Lỗi");
+            return;
+        }
+
+
+        let formData = $(this).serialize();
+     let urlUpdate = $("#change-password-form").attr('action');
+         $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+        $.ajax({
+            url: urlUpdate,
+            type: 'POST',
+            data: formData,
+            beforeSend: function () {
+                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); 
+            },
+            success: function (response) {
+                if (response.success) {
+                    toastr.success(response.message);
+                    $('#change-password-form')[0].reset()
+
+                } else {
+                    toastr.error(response.message);
+                }
+            },
+            error: function (xhr) {
+                let errors = xhr.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    toastr.error(value[0]);
+                });
+            },
+            complete: function () {
+                $(".btn-wrapper button")
+                    .text("cập nhập")
+                    .attr("disabled", false);
+            },
+    });
+    });
+})
