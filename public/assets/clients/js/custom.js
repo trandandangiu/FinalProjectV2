@@ -95,4 +95,70 @@ $(document).ready(function () {
         }
 
     });
+
+   // page account
+
+//where clicking on the image => open input file
+$(".profile-pic").click(function(){
+    $("#avatar").click();
+});
+
+// khi chon 1 tam hinh => no hien len hinh anh 
+$("#avatar").change(function(){
+    let input = this; 
+    if(input.files && input.files[0]){
+        let reader = new FileReader();
+        reader.onload = function(e){
+            $('#preview-image').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+});
+
+$("#update-account").on("submit",function(e){
+    e.preventDefault();
+
+    let formData = new FormData(this); // Fixed: formDara -> formData
+    let urlUpdate = $(this).attr('action'); // Fixed: urlupdate -> urlUpdate
+
+    $.ajaxSetup({ // Fixed: $.ajxaSetup -> $.ajaxSetup
+        headers:{
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+        }
+    });
+
+   $.ajax({
+    url: urlUpdate,
+    type: 'POST', 
+    data: formData,
+    processData: false, 
+    contentType: false, // Fixed: contenType -> contentType
+    beforeSend: function(){ // Fixed: beforSend -> beforeSend
+        $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); // Fixed: disable -> disabled
+    },
+    success: function(response){
+        if(response.success){
+            toastr.success(response.message);
+            //upload new image
+            if(response.avatar){
+                $('#preview-image').attr('src', response.avatar);
+            }
+        }else{
+            toastr.error(response.message);          
+        }
+    },
+    error: function(xhr){
+        let errors = xhr.responseJSON.errors; // Fixed: responseJASON -> responseJSON
+        $.each(errors, function(key,value) {
+            toastr.error(value[0]); // Fixed: toastr.errors -> toastr.error
+        });
+    }, 
+    complete: function() {
+        $(".btn-wrapper button")
+        .text("cập nhập")
+        .attr("disabled", false); // Fixed: disable -> disabled
+    },
+   });
+});
+
 });

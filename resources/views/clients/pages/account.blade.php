@@ -104,9 +104,14 @@
                                         <div class="tab-pane fade" id="liton_tab_account">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <div class="ltn__form-box">
-                                                    <form action="#" method="POST" id="update-account"
+                                                    <form action="{{ route('account.update') }}" method="POST" id="update-account"
                                                         enctype="multipart/form-data">
+
+
                                                         @method('PUT')
+
+
+
                                                         <div class="row mb-50">
                                                             <div class="col-md-12 text-center mb-3">
                                                                 <div class="profile-pic-container">
@@ -135,7 +140,7 @@
                                                             <div class="col-md-6">
                                                                 <label for="ltn__address">Địa chỉ:</label>
                                                                 <input type="text" name="ltn__address" id="ltn__address"
-                                                                    value="{{ $user->address }}" readonly>
+                                                                    value="{{ $user->address }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="btn-wrapper">

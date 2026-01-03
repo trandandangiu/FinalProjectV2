@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="{{ asset('assets/clients/css/responsive.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    
+    {{-- Import custom-css --}}
+    <link rel ="stylesheet" href = "{{ asset('assets/clients/css/custom.css') }}">
 </head>
 
 <body>
