@@ -189,8 +189,8 @@ $(document).ready(function () {
 
 
         let formData = $(this).serialize();
-     let urlUpdate = $("#change-password-form").attr('action');
-         $.ajaxSetup({
+        let urlUpdate = $("#change-password-form").attr('action');
+        $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
             }
@@ -200,7 +200,7 @@ $(document).ready(function () {
             type: 'POST',
             data: formData,
             beforeSend: function () {
-                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); 
+                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true);
             },
             success: function (response) {
                 if (response.success) {
@@ -222,6 +222,59 @@ $(document).ready(function () {
                     .text("cập nhập")
                     .attr("disabled", false);
             },
+        });
     });
-    });
-})
+
+    //validate change address
+    $("#addAddressForm").submit(function (e) {
+        e.preventDefault();
+        // delete old error
+
+        let isValid = true;
+        $('.error-message').remove();
+        $('.erro-text-danger').remove();
+        $('.erro-message-text-danger').remove();
+
+        let fullName = $("#full_name").val().trim();
+        let phone = $("#phone").val().trim();
+        let address = $("#address").val().trim();
+        let city = $("#city").val().trim();
+
+        // Validate full name
+        if (fullName.length < 3) {
+            isValid = false;
+            $('#full_name').after(
+                '<p class="error-message text-danger">Họ và tên phải có ít nhất 3 ký tự</p>'
+            );
+        }
+
+        // Validate phone
+        let phoneRegex = /^[0-9]{10,11}$/;
+        if (!phoneRegex.test(phone)) {
+            isValid = false;
+            $('#phone').after(
+                '<p class="error-message text-danger">Số điện thoại phải có 10-11 chữ số</p>'
+            );
+        }
+
+        // Validate address - PHẢI Ở NGOÀI khối if của city
+        if (address.length === 0) {
+            isValid = false;
+            $('#address').after(
+                '<p class="error-message text-danger">Vui lòng nhập địa chỉ</p>'
+            );
+        }
+
+        // Validate city
+        if (city.length === 0) {
+            isValid = false;
+            $('#city').after(
+                '<p class="error-message text-danger">Vui lòng nhập thành phố/tỉnh</p>'
+            );
+        }
+
+        if (isValid) {
+            this.submit();
+        }
+    }); message
+});

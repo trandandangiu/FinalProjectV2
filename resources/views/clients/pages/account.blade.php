@@ -16,22 +16,27 @@
                                 <div class="col-lg-4">
                                     <div class="ltn__tab-menu-list mb-50">
                                         <div class="nav">
-                                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_dashboard">Bảng
-                                                điều
-                                                khiển <i class="fas fa-home"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_tab_orders">Đơn hàng <i
-                                                    class="fas fa-file-alt"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_tab_address">Địa chỉ <i
-                                                    class="fas fa-map-marker-alt"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_tab_account">Chi tiết tài khoản <i
-                                                    class="fas fa-user"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_tab_password">Đổi mật khẩu<i
-                                                    class="fas fa-user"></i></a>
+                                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_dashboard">
+                                                Bảng điều khiển <i class="fas fa-home"></i>
+                                            </a>
+                                            <a data-bs-toggle="tab" href="#liton_tab_orders">
+                                                Đơn hàng <i class="fas fa-file-alt"></i>
+                                            </a>
+                                            <a data-bs-toggle="tab" href="#liton_tab_address">
+                                                Địa chỉ <i class="fas fa-map-marker-alt"></i>
+                                            </a>
+                                            <a data-bs-toggle="tab" href="#liton_tab_account">
+                                                Chi tiết tài khoản <i class="fas fa-user"></i>
+                                            </a>
+                                            <a data-bs-toggle="tab" href="#liton_tab_password">
+                                                Đổi mật khẩu <i class="fas fa-user"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="tab-content">
+                                        <!-- Dashboard Tab -->
                                         <div class="tab-pane fade active show" id="liton_tab_dashboard">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>Hello <strong>{{ $user->email }}</strong> (not
@@ -44,6 +49,8 @@
                                                         khoản</span>.</p>
                                             </div>
                                         </div>
+
+                                        <!-- Orders Tab -->
                                         <div class="tab-pane fade" id="liton_tab_orders">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <div class="table-responsive">
@@ -70,6 +77,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Address Tab -->
                                         <div class="tab-pane fade" id="liton_tab_address">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>Các địa chỉ dưới đây sẽ được dùng làm mặc định khi bạn thanh toán.</p>
@@ -85,32 +94,52 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Jun 22, 2019</td>
-                                                            <td>Pending</td>
-                                                            <td>$3000</td>
-                                                            <td>$3000</td>
-                                                            <td>
-                                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                                    onClick="return confirm('Bạn có chắc bạn muốn xóa địa chỉ này?')">Xóa</button>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($addresses as $address)
+                                                            <tr>
+                                                                <td>{{ $address->full_name }}</td>
+                                                                <td>{{ $address->address }}</td>
+                                                                <td>{{ $address->city }}</td>
+                                                                <td>{{ $address->phone }}</td>
+                                                                <td>
+                                                                    @if ($address->default)
+                                                                        <span class="badge bg-success"> Mac Dinh</span>
+                                                                    @else
+                                                                        <form action="{{ route('account.addresses.update', $address ->id) }}"method="POST" class ="d-inline">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <button
+                                                                                class="btn btn-effect-1 btn-warning">Chọn
+                                                                            </button>
+                                                                        </form>
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <form action="{{ route('account.addresses.delete', $address ->id) }}"method="POST" class ="d-inline">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                                            onClick="return confirm('Bạn có chắc bạn muốn xóa địa chỉ này?')">Xóa</button>
+                                                                </td>
+                                                                </button>
+                                                                </form>
+
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
-                                                <button class="btn theme-btn-1 btn-effect-1 mt-3">Thêm địa chỉ mới</button>
+                                                <button class="btn theme-btn-1 btn-effect-1 mt-3" data-bs-toggle="modal"
+                                                    data-bs-target="#addAddress">Thêm địa chỉ mới</button>
                                             </div>
                                         </div>
+
+                                        <!-- Account Tab -->
                                         <div class="tab-pane fade" id="liton_tab_account">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <div class="ltn__form-box">
-                                                    <form action="{{ route('account.update') }}" method="POST" id="update-account"
-                                                        enctype="multipart/form-data">
-
-
+                                                    <form action="{{ route('account.update') }}" method="POST"
+                                                        id="update-account" enctype="multipart/form-data">
+                                                        @csrf
                                                         @method('PUT')
-
-
 
                                                         <div class="row mb-50">
                                                             <div class="col-md-12 text-center mb-3">
@@ -129,11 +158,12 @@
                                                             <div class="col-md-6">
                                                                 <label for="ltn__phone_number">Số điện thoại:</label>
                                                                 <input type="text" name="ltn__phone_number"
-                                                                    id="ltn__phone_number" value="{{ $user->phone_number }}"
-                                                                    required>
+                                                                    id="ltn__phone_number"
+                                                                    value="{{ $user->phone_number }}" required>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="ltn__email">Email (không được thay đổi):</label>
+                                                                <label for="ltn__email">Email (không được thay
+                                                                    đổi):</label>
                                                                 <input type="text" name="ltn__email" id="ltn__email"
                                                                     value="{{ $user->email }}" readonly>
                                                             </div>
@@ -153,11 +183,12 @@
                                             </div>
                                         </div>
 
+                                        <!-- Password Tab -->
                                         <div class="tab-pane fade" id="liton_tab_password">
                                             <div class="ltn__myaccount-tab-content-inner">
-                                            
                                                 <div class="ltn__form-box">
-                                                    <form action="{{ route('account.change-password') }}" method="POST" id="change-password-form">
+                                                    <form action="{{ route('account.change-password') }}" method="POST"
+                                                        id="change-password-form">
                                                         @csrf
                                                         <fieldset>
                                                             <div class="row">
@@ -175,17 +206,66 @@
                                                         </fieldset>
                                                         <div class="btn-wrapper">
                                                             <button type="submit"
-                                                                class="btn theme-btn-1 btn-effect-1 text-uppercase">Đổi mật
+                                                                class="btn theme-btn-1 btn-effect-1 text-uppercase">Đổi
+                                                                mật
                                                                 khẩu</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- PRODUCT TAB AREA END -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- WISHLIST AREA START -->
-                    @endsection
+                    </div>
+                    <!-- PRODUCT TAB AREA END -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- WISHLIST AREA START -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="addAddress" tabindex="-1" aria-labelledby="addAddressLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAddressLabel">Thêm địa chỉ mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('account.addresses.add') }}" method="POST" id="addAddressForm">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="full_name" class="form-label">Tên người dùng</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Thành phố</label>
+                            <input type="text" class="form-control" id="city" name="city" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="is_default" name="is_default">
+                            <label for="is_default" class="form-check-label">Đặt làm địa chỉ mặc định</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn theme-btn-1 btn-effect-1 mt-3"
+                        data-bs-dismiss="modal">Đóng</button>
+                    <!-- Thêm form attribute cho nút submit -->
+                    <button type="submit" form="addAddressForm" class="btn theme-btn-1 btn-effect-1 mt-3">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

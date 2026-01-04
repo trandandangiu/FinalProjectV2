@@ -50,11 +50,15 @@ Route::middleware(['auth.custom'])->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::prefix('account')->group(function(){
-      Route::get('/', [AccountController::class, 'index'])->name('account');
-      Route::put('/update', [AccountController::class, 'update'])->name('account.update');
+    Route::prefix('account')->group(function () {
+        Route::get('/', [AccountController::class, 'index'])->name('account');
+        Route::put('/update', [AccountController::class, 'update'])->name('account.update');
 
-      Route::post('/change-password',[AccountController::class,'ChangePassword'])->name('account.change-password');
+        Route::post('/change-password', [AccountController::class, 'ChangePassword'])->name('account.change-password');
+
+        Route::post('/addresses', [AccountController::class, 'addAddress'])->name('account.addresses.add');
+
+        Route::put('/addresses/{id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
+        Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
     });
-
 });
