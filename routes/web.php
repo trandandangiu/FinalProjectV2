@@ -5,8 +5,10 @@ use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\ResetPasswordController;
+use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Clients\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -59,4 +61,7 @@ Route::middleware(['auth.custom'])->group(function () {
         Route::put('/addresses/{    id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
         Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
     });
+
 });
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
