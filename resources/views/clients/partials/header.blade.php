@@ -23,12 +23,14 @@
                                                 <ul>
                                                     <li><a href="#" title="Facebook"><i
                                                                 class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                                    <li><a href="#" title="Twitter"><i
+                                                                class="fab fa-twitter"></i></a>
                                                     </li>
 
                                                     <li><a href="#" title="Instagram"><i
                                                                 class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                                    <li><a href="#" title="Dribbble"><i
+                                                                class="fab fa-dribbble"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -50,7 +52,8 @@
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="img/logo-2.png" alt="Logo"></a>
+                                    <a href="\"><img src="{{ asset('assets/clients/img/logo-2.png') }}"
+                                        alt="Logo"></a>
                                 </div>
                             </div>
                         </div>
@@ -59,19 +62,22 @@
                                 <nav>
                                     <div class="ltn__main-menu">
                                         <ul>
-                                            <li class="menu-icon"><a href="index.html">Trang chủ</a> </li>
-                                            <li class="menu-icon"><a href="#">Về chúng tôi</a>
-                                                <ul>
-                                                    <li><a href="about.html">Về chúng tôi</a></li>
-                                                    <li><a href="service.html">Dịch vụ</a></li>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                </ul>
+                                            <li class="menu-icon"><a
+                                                    href="\">Trang chủ</a> </li>
+                                            <li class="menu-icon"><a
+                                                        href="javascript:void(0)">Về chúng tôi</a>
+                                                    <ul>
+                                                        <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
+                                                        <li><a href="{{ route('service') }}">Dịch vụ</a></li>
+                                                        <li><a href="{{ route('team') }}">Team</a></li>
+                                                        <li><a href="{{ route('faq') }}">FAQ</a></li>
+                                                    </ul>
                                             </li>
-                                            <li class="menu-icon"><a href="shop.html">Cửa hàng</a>
+                                            <li class="menu-icon"><a href="{{ route('about') }}">Cửa hàng</a>
                                             </li>
-                                            <li><a href="contact.html">Liên hệ</a></li>
-                                            <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                            <li><a href="{{ route('about') }}">Liên hệ</a></li>
+                                            <li class="special-link"><a href="{{ route('about') }}">NHẬN BÁO GIÁ</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -88,7 +94,8 @@
                                 </div>
                                 <div class="header-search-1-form">
                                     <form id="#" method="get" action="#">
-                                        <input type="text" name="search" value="" placeholder="Search here..." />
+                                        <input type="text" name="search" value=""
+                                            placeholder="Search here..." />
                                         <button type="submit">
                                             <span><i class="icon-search"></i></span>
                                         </button>
@@ -101,10 +108,13 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            <li><a href="login.html">Đăng nhập</a></li>
-                                            <li><a href="register.html">Đăng kí</a></li>
-                                            <li><a href="account.html">Tài khoản</a></li>
-                                            <li><a href="wishlist.html">Yêu thích</a></li>
+                                            @if (Auth::check())
+                                                <li><a href="{{ route('login') }}">Yêu Thích</a></li>
+                                                <li><a href="{{ route('account') }}">Tài khoản</a></li>
+                                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                            @else
+                                                <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                            @endif
                                         </ul>
                                     </li>
                                 </ul>
@@ -203,6 +213,7 @@
             </div>
         </div>
         <!-- Utilize Cart Menu End -->
-@include('clients.partials.utilize_mobile')
+        @include('clients.partials.utilize_mobile')
 
-    </div class="ltn__utilize-overlay"></div>
+        </div class="ltn__utilize-overlay">
+        </div>

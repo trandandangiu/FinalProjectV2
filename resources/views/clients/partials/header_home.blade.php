@@ -63,18 +63,18 @@
                                     <div class="ltn__main-menu">
                                         <ul>
                                             <li class="menu-icon"><a href="\">Trang chủ</a> </li>
-                                            <li class="menu-icon"><a href="#">Về chúng tôi</a>
+                                            <li class="menu-icon"><a href="javascript:void(0)">Về chúng tôi</a>
                                                 <ul>
-                                                    <li><a href="about.html">Về chúng tôi</a></li>
-                                                    <li><a href="service.html">Dịch vụ</a></li>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
+                                                    <li><a href="{{ route('service') }}">Dịch vụ</a></li>
+                                                    <li><a href="{{ route('team') }}">Team</a></li>
+                                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-icon"><a href="shop.html">Cửa hàng</a>
+                                            <li class="menu-icon"><a href="{{ route('about') }}">Cửa hàng</a>
                                             </li>
-                                            <li><a href="contact.html">Liên hệ</a></li>
-                                            <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                            <li><a href="{{ route('about') }}">Liên hệ</a></li>
+                                            <li class="special-link"><a href="{{ route('about') }}">NHẬN BÁO GIÁ</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -105,10 +105,13 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            <li><a href="login.html">Đăng nhập</a></li>
-                                            <li><a href="register.html">Đăng kí</a></li>
-                                            <li><a href="account.html">Tài khoản</a></li>
-                                            <li><a href="wishlist.html">Yêu thích</a></li>
+                                          @if (Auth::check())
+                                            <li><a href="{{ route('login') }}">Yêu Thích</a></li>
+                                            <li><a href="{{ route('account') }}">Tài khoản</a></li>
+                                            <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                          @else
+                                            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                          @endif
                                         </ul>
                                     </li>
                                 </ul>

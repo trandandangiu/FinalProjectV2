@@ -26,7 +26,6 @@ Route::get('/faq', function () {
     return view('clients.pages.faq');
 })->name('faq');    
 
-
 //guest
 
 Route::middleware('guest')->group(function () {
