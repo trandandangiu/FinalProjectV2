@@ -9,6 +9,13 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('clients.pages.products');
+        $categories = \App\Models\Category::with('products')->get();
+        $products = \App\Models\Product::with('firstImage')->where('status', 'in_stock')->paginate(9);
+        foreach ($products as $product) {
+            $product->image_url = $product->firstImage?->image
+                ? asset('storage/uploads/products/' . $product->firstImage->image) : asset('storage/uploads/products/default-product.png');
+        }
+
+        return view('clients.pages.products', compact('categories', 'products'));
     }
 }
