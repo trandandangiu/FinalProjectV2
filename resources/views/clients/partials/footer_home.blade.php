@@ -7,7 +7,7 @@
                             <div class="footer-widget footer-about-widget">
                                 <div class="footer-logo">
                                     <div class="site-logo">
-                                        <img src="img/logo-2.png" alt="Logo">
+                                        <img src="{{ asset('assets/clients/img/logo-2.png') }}" alt="Logo">
                                     </div>
                                 </div>
                                 <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is
@@ -19,7 +19,7 @@
                                                 <i class="icon-placeholder"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p>Ngu Hanh Son, Da Nang, Viet Nam</p>
+                                                <p>Quận 7, Hồ Chí Minh, Việt Nam</p>
                                             </div>
                                         </li>
                                         <li>
@@ -27,7 +27,7 @@
                                                 <i class="icon-call"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                                <p><a href="tel:+84 827777721">+84 277.777.21</a></p>
                                             </div>
                                         </li>
                                         <li>
@@ -35,7 +35,7 @@
                                                 <i class="icon-mail"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="mailto:minhdien.dev@gmail.com">minhdien.dev@gmail.com</a>
+                                                <p><a href="mailto:trithmgcs210852@fpt.edu.vn">trithmgcs210852@fpt.edu.vn</a>
                                                 </p>
                                             </div>
                                         </li>

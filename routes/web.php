@@ -3,29 +3,28 @@
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
+use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\ResetPasswordController;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('clients.pages.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('clients.pages.about');
-});
+})->name('about'); 
 
 Route::get('/service', function () {
     return view('clients.pages.services');
-});
+})->name('service');
 
 Route::get('/team', function () {
     return view('clients.pages.team');
-});
+})->name('team');
 
 Route::get('/faq', function () {
     return view('clients.pages.faq');
-});
+})->name('faq');    
 
 
 //guest
@@ -58,7 +57,7 @@ Route::middleware(['auth.custom'])->group(function () {
 
         Route::post('/addresses', [AccountController::class, 'addAddress'])->name('account.addresses.add');
 
-        Route::put('/addresses/{id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
+        Route::put('/addresses/{    id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
         Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
     });
 });

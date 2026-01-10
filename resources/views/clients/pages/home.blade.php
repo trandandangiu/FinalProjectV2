@@ -22,16 +22,18 @@
                                                 <i class="fa fa-play"></i>
                                             </a>
                                         </div>
-                                        <h6 class="slide-sub-title animated"><img src="img/icons/icon-img/1.png"
-                                                alt="#"> 100% genuine Products</h6>
-                                        <h1 class="slide-title animated ">Our Garden's Most <br> Favorite Food</h1>
+                                        <h6 class="slide-sub-title animated"><img
+                                                src="{{ asset('assets/clients/img/icons/icon-img/1.png') }}" alt="#">
+                                            Sản phẩm 100% chính hãng</h6>
+                                        <h1 class="slide-title animated ">Thực phẩm được yêu thích nhất <br> trong Phòng Gym
+                                            của chúng tôi</h1>
                                         <div class="slide-brief animated">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore.</p>
+                                            <p>Chúng tôi cam kết mang đến những sản phẩm chất lượng cao, giúp bạn đạt được
+                                                mục tiêu thể hình một cách hiệu quả và an toàn.</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore
-                                                Products</a>
+                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Khám phá
+                                                sản phẩm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -43,24 +45,24 @@
             <!-- ltn__slide-item -->
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3 ltn__slide-item-3-normal bg-image"
                 data-bg="{{ asset('assets/clients/img/slider/14.jpg') }}">
-                <div class="ltn__slide-item-inner  text-right text-end">
+                <div class="ltn__slide-item-inner text-right text-end">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 align-self-center">
                                 <div class="slide-item-info">
                                     <div class="slide-item-info-inner ltn__slide-animation">
-                                        <h6 class="slide-sub-title ltn__secondary-color animated">// TALENTED
-                                            ENGINEER & MECHANICS</h6>
-                                        <h1 class="slide-title animated ">Tasty & Healthy <br> Organic Food</h1>
+                                        <h6 class="slide-sub-title ltn__secondary-color animated">// FITNESS APPAREL &
+                                            SUPPLEMENTS</h6>
+                                        <h1 class="slide-title animated">Thời Trang Tập Luyện <br> & Thực Phẩm Bổ Sung</h1>
                                         <div class="slide-brief animated">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore.</p>
+                                            <p>Từ quần áo tập chất lượng đến các dòng supplement chính hãng - tất cả để hỗ
+                                                trợ hành trình thể hình của bạn!</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore
-                                                Products</a>
-                                            <a href="about.html" class="btn btn-transparent btn-effect-3">LEARN
-                                                MORE</a>
+                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Xem Tất
+                                                Cả Sản Phẩm</a>
+                                            <a href="{{ route('about') }}" class="btn btn-transparent btn-effect-3">VỀ CHÚNG
+                                                TÔI</a>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +83,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/13.png') }}" alt="Banner Image"></a>
+                            <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/13.png') }}"
+                                    alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
@@ -90,14 +93,16 @@
                         <div class="col-lg-12">
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
-                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/14.png') }}" alt="Banner Image"></a>
+                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/14.png') }}"
+                                            alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="ltn__banner-item">
                                 <div class="ltn__banner-img">
-                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/15.png') }}" alt="Banner Image"></a>
+                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/15.png') }}"
+                                            alt="Banner Image"></a>
                                 </div>
                             </div>
                         </div>
@@ -205,22 +210,25 @@
                 </div>
             </div>
             <div class="row ltn__category-slider-active slick-arrow-1">
-                <div class="col-12">
-                    <div class="ltn__category-item ltn__category-item-3 text-center">
-                        <div class="ltn__category-item-img">
-                            <a href="shop.html">
-                                <img src="img/icons/icon-img/category-1.png" alt="Image">
-                            </a>
-                        </div>
-                        <div class="ltn__category-item-name">
-                            <h5><a href="shop.html">Browse all</a></h5>
-                            <h6>(235 item)</h6>
+                @foreach ($categories as $category)
+                    <div class="col-12">
+                        <div class="ltn__category-item ltn__category-item-3 text-center">
+                            <div class="ltn__category-item-img">
+                                <a href="shop.html">
+                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}">
+                                </a>
+                            </div>
+                            <div class="ltn__category-item-name">
+                                <h5><a href="shop.html">{{ $category->name }}</a></h5>
+                                <h6>{{ $category->products->count() }} Sản Phẩm</h6>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endforeach
             </div>
+
         </div>
+    </div>
     </div>
     <!-- CATEGORY AREA END -->
 
@@ -234,214 +242,48 @@
                     </div>
                     <div class="ltn__tab-menu ltn__tab-menu-2 ltn__tab-menu-top-right-- text-uppercase text-center">
                         <div class="nav">
-                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_3_1">Food & Drinks</a>
-                            <a data-bs-toggle="tab" href="#liton_tab_3_2" class="">Vegetables</a>
-                            <a data-bs-toggle="tab" href="#liton_tab_3_3" class="">Dried Foods</a>
-                            <a data-bs-toggle="tab" href="#liton_tab_3_4" class="">Bread & Cake</a>
-                            <a data-bs-toggle="tab" href="#liton_tab_3_5" class="">Fish & Meat</a>
+                            @foreach ($categories as $index => $category)
+                                <a class="{{ $index == 0 ? 'active show' : '' }}" data-bs-toggle="tab"
+                                    href="#tab_{{ $category->id }}">{{ $category->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane fade active show" id="liton_tab_3_1">
-                            <div class="ltn__product-tab-content-inner">
-                                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
-                                    <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-3 text-center">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="img/product/11.png"
-                                                        alt="#"></a>
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badge">-19%</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal"
-                                                                data-bs-target="#quick_view_modal">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                                                data-bs-target="#add_to_cart_modal">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Wishlist" data-bs-toggle="modal"
-                                                                data-bs-target="#liton_wishlist_modal">
-                                                                <i class="far fa-heart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-ratting">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                        <li class="review-total"> <a href="#"> (24)</a></li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">Carrots
-                                                        Group Scal</a></h2>
-                                                <div class="product-price">
-                                                    <span>$32.00</span>
-                                                    <del>$46.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ltn__product-item ltn__product-item-3 text-center">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="img/product/7.png"
-                                                        alt="#"></a>
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badge">New</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="Quick View" data-bs-toggle="modal"
-                                                                data-bs-target="#quick_view_modal">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                                                data-bs-target="#add_to_cart_modal">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="Wishlist" data-bs-toggle="modal"
-                                                                data-bs-target="#liton_wishlist_modal">
-                                                                <i class="far fa-heart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-ratting">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">Poltry Farm
-                                                        Meat</a></h2>
-                                                <div class="product-price">
-                                                    <span>$78.00</span>
-                                                    <del>$85.00</del>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- PRODUCT TAB AREA END -->
-
-                                <!-- COUNTER UP AREA START -->
-                                <div class="ltn__counterup-area bg-image bg-overlay-theme-black-80 pt-115 pb-70"
-                                    data-bg="img/bg/5.jpg">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-3 col-sm-6 align-self-center">
-                                                <div class="ltn__counterup-item-3 text-color-white text-center">
-                                                    <div class="counter-icon"> <img src="img/icons/icon-img/2.png"
-                                                            alt="#"> </div>
-                                                    <h1><span class="counter">733</span><span
-                                                            class="counterUp-icon">+</span> </h1>
-                                                    <h6>Active Clients</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 align-self-center">
-                                                <div class="ltn__counterup-item-3 text-color-white text-center">
-                                                    <div class="counter-icon"> <img src="img/icons/icon-img/3.png"
-                                                            alt="#"> </div>
-                                                    <h1><span class="counter">33</span><span
-                                                            class="counterUp-letter">K</span><span
-                                                            class="counterUp-icon">+</span> </h1>
-                                                    <h6>Cup Of Coffee</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 align-self-center">
-                                                <div class="ltn__counterup-item-3 text-color-white text-center">
-                                                    <div class="counter-icon"> <img src="img/icons/icon-img/4.png"
-                                                            alt="#"> </div>
-                                                    <h1><span class="counter">100</span><span
-                                                            class="counterUp-icon">+</span> </h1>
-                                                    <h6>Get Rewards</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 align-self-center">
-                                                <div class="ltn__counterup-item-3 text-color-white text-center">
-                                                    <div class="counter-icon"> <img src="img/icons/icon-img/5.png"
-                                                            alt="#"> </div>
-                                                    <h1><span class="counter">21</span><span
-                                                            class="counterUp-icon">+</span> </h1>
-                                                    <h6>Country Cover</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- COUNTER UP AREA END -->
-
-                                <!-- PRODUCT AREA START (product-item-3) -->
-                                <div class="ltn__product-area ltn__product-gutter pt-115 pb-70">
-                                    <div class="container">
-                                        <div class="row">
+                        @foreach ($categories as $index => $category)
+                            <div class="tab-pane fade {{ $index == 0 ? 'active show' : '' }}"
+                                id="tab_{{ $category->id }}">
+                                <div class="ltn__product-tab-content-inner">
+                                    <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                        @foreach ($category->products as $product)
                                             <div class="col-lg-12">
-                                                <div class="section-title-area ltn__section-title-2 text-center">
-                                                    <h1 class="section-title">Sản Phẩm Bán Chạy</h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row ltn__tab-product-slider-one-active--- slick-arrow-1">
-                                            <!-- ltn__product-item -->
-                                            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                                                <div class="ltn__product-item ltn__product-item-3 text-left">
+                                                <div class="ltn__product-item ltn__product-item-3 text-center">
                                                     <div class="product-img">
-                                                        <a href="product-details.html"><img src="img/product/1.png"
-                                                                alt="#"></a>
-                                                        <div class="product-badge">
-                                                            <ul>
-                                                                <li class="sale-badge">New</li>
-                                                            </ul>
-                                                        </div>
+                                                        <a href="#">
+                                                            <img src="{{ $product->image_url }}"
+                                                                alt="{{ $product->name }}">
+                                                        </a>
                                                         <div class="product-hover-action">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="#" title="Quick View"
+                                                                    <a href="#" title="Xem nhanh"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#quick_view_modal">
+                                                                        data-bs-target="#quick_view_modal-{{ $product->id }}">
                                                                         <i class="far fa-eye"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" title="Add to Cart"
+                                                                    <a href="#" title="Thêm vào giỏ hàng"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#add_to_cart_modal">
+                                                                        data-bs-target="#add_to_cart_modal-{{ $product->id }}">
                                                                         <i class="fas fa-shopping-cart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" title="Wishlist"
+                                                                    <a href="#" title="Yêu thích"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#liton_wishlist_modal">
-                                                                        <i class="far fa-heart"></i></a>
+                                                                        data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -455,52 +297,166 @@
                                                                 <li><a href="#"><i
                                                                             class="fas fa-star-half-alt"></i></a></li>
                                                                 <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                                <li class="review-total"> <a href="#"> (24)</a></li>
                                                             </ul>
                                                         </div>
-                                                        <h2 class="product-title"><a href="product-details.html">Carrots
-                                                                Group Scal</a></h2>
+                                                        <h2 class="product-title">
+                                                            <a href="product-details.html">{{ $product->name }}</a>
+                                                        </h2>
                                                         <div class="product-price">
-                                                            <span>$32.00</span>
-                                                            <del>$46.00</del>
+                                                            <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                <!-- PRODUCT AREA END -->
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                <!-- CALL TO ACTION START (call-to-action-4) -->
-                                <div class="ltn__call-to-action-area ltn__call-to-action-4 bg-image pt-115 pb-120"
-                                    data-bg="img/bg/6.jpg">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="call-to-action-inner call-to-action-inner-4 text-center">
-                                                    <div class="section-title-area ltn__section-title-2">
-                                                        <h6 class="section-subtitle ltn__secondary-color">// any question
-                                                            you have //</h6>
-                                                        <h1 class="section-title white-color">897-876-987-90</h1>
-                                                    </div>
-                                                    <div class="btn-wrapper">
-                                                        <a href="tel:+123456789" class="theme-btn-1 btn btn-effect-1">MAKE
-                                                            A CALL</a>
-                                                        <a href="contact.html"
-                                                            class="btn btn-transparent btn-effect-4 white-color">CONTACT
-                                                            US</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ltn__call-to-4-img-1">
-                                        <img src="img/bg/12.png" alt="#">
-                                    </div>
-                                    <div class="ltn__call-to-4-img-2">
-                                        <img src="img/bg/11.png" alt="#">
-                                    </div>
+    <!-- PRODUCT TAB AREA END -->
+
+    <!-- COUNTER UP AREA START -->
+    <div class="ltn__counterup-area bg-image bg-overlay-theme-black-80 pt-115 pb-70"
+        data-bg="{{ asset('assets/clients/img/bg/5.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 align-self-center">
+                    <div class="ltn__counterup-item-3 text-color-white text-center">
+                        <div class="counter-icon"> <img src="img/icons/icon-img/2.png" alt="#"> </div>
+                        <h1><span class="counter">733</span><span class="counterUp-icon">+</span>
+                        </h1>
+                        <h6>Active Clients</h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 align-self-center">
+                    <div class="ltn__counterup-item-3 text-color-white text-center">
+                        <div class="counter-icon"> <img src="img/icons/icon-img/3.png" alt="#"> </div>
+                        <h1><span class="counter">33</span><span class="counterUp-letter">K</span><span
+                                class="counterUp-icon">+</span>
+                        </h1>
+                        <h6>Cup Of Coffee</h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 align-self-center">
+                    <div class="ltn__counterup-item-3 text-color-white text-center">
+                        <div class="counter-icon"> <img src="img/icons/icon-img/4.png" alt="#"> </div>
+                        <h1><span class="counter">100</span><span class="counterUp-icon">+</span>
+                        </h1>
+                        <h6>Get Rewards</h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 align-self-center">
+                    <div class="ltn__counterup-item-3 text-color-white text-center">
+                        <div class="counter-icon"> <img src="img/icons/icon-img/5.png" alt="#"> </div>
+                        <h1><span class="counter">21</span><span class="counterUp-icon">+</span> </h1>
+                        <h6>Country Cover</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COUNTER UP AREA END -->
+
+    <!-- PRODUCT AREA START (product-item-3) -->
+    <div class="ltn__product-area ltn__product-gutter pt-115 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h1 class="section-title">Sản Phẩm Bán Chạy</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row ltn__tab-product-slider-one-active--- slick-arrow-1">
+                @foreach ($bestSellingProducts as $product)
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="ltn__product-item ltn__product-item-3 text-left">
+                            <div class="product-img">
+                                <a href="#">
+                                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                                </a>
+                                <div class="product-hover-action">
+                                    <ul>
+                                        <li>
+                                            <a href="#" title="Xem nhanh" data-bs-toggle="modal"
+                                                data-bs-target="#quick_view_modal-{{ $product->id }}">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Thêm vào giỏ hàng" data-bs-toggle="modal"
+                                                data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Yêu thích" data-bs-toggle="modal"
+                                                data-bs-target="#liton_wishlist_modal-{{ $product->id }}">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <!-- CALL TO ACTION END -->
+                            </div>
+                            <div class="product-info">
+                                <div class="product-ratting">
+                                    <ul>
+                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                        <li><a href="#"><i class="far fa-star"></i></a></li>
+                                        <li class="review-total"> <a href="#"> (24)</a></li>
+                                    </ul>
+                                </div>
+                                <h2 class="product-title">
+                                    <a href="product-details.html">{{ $product->name }}</a>
+                                </h2>
+                                <div class="product-price">
+                                    <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- PRODUCT AREA END -->
 
-                            @endsection
+    <!-- CALL TO ACTION START (call-to-action-4) -->
+    <div class="ltn__call-to-action-area ltn__call-to-action-4 bg-image pt-115 pb-120"
+        data-bg="{{ asset('assets/clients/img/bg/6.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="call-to-action-inner call-to-action-inner-4 text-center">
+                        <div class="section-title-area ltn__section-title-2">
+                            <h6 class="section-subtitle ltn__secondary-color">// bất kì câu hỏi nào bạn có//</h6>
+                            <h1 class="section-title white-color">0827.777.721</h1>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="tel:+123456789" class="theme-btn-1 btn btn-effect-1">GỌI ĐIỆN</a>
+                            <a href="contact.html" class="btn btn-transparent btn-effect-4 white-color">LIÊN HỆ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ltn__call-to-4-img-1">
+            <img src="{{ asset('assets/clients/img/bg/12.jpg') }}" alt="#">
+        </div>
+        <div class="ltn__call-to-4-img-2">
+            <img src="{{ asset('assets/clients/img/bg/11.jpg') }}" alt="#">
+        </div>
+    </div>
+    <!-- CALL TO ACTION END -->
+
+@endsection

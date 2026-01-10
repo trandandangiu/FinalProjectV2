@@ -7,10 +7,9 @@
                         <div class="col-md-7">
                             <div class="ltn__top-bar-menu">
                                 <ul>
-                                    <li><a href="locations.html"><i class="icon-placeholder"></i> Ngu Hanh Son, Da
-                                            Nang</a></li>
+                                    <li><a href="locations.html"><i class="icon-placeholder"></i> Ho Chi Minh, Q7</a></li>
                                     <li><a href="mailto:minhdien.dev@gmail.com?Subject=Contact%20with%20to%20you"><i
-                                                class="icon-mail"></i> minhdien.dev@gmail.com</a></li>
+                                                class="icon-mail"></i>trithmgcs210852@fpt.edu.vn </a></li>
                                 </ul>
                             </div>
                         </div>
