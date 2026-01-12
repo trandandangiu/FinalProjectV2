@@ -59,6 +59,8 @@ class ProductController extends Controller
 
         return response()->json([
             'products' => view('clients.components.products-grid', compact('products'))->render(),
+            'pagination' =>$products->links('clients.components.pagination.pagination_custom')->toHtml()
+
         ]);
     }
 }

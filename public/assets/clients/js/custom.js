@@ -268,6 +268,17 @@ $(document).ready(function () {
     });
 
     //Page products - chỉ chạy khi element tồn tại
+    let currentPage = 1;
+    $(document).on('click', '.pagination-link', function (e) {
+        e.preventDefault();
+        let pageUrl = $(this).attr('href');
+        let page = pageUrl.split('page=')[1];
+        currentPage = page;
+        fetchProducts();
+    });
+
+
+//product load function (combining filter + pagination)
     function fetchProducts() {
         let category_id = $(".category-filter.active").data('id') || '';
         let min_price = $("#min_price").val();
@@ -280,7 +291,7 @@ $(document).ready(function () {
             }
         });
         $.ajax({
-            url: 'products/filter',
+            url: 'products/filter?page=' + currentPage,
             type: 'GET',
             data: {
                 category_id: category_id,
@@ -295,6 +306,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $("#liton_product_grid").html(response.products);
+                 $(".ltn__pagination").html(response.pagination);
             },
             complete: function () {
                 $("#loading-spinner").hide();
@@ -309,10 +321,12 @@ $(document).ready(function () {
     $(".category-filter").click(function () {
         $(".category-filter").removeClass("active");
         $(this).addClass("active");
+        currentPage = 1; // reset về trang 1 khi lọc
         fetchProducts();
     })
 
     $("#sort-by").change(function () {
+          currentPage = 1;
         fetchProducts();
     })
 
@@ -335,6 +349,7 @@ $(document).ready(function () {
             $("#max_price").val(ui.values[1]);
         },
         change: function (event, ui) {
+              currentPage = 1;
             fetchProducts();
         }
     });

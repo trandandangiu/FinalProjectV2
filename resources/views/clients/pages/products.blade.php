@@ -42,15 +42,7 @@
                     </div>
                     <div class="ltn__pagination-area text-center">
                         <div class="ltn__pagination">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">...</a></li>
-                                <li><a href="#">10</a></li>
-                                <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                            </ul>
+                        {!! $products->links('clients.components.pagination.pagination_custom') !!}
                         </div>
                     </div>
                 </div>
@@ -74,8 +66,11 @@
                             <h4 class="ltn__widget-title ltn__widget-title-border">Nhập theo giá</h4>
                             <div class="price_filter">
                                 <div class="price_slider_amount">
-                                    <input type="submit" value="Giá" />
-                                    <input type="text" class="amount" name="price" placeholder="Add Your Price" />
+                                    <input type="text" class="amount" name="price_display" placeholder="Add Your Price"
+                                        readonly />
+                                    <!-- Thêm các input ẩn để lưu giá trị thực -->
+                                    <input type="hidden" name="min_price" id="min_price" value="0">
+                                    <input type="hidden" name="max_price" id="max_price" value="3000000">
                                 </div>
                                 <div class="slider-range"></div>
                             </div>
