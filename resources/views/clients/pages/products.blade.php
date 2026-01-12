@@ -17,24 +17,25 @@
                                     <div class="nav">
                                         <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i
                                                 class="fas fa-th-large"></i></a>
-
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="short-by text-center">
-                                    <select id="sort-by" class="nice-select">
-                                        <option>Sắp xếp mặc định</option>
-                                        <option>Sắp xếp theo độ phổ biến</option>
-                                        <option>Sắp xếp theo hàng mới về</option>
-                                        <option>Sắp xếp theo giá: thấp đến cao</option>
-                                        <option>Sắp xếp theo giá: cao đến thấp</option>
+                                    <select id="sort-by" name="sort_by" class="nice-select">
+                                        <option value="">Sắp xếp mặc định</option>
+                                        <option value="latest">Sắp xếp theo hàng mới về</option>
+                                        <option value="price_asc">Sắp xếp theo giá: thấp đến cao</option>
+                                        <option value="price_desc">Sắp xếp theo giá: cao đến thấp</option>
                                     </select>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content">
+                        <div class="loading-spinner">
+                            <div class="loader"></div>
+                        </div>
                         <div class="tab-pane fade active show" id="liton_product_grid">
                             @include('clients.components.products-grid', ['products' => $products])
                         </div>
@@ -73,7 +74,7 @@
                             <h4 class="ltn__widget-title ltn__widget-title-border">Nhập theo giá</h4>
                             <div class="price_filter">
                                 <div class="price_slider_amount">
-                                    <input type="submit" value="Your range:" />
+                                    <input type="submit" value="Giá" />
                                     <input type="text" class="amount" name="price" placeholder="Add Your Price" />
                                 </div>
                                 <div class="slider-range"></div>

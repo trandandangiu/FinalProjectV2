@@ -10,35 +10,33 @@ $(document).ready(function () {
         let checkbox1 = $('input[name="checkbox1"]').is(':checked');
         let checkbox2 = $('input[name="checkbox2"]').is(':checked');
 
-        let erroMessage = "";
+        let errorMessage = "";
 
         if (name.length < 3) {
-            erroMessage += "Họ và tên phải có ít nhất 3 ký tự.<br/>";
+            errorMessage += "Họ và tên phải có ít nhất 3 ký tự.<br/>";
         }
 
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            erroMessage += "Email không hợp lệ.<br/>";
+            errorMessage += "Email không hợp lệ.<br/>";
         }
 
         if (password.length < 6) {
-            erroMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
+            errorMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
         }
 
         if (password !== confirmPassword) {
-            erroMessage += "Mật khẩu xác nhận không khớp.<br/>";
+            errorMessage += "Mật khẩu xác nhận không khớp.<br/>";
         }
 
         if (!checkbox1 || !checkbox2) {
-            erroMessage +=
-                "Bạn phải đồng ý với các điều khoản.<br/>";
+            errorMessage += "Bạn phải đồng ý với các điều khoản.<br/>";
         }
 
-        if (erroMessage !== "") {
-            toastr.error(erroMessage, "Lỗi đăng ký");
+        if (errorMessage !== "") {
+            toastr.error(errorMessage, "Lỗi đăng ký");
             e.preventDefault();
         }
-
     });
 
     //validate form login
@@ -47,25 +45,21 @@ $(document).ready(function () {
         let email = $('input[name="email"]').val();
         let password = $('input[name="password"]').val();
 
-        let erroMessage = "";
-
+        let errorMessage = "";
 
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            erroMessage += "Email không hợp lệ.<br/>";
+            errorMessage += "Email không hợp lệ.<br/>";
         }
 
         if (password.length < 6) {
-            erroMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
-        }
-        if (password !== confirmPassword) {
-            erroMessage += "Mật khẩu xác nhận không khớp.<br/>";
-        }
-        if (erroMessage !== "") {
-            toastr.error(erroMessage, "Lỗi");
-            e.preventDefault();
+            errorMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
         }
 
+        if (errorMessage !== "") {
+            toastr.error(errorMessage, "Lỗi");
+            e.preventDefault();
+        }
     });
 
     //validate reset-password-form
@@ -75,35 +69,33 @@ $(document).ready(function () {
         let password = $('input[name="password"]').val();
         let confirmPassword = $('input[name="password_confirmation"]').val();
 
-        let erroMessage = "";
-
+        let errorMessage = "";
 
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            erroMessage += "Email không hợp lệ.<br/>";
+            errorMessage += "Email không hợp lệ.<br/>";
         }
 
         if (password.length < 6) {
-            erroMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
+            errorMessage += "Mật khẩu phải có ít nhất 6 ký tự.<br/>";
         }
         if (password !== confirmPassword) {
-            erroMessage += "Mật khẩu xác nhận không khớp.<br/>";
+            errorMessage += "Mật khẩu xác nhận không khớp.<br/>";
         }
-        if (erroMessage !== "") {
-            toastr.error(erroMessage, "Lỗi");
+        if (errorMessage !== "") {
+            toastr.error(errorMessage, "Lỗi");
             e.preventDefault();
         }
-
     });
 
     // page account
 
-    //where clicking on the image => open input file
+    //when clicking on the image => open input file
     $(".profile-pic").click(function () {
         $("#avatar").click();
     });
 
-    // khi chon 1 tam hinh => no hien len hinh anh 
+    // khi chọn một tấm hình => nó hiện lên hình ảnh
     $("#avatar").change(function () {
         let input = this;
         if (input.files && input.files[0]) {
@@ -134,7 +126,7 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             beforeSend: function () {
-                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true); // Fixed: disable -> disabled
+                $(".btn-wrapper button").text("Đang cập nhật....").attr("disabled", true);
             },
             success: function (response) {
                 if (response.success) {
@@ -164,29 +156,27 @@ $(document).ready(function () {
     //validate change-password account
     $("#change-password-form").submit(function (e) {
         e.preventDefault();
-        let cureent_password = $('input[name="current_password"]').val().trim();
+        let current_password = $('input[name="current_password"]').val().trim();
         let new_password = $('input[name="new_password"]').val().trim();
         let confirm_new_password = $('input[name="confirm_new_password"]').val().trim();
 
-        let erroMessage = "";
+        let errorMessage = "";
 
-
-        if (cureent_password.length < 6) {
-            erroMessage += "Mật khẩu cũ có ít nhất 6 ký tự.<br/>";
+        if (current_password.length < 6) {
+            errorMessage += "Mật khẩu cũ có ít nhất 6 ký tự.<br/>";
         }
 
         if (new_password.length < 6) {
-            erroMessage += "Mật khẩu mới có ít nhất 6 ký tự.<br/>";
+            errorMessage += "Mật khẩu mới có ít nhất 6 ký tự.<br/>";
         }
 
         if (new_password !== confirm_new_password) {
-            erroMessage += "Mật khẩu xác nhận không khớp.<br/>";
+            errorMessage += "Mật khẩu xác nhận không khớp.<br/>";
         }
-        if (erroMessage !== "") {
-            toastr.error(erroMessage, "Lỗi");
+        if (errorMessage !== "") {
+            toastr.error(errorMessage, "Lỗi");
             return;
         }
-
 
         let formData = $(this).serialize();
         let urlUpdate = $("#change-password-form").attr('action');
@@ -205,8 +195,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     toastr.success(response.message);
-                    $('#change-password-form')[0].reset()
-
+                    $('#change-password-form')[0].reset();
                 } else {
                     toastr.error(response.message);
                 }
@@ -257,7 +246,7 @@ $(document).ready(function () {
             );
         }
 
-        // Validate address - PHẢI Ở NGOÀI khối if của city
+        // Validate address
         if (address.length === 0) {
             isValid = false;
             $('#address').after(
@@ -276,5 +265,90 @@ $(document).ready(function () {
         if (isValid) {
             this.submit();
         }
-    }); message
+    });
+
+    //Page products - chỉ chạy khi element tồn tại
+    function fetchProducts() {
+        let category_id = $(".category-filter.active").data('id') || '';
+        let min_price = $("#min_price").val();
+        let max_price = $("#max_price").val();
+        let sort_by = $("#sort-by").val();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+        $.ajax({
+            url: 'products/filter',
+            type: 'GET',
+            data: {
+                category_id: category_id,
+                min_price: min_price,
+                max_price: max_price,
+                sort_by: sort_by,
+            },
+            beforeSend: function () {
+                $("#loading-spinner").show();
+                $("#liton_product_grid").hide();
+
+            },
+            success: function (response) {
+                $("#liton_product_grid").html(response.products);
+            },
+            complete: function () {
+                $("#loading-spinner").hide();
+                $("#liton_product_grid").show();
+            },
+            error: function (xhr) {
+                alert('có lỗi xảy ra với ajax fetchProducts');
+            },
+        });
+    }
+
+    $(".category-filter").click(function () {
+        $(".category-filter").removeClass("active");
+        $(this).addClass("active");
+        fetchProducts();
+    })
+
+    $("#sort-by").change(function () {
+        fetchProducts();
+    })
+
+
+    $(".slider-range").slider({
+        range: true,
+        min: 0,
+        max: 3000000,
+        values: [0, 3000000],
+        slide: function (event, ui) {
+            // Format số với dấu phân cách hàng nghìn
+            const formatPrice = (price) => {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            };
+
+            $(".amount").val(formatPrice(ui.values[0]) + " - " + formatPrice(ui.values[1]) + " vnđ");
+
+            // Cập nhật giá trị vào hidden inputs
+            $("#min_price").val(ui.values[0]);
+            $("#max_price").val(ui.values[1]);
+        },
+        change: function (event, ui) {
+            fetchProducts();
+        }
+    });
+    // Khởi tạo giá trị ban đầu
+    const formatPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
+    $(".amount").val(
+        formatPrice($(".slider-range").slider("values", 0)) +
+        " - " +
+        formatPrice($(".slider-range").slider("values", 1)) +
+        " vnđ"
+    );
+    // Cập nhật hidden inputs ban đầu
+    $("#min_price").val($(".slider-range").slider("values", 0));
+    $("#max_price").val($(".slider-range").slider("values", 1));
 });
