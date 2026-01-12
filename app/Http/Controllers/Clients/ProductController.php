@@ -59,8 +59,21 @@ class ProductController extends Controller
 
         return response()->json([
             'products' => view('clients.components.products-grid', compact('products'))->render(),
-            'pagination' =>$products->links('clients.components.pagination.pagination_custom')->toHtml()
+            'pagination' =>$products->links('clients.components.pagination.pagination_custom')->toHtml(),
 
         ]);
+    }
+    public function detail($slug)
+    {
+        $product = Product::with(['category','images'])->where('slug',$slug)->first();
+
+        //get product in the same category
+        $relatedProducts = Product::where('category_id',$product->category_id)
+        ->where('id','!=',$product->id)
+        ->limit(6)
+        ->get();
+
+
+        return view('clients.pages.product-detail', compact('product', 'relatedProducts'));
     }
 }
