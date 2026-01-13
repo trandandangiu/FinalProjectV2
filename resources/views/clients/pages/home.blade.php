@@ -304,13 +304,17 @@
                                                             <a href="product-details.html">{{ $product->name }}</a>
                                                         </h2>
                                                         <div class="product-price">
-                                                            <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
+                                                            <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                     </div>
+                                    @foreach ($category->products as $product)
+                                     @include('clients.components.includes.include-model')
+                                        
+                                    @endforeach
                                 </div>
                             </div>
                         @endforeach
@@ -420,7 +424,7 @@
                                     <a href="product-details.html">{{ $product->name }}</a>
                                 </h2>
                                 <div class="product-price">
-                                    <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
+                                    <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
                                 </div>
                             </div>
                         </div>

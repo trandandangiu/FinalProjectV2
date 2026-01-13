@@ -64,12 +64,15 @@
                                             <li>
                                                 <div class="cart-plus-minus">
                                                     <input type="text" value="02" name="qtybutton"
-                                                        class="cart-plus-minus-box">
+                                                        class="cart-plus-minus-box" readonly
+                                                        data-max="{{ $product->stock }}">
+                                                    <div class="qtybutton">+</div>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="#" class="theme-btn-1 btn btn-effect-1"
-                                                    title="Thêm vào giỏ hàng" data-bs-toggle="modal"
+                                                <a href="javascript:void(0)"
+                                                    class="theme-btn-1 btn btn-effect-1 add-to-cart-btn"
+                                                    title="Thêm vào giỏ hàng" data-id="{{ $product->id }}"
                                                     data-bs-target="#add_to_cart_modal">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span>THÊM VÀO GIỎ HÀNG</span>
@@ -278,15 +281,17 @@
                                         href="{{ route('products.detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                                 </h2>
                                 <div class="product-price">
-                                    <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
+                                    <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
 
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
             </div>
+            @foreach ($relatedProducts as $product)
+                @include('clients.components.includes.include-model')
+            @endforeach
         </div>
     </div>
     <!-- PRODUCT SLIDER AREA END -->

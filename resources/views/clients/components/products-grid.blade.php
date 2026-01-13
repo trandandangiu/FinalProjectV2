@@ -43,7 +43,7 @@
                                                             href="{{ route('products.detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                                                     </h2>
                                                     <div class="product-price">
-                                                        <span>{{ number_format($product->price, 0, ',', '.') }}VND</span>
+                                                        <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
 
                                                     </div>
                                                 </div>
@@ -52,3 +52,8 @@
                                     @endforeach
                                 </div>
                             </div>
+
+                            @foreach ($products as $product)
+                                @include('clients.components.includes.include-model',['product'=>$product])
+                                
+                            @endforeach
