@@ -111,4 +111,27 @@ public function loadMiniCart()
         'html' => view('clients.components.includes.mini_cart', compact('cartItems'))->render()
     ]);
 }
+
+public function removeFromMiniCart(Request $request)
+{
+    $request->validate([
+        'product_id' => 'required']);
+
+    if (Auth::check()) {
+        CartItem::where('user_id', Auth::id())
+            ->where('product_id', $request->product_id)
+            ->delete();
+        $cartCount = CartItem::where('user_id', Auth::id())->count();
+    } else {
+        $cart = session()->get('cart', []);
+        unset($cart[$request->product_id]);
+            session()->put('cart', $cart);
+            $cartCount = count($cart);
+    }
+
+    return response()->json([
+        'status' => true,
+        'cart_count' => $cartCount
+    ]);
+}
 }
