@@ -313,7 +313,6 @@
                                     </div>
                                     @foreach ($category->products as $product)
                                      @include('clients.components.includes.include-model')
-                                        
                                     @endforeach
                                 </div>
                             </div>

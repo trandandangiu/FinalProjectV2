@@ -278,7 +278,7 @@ $(document).ready(function () {
     });
 
 
-//product load function (combining filter + pagination)
+    //product load function (combining filter + pagination)
     function fetchProducts() {
         let category_id = $(".category-filter.active").data('id') || '';
         let min_price = $("#min_price").val();
@@ -306,7 +306,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $("#liton_product_grid").html(response.products);
-                 $(".ltn__pagination").html(response.pagination);
+                $(".ltn__pagination").html(response.pagination);
             },
             complete: function () {
                 $("#loading-spinner").hide();
@@ -326,7 +326,7 @@ $(document).ready(function () {
     })
 
     $("#sort-by").change(function () {
-          currentPage = 1;
+        currentPage = 1;
         fetchProducts();
     })
 
@@ -349,7 +349,7 @@ $(document).ready(function () {
             $("#max_price").val(ui.values[1]);
         },
         change: function (event, ui) {
-              currentPage = 1;
+            currentPage = 1;
             fetchProducts();
         }
     });
@@ -366,4 +366,100 @@ $(document).ready(function () {
     // Cập nhật hidden inputs ban đầu
     $("#min_price").val($(".slider-range").slider("values", 0));
     $("#max_price").val($(".slider-range").slider("values", 1));
+
+    //DETAIL PAGE
+    // *********************
+    $(document).on('click', '.qtybutton', function () {
+        var $button = $(this);
+        var $input = $button.siblings('input');
+        var oldValue = parseInt($input.val());
+        var maxStock = parseInt($input.data('max'));
+
+        if ($button.hasClass('inc')) {
+            if (oldValue < maxStock) {
+                $input.val(oldValue + 1);
+            }
+        } else {
+            if (oldValue > 1) {
+                $input.val(oldValue - 1);
+            }
+        }
+    });
+    //add_to_cart
+
+    $(document).on('click', '.add-to-cart-btn', function (e) {
+        e.preventDefault();
+
+        let $button = $(this);
+        let productId = $button.data('id');
+        let quantityElement = $button.closest('li').prev().find('.cart-plus-minus-box');
+        let quantity = quantityElement.val() ? parseInt(quantityElement.val()) : 1;
+
+        // Lưu text gốc của button
+        let originalText = $button.html();
+
+        // Hiển thị trạng thái loading
+        $button.prop('disabled', true).html('Đang thêm...');
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url: '/cart/add',
+            type: 'POST',
+            data: {
+                product_id: productId,
+                quantity: quantity,
+            },
+            success: function (response) {
+                $('#add_to_cart_modal-' + productId).modal('show');
+                $('#quick_view_modal-' + productId).modal('hide');
+                $('#cart_count').text(response.cart_count);
+
+            },
+            error: function (xhr) {
+                console.error(xhr);
+
+                // Hiển thị lỗi từ server nếu có
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert('Lỗi: ' + xhr.responseJSON.message);
+                } else {
+                    alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+                }
+            },
+            complete: function () {
+                // Khôi phục button về trạng thái ban đầu
+                $button.prop('disabled', false).html(originalText);
+            }
+        });
+    });
+    //Cart
+    // *********************
+    //mini cart
+    $('.mini-cart-icon').on('click', function (e) { 
+
+        $.ajax({
+            url: '/mini-cart',
+            type: 'GET',
+            success: function (response) {
+                if (response.status) {
+                    $('#ltn__utilize-cart-menu .ltn__utilize-menu-inner').html(response.html);
+                    $('#ltn__utilize-cart-menu').addClass('ltn__utilize-open');
+                } else {
+                    toastr.error('Không thể tải giỏ hàng nhỏ.');
+                }
+            }
+        });
+    });
+
+    $(document).on('click','.ltn__utilize-close', function (e) {
+        $('#ltn__utilize-cart-menu').removeClass('ltn__utilize-open');
+        $('#ltn__utilize-overlay').hide();
+    });
+
+
+
 });

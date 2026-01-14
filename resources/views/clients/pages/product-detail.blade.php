@@ -63,17 +63,15 @@
                                         <ul>
                                             <li>
                                                 <div class="cart-plus-minus">
-                                                    <input type="text" value="02" name="qtybutton"
+                                                    <input type="text" value="1" name="qtybutton"
                                                         class="cart-plus-minus-box" readonly
                                                         data-max="{{ $product->stock }}">
-                                                    <div class="qtybutton">+</div>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"
+                                                <a href="#"
                                                     class="theme-btn-1 btn btn-effect-1 add-to-cart-btn"
-                                                    title="Thêm vào giỏ hàng" data-id="{{ $product->id }}"
-                                                    data-bs-target="#add_to_cart_modal">
+                                                    title="Thêm vào giỏ hàng" data-id="{{ $product->id }}">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span>THÊM VÀO GIỎ HÀNG</span>
                                                 </a>
@@ -230,6 +228,8 @@
         </div>
     </div>
     <!-- SHOP DETAILS AREA END -->
+    
+      @include('clients.components.includes.include-model')
 
     <!-- PRODUCT SLIDER AREA START -->
     <div class="ltn__product-slider-area ltn__product-gutter pb-70">
