@@ -38,4 +38,13 @@ class AdminAuthController extends Controller
         toastr()->error('Thông tin đăng nhập không chính xác');
         return back();
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login')->with('status', 'Đăng xuất thành công');
+}
 }
