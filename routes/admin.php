@@ -20,10 +20,14 @@ Route::prefix('admin')->group(function () {
 
 
     Route::middleware('auth.custom')->group(function () {
-            Route::get('/dashboard', function () {
-        return view('admin.pages.dashboard');
-    })->name('admin.dashboard');
+        Route::get('/dashboard', function () {
+            return view('admin.pages.dashboard');
+        })->name('admin.dashboard');
     });
 
-
+    Route::middleware(['permission:manager_users'])->group(function () {
+        Route::get('/users', function () {
+            return;
+        })->name('admin.users.index');
+    });
 });
