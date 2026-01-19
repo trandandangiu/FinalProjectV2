@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\ResetPasswordController;
-use App\Models\Product;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Clients\ProductController;
 
@@ -59,7 +57,7 @@ Route::middleware(['auth.custom'])->group(function () {
 
         Route::post('/addresses', [AccountController::class, 'addAddress'])->name('account.addresses.add');
 
-        Route::put('/addresses/{    id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
+        Route::put('/addresses/{id}', [AccountController::class, 'updatePrimaryAddress'])->name('account.addresses.update');
         Route::delete('/addresses/{id}', [AccountController::class, 'deleteAddress'])->name('account.addresses.delete');
     });
 
@@ -74,3 +72,6 @@ Route::get('/product/{slug}', [ProductController::class, 'detail'])->name('produ
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/remove', [CartController::class, 'removeFromMiniCart'])->name('cart.remove');
 Route::get('/mini-cart', [CartController::class, 'loadMiniCart'])->name('cart.mini');
+
+////////////// Admin routes
+require __DIR__.'/admin.php';

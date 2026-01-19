@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [ // add guards admin
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
