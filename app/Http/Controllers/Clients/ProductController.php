@@ -16,7 +16,6 @@ class ProductController extends Controller
             $product->image_url = $product->firstImage?->image
                 ? asset('storage/uploads/products/' . $product->firstImage->image) : asset('storage/uploads/products/default-product.png');
         }
-
         return view('clients.pages.products', compact('categories', 'products'));
     }
 

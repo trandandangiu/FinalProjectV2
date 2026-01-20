@@ -21,7 +21,7 @@ class CheckPermission
 
 
         //check permission of the user 
-        if(!$user || !$user->role->permission->contains('name', $permission)) {
+        if(!$user || !$user->role->permissions->contains('name', $permission)) {
             abort(403, 'Bạn không có quyền truy cập');
         }
         return $next($request);

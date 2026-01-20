@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\UsersController;
 
 
 Route::prefix('admin')->group(function () {
@@ -26,8 +27,6 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware(['permission:manager_users'])->group(function () {
-        Route::get('/users', function () {
-            return;
-        })->name('admin.users.index');
+  Route::get('/users', [UsersController::class, 'index'])->name('admin.users.index');
     });
 });
