@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Panthrix</title>
 
     <!-- Bootstrap -->
@@ -85,6 +85,7 @@
     <script src="{{ asset('/assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('/assets/admin/build/js/custom.min.js') }}"></script>
+     <script src="{{ asset('/assets/admin/AdminRequest/Custom.js') }}"></script>
 
 </body>
 

@@ -22,7 +22,7 @@
                                 <div class="col-md-4 col-sm-4  profile_details">
                                     <div class="well profile_view">
                                         <div class="col-sm-12">
-                                            <h4 class="brief"><i>{{ $user->role->name }}</i></h4>
+                                            <h4 class="brief text-uppercase "><i>{{ optional( $user->role)->name }}</i></h4>
                                             <div class="left col-md-7 col-sm-7">
                                                 <h2>{{ $user->name }}</h2>
                                                 <p><strong>Email: </strong> {{ $user->email }}
@@ -39,7 +39,7 @@
                                         </div>
                                         <div class=" profile-bottom text-center">
                                             <div class="col-sm-4 emphasis"></div>
-                                            <div class=" col-sm-8 emphasis">
+                                            <div class=" col-sm-12 emphasis">
                                                 @if ($user->role->name == "customer")
                                                     <button type="button" class="btn btn-primary btn-sm upgradeStaff"
                                                         data-user-id="{{ $user->id }}">
