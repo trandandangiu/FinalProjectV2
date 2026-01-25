@@ -135,4 +135,28 @@ public function removeFromMiniCart(Request $request)
         'cart_count' => $cartCount
     ]);
 }
+
+
+public function viewCart()
+{
+        if (Auth::check()) {
+            //lấy giỏ hàng từ db
+$cartItems = CartItem::where('user_id', Auth::id())->with('product')->get()->map(function($item){
+    return[
+'product_id'=>$item->product->id,
+'name'=>$item->product->name,
+'pprice'=>$item->product->price,
+'quantity'=>$item->quantity,
+'stock'=>$item->product->stock,
+'image'=>$item->product->image->first()->image ??'uploads/products/default-product.png',
+
+    ];
+})->toArray();
+    } else {
+       //lấy giỏ hàng từ session
+       $cartItems = session()->get('cart', []);
+    }
+
+    return view('clients.pages.cart', compact('cartItems'));
+}
 }
