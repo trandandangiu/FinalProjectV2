@@ -30,7 +30,7 @@ class Product extends Model
 
     public function firstImage()
     {
-        return $this ->hasOne(ProductImage::class)->orderBy('id','ASC');
-
+        return $this->hasOne(ProductImage::class)->oldest('id','ASC');
     }
+
 }

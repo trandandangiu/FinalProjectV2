@@ -15,24 +15,24 @@ class AdminStaffTableSeeder extends Seeder
                 \App\Models\User::create([
             'name' => 'Admin User',
             'email' => 'Admin@example.com',
-            'password' => bcrypt('123'),
+            'password' => bcrypt('123456'),
             'phone_number'=>'0827777721',
             'status'=>'active',
             'avatar'=>'',
             'address'=>'Ho Chi Minh City',
-            'role_id'=>'',
+            'role_id'=>'1',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
                 \App\Models\User::create([
             'name' => 'Staff User',
             'email' => 'Staff@example.com',
-            'password' => bcrypt('123'),
+            'password' => bcrypt('123456'),
             'phone_number'=>'0984452479',
             'status'=>'pending',
             'avatar'=>'',
             'address'=>'Ho Chi Minh City',
-            'role_id'=>5,
+            'role_id'=>'2',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

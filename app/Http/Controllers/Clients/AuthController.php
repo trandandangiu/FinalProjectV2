@@ -15,8 +15,11 @@ use function Flasher\Toastr\Prime\toastr;
 
 class AuthController extends Controller
 {
-    public function showRegisterForm()
+    public function showRegisterForm(Request $request)
     {
+           Auth::guard('admin')->logout();
+           $request->session()->invalidate();
+           $request->session()->regenerateToken();
         return view('clients.pages.register');
     }
 
