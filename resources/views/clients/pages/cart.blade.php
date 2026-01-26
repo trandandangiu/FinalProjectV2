@@ -26,7 +26,7 @@
                                         <tr>
                                             <td class="cart-product-remove">
                                                 <button class="remove-from-cart"
-                                                    data-id = "{{ $item['product_id'] }}"></button>
+                                                    data-id = "{{ $item['product_id'] }}">x</button>
                                             </td>
                                             <td class="remove-from-cart">
                                                 <a href="javascript:void(0)"><img
@@ -74,7 +74,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Tổng tiền hàng</td>
-                                            <td> <span>{{ number_format($cartTotal, 0, ',', '.') }}
+                                            <td> <span class='cart-total'>{{ number_format($cartTotal, 0, ',', '.') }}
                                                     đ</span></td>
                                         </tr>
                                         <tr>
@@ -83,8 +83,8 @@
                                         </tr>
                                         <tr>
                                             <td><strong>Tổng thanh toán </strong></td>
-                                            <td> <span>{{ number_format($cartTotal + 25000, 0, ',', '.') }}
-                                                        đ</span></td>
+                                            <td><strong><span class="cart-grand-total">{{ number_format($cartTotal +25000, 0, ',', '.') }}
+                                                    đ</span></strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

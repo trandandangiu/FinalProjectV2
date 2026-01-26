@@ -76,7 +76,8 @@ Route::get('/mini-cart', [CartController::class, 'loadMiniCart'])->name('cart.mi
 
 //handler page cart 
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove-cart', [CartController::class, 'removeCartItem'])->name('cart.remove-cart');
 
 ////////////// Admin routes
 require __DIR__.'/admin.php';

@@ -70,7 +70,7 @@
                                                                 <td>Jun 22, 2019</td>
                                                                 <td>Pending</td>
                                                                 <td>$3000</td>
-                                                                <td><a href="cart.html">View</a></td>
+                                                                <td><a href="{{route('cart.index')}}">View</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

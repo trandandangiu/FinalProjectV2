@@ -273,8 +273,8 @@
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" title="Thêm vào giỏ hàng"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                                        data-bs-toggle="modal" class="add-to-cart-btn"
+                                                                        data-id="{{ $product->id }}">
                                                                         <i class="fas fa-shopping-cart"></i>
                                                                     </a>
                                                                 </li>
@@ -304,7 +304,8 @@
                                                             <a href="product-details.html">{{ $product->name }}</a>
                                                         </h2>
                                                         <div class="product-price">
-                                                            <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
+                                                            <span>{{ number_format($product->price, 0, ',', '.') }}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -312,7 +313,7 @@
                                         @endforeach
                                     </div>
                                     @foreach ($category->products as $product)
-                                     @include('clients.components.includes.include-model')
+                                        @include('clients.components.includes.include-model')
                                     @endforeach
                                 </div>
                             </div>
@@ -395,7 +396,7 @@
                                         </li>
                                         <li>
                                             <a href="#" title="Thêm vào giỏ hàng" data-bs-toggle="modal"
-                                                data-bs-target="#add_to_cart_modal-{{ $product->id }}">
+                                                class="add-to-cart-btn" data-id="{{ $product->id }}">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </li>
