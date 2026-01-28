@@ -68,6 +68,7 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
 
         Route::get('/order/{id}', [OrderController::class, 'showOrder'])->name('order.show');
+        Route::post('/order/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('order.cancel');
 
     
 });

@@ -86,7 +86,7 @@
                                                                         @endif
 
                                                                     </td>
-                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }}
+                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }}đ
                                                                     </td>
                                                                     <td><a href="{{ route('order.show',$order->id) }}"
                                                                             class="btn-view-cart">Xem chi tiết</a></td>

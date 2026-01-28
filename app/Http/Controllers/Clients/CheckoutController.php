@@ -75,6 +75,15 @@ class CheckoutController extends Controller
 
 
                 ]);
+
+                $product = $item->product;
+                if($product->stock < $item ->quantity)
+                    {
+                        throw new \Exception("Sản phẩm($product->name) Không đủ hàng trong kho.");
+
+                    }
+                    $product->stock -=$item->quantity;
+                    $product->save();
             }
 
 

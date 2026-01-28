@@ -69,7 +69,7 @@
             <p> Số điện thoại:{{ $order->shippingAddress->phone }} </p>
 
             @if ($order->status == 'pending')
-                <form action="" method="POST" onsubmit="return confirm('Bạn có chắc muốn hủy đơn hàng này?');">
+                <form action="{{ route('order.cancel', $order->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn hủy đơn hàng này?');">
                     @csrf
                     <button type="submit" class="btn btn-danger btn-sm mt-3"> Hủy đơn hàng</button>
                 </form>
