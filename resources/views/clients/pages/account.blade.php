@@ -69,13 +69,29 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Jun 22, 2019</td>
-                                                                <td>Pending</td>
-                                                                <td>$3000</td>
-                                                                <td><a href="{{ route('cart.index') }}" class="btn-view-cart">View</a></td>
-                                                            </tr>
+                                                            @foreach ($orders as $order)
+                                                                <tr>
+                                                                    <td>#{{ $order->id }}</td>
+                                                                    <td>{{ $order->created_at->format('d/m/Y') }}</td>
+                                                                    <td>
+                                                                        @if ($order->status == 'pending')
+                                                                            <span class="badge bg-warning">Chờ xác
+                                                                                nhận</span>
+                                                                        @elseif ($order->status == 'processing')
+                                                                            <span class="badge bg-primary">Đang xử lý</span>
+                                                                        @elseif ($order->status == 'completed')
+                                                                            <span class="badge bg-success">Hoàn thành</span>
+                                                                        @elseif ($order->status == 'canceled')
+                                                                            <span class="badge bg-danger">Đã hủy</span>
+                                                                        @endif
+
+                                                                    </td>
+                                                                    <td>{{ number_format($order->total_price, 0, ',', '.') }}
+                                                                    </td>
+                                                                    <td><a href="{{ route('cart.index') }}"
+                                                                            class="btn-view-cart">Xem chi tiết</a></td>
+                                                                </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -106,7 +122,7 @@
                                                                 <td>{{ $address->phone }}</td>
                                                                 <td>
                                                                     @if ($address->default)
-                                                                        <span class="badge bg-success"> Mac Dinh</span>
+                                                                        <span class="badge bg-success"> Mặc định</span>
                                                                     @else
                                                                         <form
                                                                             action="{{ route('account.addresses.update', $address->id) }}"method="POST"
@@ -152,8 +168,9 @@
                                                         <div class="row mb-50">
                                                             <div class="col-md-12 text-center mb-3">
                                                                 <div class="profile-pic-container">
-                                                                    <img src="{{ asset('storage/'.$user->avatar) }}" alt="Avatar"
-                                                                        id="preview-image" class="profile-pic">
+                                                                    <img src="{{ asset('storage/' . $user->avatar) }}"
+                                                                        alt="Avatar" id="preview-image"
+                                                                        class="profile-pic">
                                                                     <input type="file" name="avatar" id="avatar"
                                                                         accept="image/*" class="d-none">
                                                                 </div>
@@ -177,8 +194,9 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="ltn__address">Địa chỉ:</label>
-                                                                <input type="text" name="ltn__address" id="ltn__address"
-                                                                    value="{{ $user->address }}" required>
+                                                                <input type="text" name="ltn__address"
+                                                                    id="ltn__address" value="{{ $user->address }}"
+                                                                    required>
                                                             </div>
                                                         </div>
                                                         <div class="btn-wrapper">

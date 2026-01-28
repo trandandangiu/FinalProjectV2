@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Mime\Address;
+use App\Models\Order;
 
 use function Flasher\Toastr\Prime\toastr;
 
@@ -21,7 +22,8 @@ class AccountController extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
         $addresses = ShippingAddress::where('user_id', Auth::id())->get();
-        return view('clients.pages.account', compact('user', 'addresses'));
+        $orders = Order::where('user_id',$user->id)->orderBy('created_at', 'desc')->get();
+        return view('clients.pages.account', compact('user', 'addresses', 'orders'));
     }
 
     public function update(Request $request)
