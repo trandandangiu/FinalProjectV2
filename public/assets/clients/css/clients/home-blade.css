@@ -1,0 +1,42 @@
+.ltn__product-area {
+  background-color: #000;   /* màu đen */
+  color: #fff;              /* chữ trắng để dễ đọc */
+}
+
+.ltn__banner-area {
+ background-color: #000;   /* màu đen */
+  color: #fff;   
+}
+
+.ltn__slider-area {
+  background-color: #000;   /* nền đen */
+  color: #fff;              /* chữ trắng để dễ đọc */
+}
+
+.ltn__category-area {
+  background-color: #000; /* nền đen để che khoảng trắng */
+  background-size: cover; /* ảnh nền phủ toàn bộ */
+  background-position: center;
+}
+
+.ltn__category-area.section-bg-1-- {
+  padding-top: 40px;  /* giảm khoảng trắng trên */
+  padding-bottom: 40px; /* giảm khoảng trắng dưới */
+}
+
+
+.ltn__price-filter-widget {
+  background-color: #000;   /* nền đen */
+  color: #ff6600;           /* chữ cam */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.ltn__price-filter-widget a {
+  color: #ff6600;           /* link cam */
+}
+
+.ltn__price-filter-widget a:hover {
+  color: #fff;              /* hover trắng để nổi bật */
+}
+

@@ -64,6 +64,7 @@ Route::middleware(['auth.custom'])->group(function () {
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('/checkout/get-address', [CheckoutController::class, 'getAddress'])->name('checkout.address');
+    Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
 });
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');

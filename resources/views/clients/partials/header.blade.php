@@ -8,7 +8,7 @@
                     <div class="ltn__top-bar-menu">
                         <ul>
                             <li><a href="locations.html"><i class="icon-placeholder"></i> Ho Chi Minh, Q7</a></li>
-                            <li><a href="mailto:minhdien.dev@gmail.com?Subject=Contact%20with%20to%20you"><i
+                            <li><a href="mailto:trithmgcs210852@fpt.edu.vn?Subject=Contact%20with%20to%20you"><i
                                         class="icon-mail"></i>trithmgcs210852@fpt.edu.vn </a></li>
                         </ul>
                     </div>

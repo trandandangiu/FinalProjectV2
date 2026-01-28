@@ -24,14 +24,13 @@ class AccountController extends Controller
         return view('clients.pages.account', compact('user', 'addresses'));
     }
 
-    // Update information
     public function update(Request $request)
     {
         $request->validate([
             "ltn__name" => 'required|string|max:255',
             "ltn__phone_number" => 'nullable|string|max:15',
             "ltn__address" => 'nullable|string|max:255',
-            "avatar" => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            "avatar" => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
         ]);
 
         /** @var \App\Models\User $user */
@@ -89,13 +88,7 @@ class AccountController extends Controller
         if (!Hash::check($request->current_password, $user->password)) {
             return response()->json(['errors' => ['current_password' => ['Mật khẩu hiện tại không khớp!']]], 422);
         }
-
-        // SỬA LỖI TẠI ĐÂY: 
-        // Vì Model User đã có 'password' => 'hashed' trong casts()
-        // Bạn KHÔNG được dùng Hash::make() vì nó sẽ bị hash 2 lần.
         $user->password = $request->new_password;
-
-        // Dùng save() để kích hoạt cơ chế Hashed Cast của Model
         $user->save();
 
         return response()->json([
@@ -112,7 +105,7 @@ class AccountController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
         ]);
-        //if the new address,set as dèault, update the other address  default = 0
+
         if ($request->has('is_default')) {
             ShippingAddress::where('user_id', Auth::id())->update(['default' => 0]);
         }

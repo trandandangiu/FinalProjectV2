@@ -1,0 +1,291 @@
+.ltn__menu-widget {
+    background-color: #000;
+    /* nền đen */
+    color: #fff;
+    /* chữ cam */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ltn__menu-widget a {
+    color: #ff6600;
+    /* link cam */
+}
+
+.ltn__menu-widget a:hover {
+    color: #fff;
+    /* hover trắng để nổi bật */
+}
+
+.ltn__top-rated-product-widget {
+    background-color: #000;
+    /* nền đen */
+    color: #ff6600;
+    /* chữ cam */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ltn__top-rated-product-widget a {
+    color: #ff6600;
+    /* link cam */
+}
+
+.ltn__top-rated-product-widget a:hover {
+    color: #fff;
+    /* hover trắng để nổi bật */
+}
+
+.ltn__price-filter-widget {
+    background-color: #000;
+    /* nền đen */
+    color: #ff6600;
+    /* chữ cam */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ltn__price-filter-widget a {
+    color: #ff6600;
+    /* link cam */
+}
+
+.ltn__price-filter-widget a:hover {
+    color: #fff;
+    /* hover trắng để nổi bật */
+}
+
+.ltn__search-widget {
+    background-color: #000;
+    /* nền đen */
+    color: #ff6600;
+    /* chữ cam */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ltn__search-widget input[type="text"] {
+    background-color: #111;
+    /* nền ô nhập */
+    color: #ff6600;
+    /* chữ cam trong ô */
+    border: 1px solid #ff6600;
+}
+
+.ltn__search-widget button {
+    background-color: #ff6600;
+    /* nút cam */
+    color: #fff;
+    border: none;
+}
+
+.ltn__search-widget button:hover {
+    background-color: #fff;
+    color: #ff6600;
+}
+
+.ltn__banner-widget {
+    background-color: #000;
+    /* nền đen */
+    color: #ff6600;
+    /* chữ cam */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ltn__banner-widget a {
+    color: #ff6600;
+    font-weight: bold;
+}
+
+.ltn__banner-widget a:hover {
+    color: #fff;
+    /* hover trắng để nổi bật */
+}
+
+.ltn__product-area {
+    position: relative;
+    background: url("/assets/clients/img/banner/15.png") no-repeat center center;
+    background-size: cover;
+    /* ảnh phủ toàn bộ */
+}
+
+.ltn__product-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* phủ toàn bộ khung */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* lớp mờ overlay */
+    z-index: 1;
+}
+
+/* đảm bảo nội dung nằm trên overlay */
+.ltn__product-area>* {
+    position: relative;
+    z-index: 2;
+}
+
+.bg-img {
+    /* position: absolute; */
+    /* đặt ảnh nằm tuyệt đối */
+    inset: 0;
+    /* phủ toàn bộ khung cha */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ảnh phủ đều, không méo */
+    opacity: 0.3;
+    /* làm mờ ảnh */
+    z-index: 0;
+    /* nằm dưới nội dung */
+}
+
+.blur-section {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(128, 128, 128, 0.2);
+    /* xám mờ nhẹ */
+    z-index: 0;
+    pointer-events: none;
+    /* không ảnh hưởng đến thao tác */
+}
+
+
+.ltn__product-area {
+    position: relative;
+    /* để ảnh tuyệt đối bám theo section */
+
+}
+
+.blur-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* hoặc 1 phần: 50%, 30% tùy ý */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* lớp mờ đen */
+    z-index: 0;
+    pointer-events: none;
+    /* không ảnh hưởng đến click */
+}
+
+.ltn__product-area .container {
+    position: relative;
+    z-index: 1;
+    /* nội dung nằm trên ảnh */
+}
+
+.nice-select {
+    background-color: #ff6600;
+    /* nền cam */
+    color: #000;
+    /* chữ đen */
+    border-radius: 8px;
+    /* bo góc */
+    padding: 10px 15px;
+    border: none;
+}
+
+.nice-select .list {
+    background-color: #fff;
+    /* nền dropdown trắng */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nice-select .option {
+    color: #000;
+    /* chữ đen trong dropdown */
+}
+
+.nice-select .option:hover {
+    background-color: #ff6600;
+    /* hover cam */
+    color: #fff;
+    /* chữ trắng khi hover */
+}
+
+.nice-select {
+    background-color: #ff6600;
+    color: #000;
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: none;
+    display: flex;
+    /* bật flexbox */
+    align-items: center;
+    /* căn giữa theo chiều dọc */
+    justify-content: center;
+    /* căn giữa theo chiều ngang */
+}
+
+.ltn__footer-area {
+    position: relative;
+    background-color: #000;
+    /* fallback nền đen */
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.ltn__footer-area .footer-bg {
+    position: absolute;
+    inset: 0;
+    /* phủ toàn bộ footer */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ảnh phủ đều */
+    opacity: 0.3;
+    /* làm mờ ảnh */
+    z-index: 0;
+}
+
+.ltn__footer-area .container {
+    position: relative;
+    z-index: 1;
+    /* nội dung nằm trên ảnh */
+}
+
+.footer-widget.footer-about-widget {
+  color: #000;   /* chữ đen */
+}
+
+.footer-widget.footer-about-widget a {
+  color: #000;   /* link cũng đen */
+}
+
+.footer-widget.footer-about-widget a:hover {
+  color: #ff6600; /* hover cam nổi bật */
+}
+
+.container-fluid {
+  color: #000;   /* chữ đen */
+}
+
+.container-fluid a {
+  color: #000;   /* link cũng đen */
+}
+
+.container-fluid a:hover {
+  color: #ff6600; /* hover cam nổi bật */
+}
+
+.ltn__copyright {
+  color: #fff;   /* chữ trắng */
+}
+
+.ltn__copyright a {
+  color: #fff;   /* link cũng trắng */
+}
+
+.ltn__copyright a:hover {
+  color: #ff6600; /* hover cam nổi bật */
+}
+
+.footer-title {
+    color:#ff6600;
+}

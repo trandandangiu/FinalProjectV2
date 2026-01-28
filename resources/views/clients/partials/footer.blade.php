@@ -1,6 +1,7 @@
         <!-- FOOTER AREA START -->
         <footer class="ltn__footer-area  ">
             <div class="footer-top-area  section-bg-1 plr--5">
+                <img src="{{ asset('assets/clients/img/banner/17.png') }}" alt="Footer Background" class="footer-bg">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-3 col-md-6 col-sm-6 col-12">
@@ -10,8 +11,6 @@
                                         <img src="{{ asset('assets/clients/img/logo.png') }}" alt="Logo">
                                     </div>
                                 </div>
-                                <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is
-                                    dummy text of the printing.</p>
                                 <div class="footer-address">
                                     <ul>
                                         <li>
@@ -19,7 +18,7 @@
                                                 <i class="icon-placeholder"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p>Ngu Hanh Son, Da Nang, Viet Nam</p>
+                                                <p>Q7, P.Tân Hưng, Hồ Chí Minh</p>
                                             </div>
                                         </li>
                                         <li>
@@ -27,7 +26,7 @@
                                                 <i class="icon-call"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                                <p><a href="tel:+0827777721">0827.777.721</a></p>
                                             </div>
                                         </li>
                                         <li>
@@ -35,7 +34,7 @@
                                                 <i class="icon-mail"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="mailto:minhdien.dev@gmail.com">minhdien.dev@gmail.com</a>
+                                                <p><a href="mailto:trithmgcs210852@fpt.edu.vn">trithmgcs210852@fpt.edu.vn</a>
                                                 </p>
                                             </div>
                                         </li>
@@ -43,7 +42,8 @@
                                 </div>
                                 <div class="ltn__social-media mt-20">
                                     <ul>
-                                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
                                         <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                                         <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
@@ -97,8 +97,6 @@
                         <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                             <div class="footer-widget footer-newsletter-widget">
                                 <h4 class="footer-title">Bảng tin</h4>
-                                <p>Đăng ký nhận Bản tin hàng tuần của chúng tôi và nhận thông tin cập nhật qua email.
-                                </p>
                                 <div class="footer-newsletter">
                                     <form action="#">
                                         <input type="email" name="email" placeholder="Email*">
@@ -136,4 +134,5 @@
                 </div>
             </div>
         </footer>
+        <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/products-blade.css') }}">
         <!-- FOOTER AREA END -->

@@ -22,9 +22,6 @@
                                                 <i class="fa fa-play"></i>
                                             </a>
                                         </div>
-                                        <h6 class="slide-sub-title animated"><img
-                                                src="{{ asset('assets/clients/img/icons/icon-img/1.png') }}" alt="#">
-                                            Sản phẩm 100% chính hãng</h6>
                                         <h1 class="slide-title animated ">Thực phẩm được yêu thích nhất <br> trong Phòng Gym
                                             của chúng tôi</h1>
                                         <div class="slide-brief animated">
@@ -32,7 +29,7 @@
                                                 mục tiêu thể hình một cách hiệu quả và an toàn.</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Khám phá
+                                            <a href="{{route('products.index')}}" class="theme-btn-1 btn btn-effect-1 text-uppercase">Khám phá
                                                 sản phẩm</a>
                                         </div>
                                     </div>
@@ -59,9 +56,10 @@
                                                 trợ hành trình thể hình của bạn!</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Xem Tất
+                                            <a href="{{route('products.index')}}" class="theme-btn-1 btn btn-effect-1 text-uppercase">Xem Tất
                                                 Cả Sản Phẩm</a>
-                                            <a href="{{ route('about') }}" class="btn btn-transparent btn-effect-3">VỀ CHÚNG
+                                            <a href="{{ route('about') }}" class="btn btn-transparent btn-effect-3"
+                                                style="color: #ffffff;">VỀ CHÚNG
                                                 TÔI</a>
                                         </div>
                                     </div>
@@ -79,162 +77,172 @@
     <!-- BANNER AREA START -->
     <div class="ltn__banner-area mt-120 mb-90">
         <div class="container">
-            <div class="row ltn__custom-gutter--- justify-content-center">
+            <div class="row g-3 justify-content-center">
+                <!-- Bên trái -->
                 <div class="col-lg-6 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/13.png') }}"
-                                    alt="Banner Image"></a>
+                            <a href="{{ route('products.index') }}">
+                                <img src="{{ asset('assets/clients/img/banner/13.png') }}" class="img-fluid rounded"
+                                    alt="Banner Image">
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Bên phải -->
                 <div class="col-lg-6 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="ltn__banner-item">
+                                <div class="ltn__banner-img">
+                                    <a href="{{ route('products.index') }}">
+                                        <img src="{{ asset('assets/clients/img/banner/14.png') }}" class="img-fluid rounded"
+                                            alt="Banner Image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="ltn__banner-item banner-big">
+                                <div class="ltn__banner-img">
+                                    <a href="{{ route('products.index') }}">
+                                        <img src="{{ asset('assets/clients/img/banner/15.png') }}" class="img-fluid rounded"
+                                            alt="Banner Image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BANNER AREA END -->
+
+            <!-- FEATURE AREA START ( Feature - 3) -->
+            <div class="ltn__feature-area mt-100 mt--65 d-none">
+                <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="ltn__banner-item">
-                                <div class="ltn__banner-img">
-                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/14.png') }}"
-                                            alt="Banner Image"></a>
+                            <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/svg/8-trolley.svg" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Free shipping</h4>
+                                        <p>On all orders over $49.00</p>
+                                    </div>
+                                </div>
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/svg/9-money.svg" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>15 days returns</h4>
+                                        <p>Moneyback guarantee</p>
+                                    </div>
+                                </div>
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/svg/10-credit-card.svg" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Secure checkout</h4>
+                                        <p>Protected by Paypal</p>
+                                    </div>
+                                </div>
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="img/icons/svg/11-gift-card.svg" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Offer & gift here</h4>
+                                        <p>On all orders over</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FEATURE AREA END -->
+
+            <!-- ABOUT US AREA START -->
+            <div class="ltn__about-us-area pt-120 pb-120 d-none">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <div class="about-us-img-wrap about-img-left">
+                                <img src="img/others/6.png" alt="About Us Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <div class="about-us-info-wrap">
+                                <div class="section-title-area ltn__section-title-2">
+                                    <h6 class="section-subtitle ltn__secondary-color">Know More About Shop</h6>
+                                    <h1 class="section-title">Trusted Organic <br class="d-none d-md-block"> Food Store
+                                    </h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore</p>
+                                </div>
+                                <p>sellers who aspire to be good, do good, and spread goodness. We
+                                    democratic, self-sustaining, two-sided marketplace which thrives
+                                    on trust and is built on community and quality content.</p>
+                                <div class="about-author-info d-flex">
+                                    <div class="author-name-designation  align-self-center mr-30">
+                                        <h4 class="mb-0">Jerry Henson</h4>
+                                        <small>/ Shop Director</small>
+                                    </div>
+                                    <div class="author-sign  align-self-center">
+                                        <img src="img/icons/icon-img/author-sign.png" alt="#">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ABOUT US AREA END -->
+
+            <!-- CATEGORY AREA START -->
+            <div class="ltn__category-area section-bg-1-- ltn__primary-bg before-bg-1 bg-image bg-overlay-theme-black-5--0 pt-115 pb-90"
+                data-bg="img/bg/5.jpg">
+                <div class="container">
+                    <div class="row">
                         <div class="col-lg-12">
-                            <div class="ltn__banner-item">
-                                <div class="ltn__banner-img">
-                                    <a href="shop.html"><img src="{{ asset('assets/clients/img/banner/15.png') }}"
-                                            alt="Banner Image"></a>
+                            <div class="section-title-area ltn__section-title-2 text-center">
+                                <h1 class="section-title white-color">Danh Mục Sản Phẩm</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ltn__category-slider-active slick-arrow-1">
+                        @foreach ($categories as $category)
+                            <div class="col-12">
+                                <div class="ltn__category-item ltn__category-item-3 text-center">
+                                    <div class="ltn__category-item-img">
+                                        <a href="{{route('products.index')}}">
+                                            <img src="{{ asset('storage/' . $category->image) }}"
+                                                alt="{{ $category->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="ltn__category-item-name">
+                                        <h5><a href="{{route('products.index')}}">{{ $category->name }}</a></h5>
+                                        <h6>{{ $category->products->count() }} Sản Phẩm</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
-    <!-- BANNER AREA END -->
+        <!-- CATEGORY AREA END -->
 
-    <!-- FEATURE AREA START ( Feature - 3) -->
-    <div class="ltn__feature-area mt-100 mt--65 d-none">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6">
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/8-trolley.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Free shipping</h4>
-                                <p>On all orders over $49.00</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/9-money.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>15 days returns</h4>
-                                <p>Moneyback guarantee</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/10-credit-card.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Secure checkout</h4>
-                                <p>Protected by Paypal</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/11-gift-card.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Offer & gift here</h4>
-                                <p>On all orders over</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FEATURE AREA END -->
-
-    <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pt-120 pb-120 d-none">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 align-self-center">
-                    <div class="about-us-img-wrap about-img-left">
-                        <img src="img/others/6.png" alt="About Us Image">
-                    </div>
-                </div>
-                <div class="col-lg-6 align-self-center">
-                    <div class="about-us-info-wrap">
-                        <div class="section-title-area ltn__section-title-2">
-                            <h6 class="section-subtitle ltn__secondary-color">Know More About Shop</h6>
-                            <h1 class="section-title">Trusted Organic <br class="d-none d-md-block"> Food Store</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore</p>
-                        </div>
-                        <p>sellers who aspire to be good, do good, and spread goodness. We
-                            democratic, self-sustaining, two-sided marketplace which thrives
-                            on trust and is built on community and quality content.</p>
-                        <div class="about-author-info d-flex">
-                            <div class="author-name-designation  align-self-center mr-30">
-                                <h4 class="mb-0">Jerry Henson</h4>
-                                <small>/ Shop Director</small>
-                            </div>
-                            <div class="author-sign  align-self-center">
-                                <img src="img/icons/icon-img/author-sign.png" alt="#">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ABOUT US AREA END -->
-
-    <!-- CATEGORY AREA START -->
-    <div class="ltn__category-area section-bg-1-- ltn__primary-bg before-bg-1 bg-image bg-overlay-theme-black-5--0 pt-115 pb-90"
-        data-bg="img/bg/5.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-area ltn__section-title-2 text-center">
-                        <h1 class="section-title white-color">Danh Mục Sản Phẩm</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row ltn__category-slider-active slick-arrow-1">
-                @foreach ($categories as $category)
-                    <div class="col-12">
-                        <div class="ltn__category-item ltn__category-item-3 text-center">
-                            <div class="ltn__category-item-img">
-                                <a href="shop.html">
-                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}">
-                                </a>
-                            </div>
-                            <div class="ltn__category-item-name">
-                                <h5><a href="shop.html">{{ $category->name }}</a></h5>
-                                <h6>{{ $category->products->count() }} Sản Phẩm</h6>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-        </div>
-    </div>
-    </div>
-    <!-- CATEGORY AREA END -->
-
-    <!-- PRODUCT TAB AREA START (product-item-3) -->
-    <div class="ltn__product-tab-area ltn__product-gutter pt-115 pb-70">
-        <div class="container">
+        <!-- PRODUCT TAB AREA START (product-item-3) -->
+        <div class="ltn__product-tab-area ltn__product-gutter pt-115 pb-70"
+            style="background-color:#000000; color:#ffffff;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
@@ -443,7 +451,7 @@
                 <div class="col-lg-12">
                     <div class="call-to-action-inner call-to-action-inner-4 text-center">
                         <div class="section-title-area ltn__section-title-2">
-                            <h6 class="section-subtitle ltn__secondary-color">// bất kì câu hỏi nào bạn có//</h6>
+                            <h6 class="section-subtitle ltn__secondary-color"> Bất kì câu hỏi nào bạn có</h6>
                             <h1 class="section-title white-color">0827.777.721</h1>
                         </div>
                         <div class="btn-wrapper">

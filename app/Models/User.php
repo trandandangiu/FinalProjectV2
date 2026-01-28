@@ -70,9 +70,14 @@ class User extends Authenticatable
         return $this->status === 'banned';
     }
 
-    public function cartDeleted()
+    public function isDeleted()
     {
         return $this->status === 'deleted';
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        return $this->avatar? asset('storage/' . $this->avatar) : asset('storage/uploads/users/default-avatar.png');
     }
 
 }

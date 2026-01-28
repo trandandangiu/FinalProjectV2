@@ -5,7 +5,8 @@
 @section('breadcrumb', 'Tài Khoản')
 @section('content')
     <!-- WISHLIST AREA START -->
-    <div class="liton__wishlist-area pb-70">
+    <div class="liton__wishlist-area pb-70"> <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}"
+            alt="Account Background" class="account-bg-img">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -41,7 +42,10 @@
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>Hello <strong>{{ $user->email }}</strong> (not
                                                     <strong>{{ $user->email }}</strong>?
-                                                    <small><a href="{{ route('logout') }}">Đăng Xuất</a></small> )
+                                                    <<small>
+                                                        <a href="{{ route('logout') }}" class="logout-link">Đăng Xuất</a>
+                                                        </small>
+                                                        )
                                                 </p>
                                                 <p>Từ bảng điều khiển tài khoản của bạn, bạn có thể xem <span>các đơn hàng
                                                         gần đây</span>, quản lý <span>địa chỉ giao hàng và thanh
@@ -70,7 +74,7 @@
                                                                 <td>Jun 22, 2019</td>
                                                                 <td>Pending</td>
                                                                 <td>$3000</td>
-                                                                <td><a href="{{route('cart.index')}}">View</a></td>
+                                                                <td><a href="{{ route('cart.index') }}" class="btn-view-cart">View</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -104,7 +108,9 @@
                                                                     @if ($address->default)
                                                                         <span class="badge bg-success"> Mac Dinh</span>
                                                                     @else
-                                                                        <form action="{{ route('account.addresses.update', $address ->id) }}"method="POST" class ="d-inline">
+                                                                        <form
+                                                                            action="{{ route('account.addresses.update', $address->id) }}"method="POST"
+                                                                            class ="d-inline">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <button
@@ -114,7 +120,9 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    <form action="{{ route('account.addresses.delete', $address ->id) }}"method="POST" class ="d-inline">
+                                                                    <form
+                                                                        action="{{ route('account.addresses.delete', $address->id) }}"method="POST"
+                                                                        class ="d-inline">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-sm btn-danger"
@@ -144,7 +152,7 @@
                                                         <div class="row mb-50">
                                                             <div class="col-md-12 text-center mb-3">
                                                                 <div class="profile-pic-container">
-                                                                    <img src="{{ $user->avatar }}" alt="Avatar"
+                                                                    <img src="{{ asset('storage/'.$user->avatar) }}" alt="Avatar"
                                                                         id="preview-image" class="profile-pic">
                                                                     <input type="file" name="avatar" id="avatar"
                                                                         accept="image/*" class="d-none">
@@ -188,7 +196,7 @@
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <div class="ltn__form-box">
                                                     <form action="{{ route('account.change-password') }}" method="POST"
-                                                        id="change-password-form">
+                                                        id="change-password-form" class="password-form-custom">
                                                         @csrf
                                                         <fieldset>
                                                             <div class="row">
@@ -268,4 +276,5 @@
             </div>
         </div>
     </div>
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/account.css') }}">
 @endsection

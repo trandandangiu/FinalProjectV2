@@ -72,8 +72,9 @@
                 <div class="col-lg-6">
                     <div class="ltn__checkout-payment-method mt-50">
                         <h4 class="title-2">Phương thức thanh toán</h4>
-                        <form action =""method='POST'>
+                        <form action ="{{ route('checkout.placeOrder') }}"method='POST'>
                             @csrf
+                            <input type = "hidden" name="address_id" value="{{ $defaultAddress->id }}">
 
                             <div id="checkout-payment">
                                 <div class="card">
@@ -81,15 +82,14 @@
                                         <input type ="radio" name ="payment_method" value="cash" id="payment_cod"checked>
                                         <label for ="payment_cod">
                                             Thanh toán khi nhận hàng
-                                            <img src="{{ asset('assets/clients/img/icons/cash.png') }}" alt="#">
+                                            <img src="{{ asset('assets/clients/img/icons/cash.png') }}">
                                         </label>
                                     </h5>
                                 </div>
 
                                 <div class="card">
                                     <h5 class="collapsed ltn__card-title">
-                                        <input type ="radio" name ="payment_method" value="paypal"
-                                            id="payment_paypal"checked>
+                                        <input type ="radio" name ="payment_method" value="paypal" id="payment_paypal">
                                         <label for ="payment_paypal">
                                             PayPal <img src="{{ asset('assets/clients/img/icons/payment-3.png') }}"
                                                 alt="#">
@@ -103,7 +103,8 @@
                                     của
                                     chúng tôi.</p>
                             </div>
-                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Đặt hàng</button>
+                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit"
+                                id="order_button_cash">Đặt hàng</button>
                     </div>
                     </form>
                 </div>
@@ -115,16 +116,17 @@
                                 @foreach ($cartItems as $item)
                                     <tr>
                                         <td>{{ $item->product->name }} <strong>× {{ $item->quantity }}</strong></td>
-                                        <td>{{ number_format($item->product->price * $item->quantity, 0,',','.') }}đ</td>
+                                        <td>{{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}đ</td>
                                     </tr>
                                 @endforeach
                                 <tr>
                                     <td>Vận chuyển và xử lý <strong></strong></td>
-                                    <td>{{ number_format(25000, 0,',','.') }}đ</td>
+                                    <td>{{ number_format(25000, 0, ',', '.') }}đ</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Tổng tiền</strong></td>
-                                    <td><strong class="totalPrice_Checkout"> {{ number_format($totalPrice + 25000, 0,',','.') }}đ</strong></td>
+                                    <td><strong class="totalPrice_Checkout">
+                                            {{ number_format($totalPrice + 25000, 0, ',', '.') }}đ</strong></td>
                                 </tr>
                             </tbody>
                         </table>

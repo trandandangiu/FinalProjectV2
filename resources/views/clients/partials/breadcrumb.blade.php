@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
                             <div class="section-title-area ltn__section-title-2">
-                                <h6 class="section-subtitle ltn__secondary-color">// Chào mừng bạn đến với Panthrix</h6>
+                                <h6 class="section-subtitle ltn__secondary-color"> Chào mừng bạn đến với Panthrix</h6>
                                 <h1 class="section-title white-color">@yield('breadcrumb')</h1>
                             </div>
                             <div class="ltn__breadcrumb-list">
@@ -22,3 +22,4 @@
             </div>
         </div>
         <!-- BREADCRUMB AREA END -->
+  <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/breadcrumb.css') }}">

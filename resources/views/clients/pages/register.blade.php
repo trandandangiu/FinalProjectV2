@@ -8,6 +8,7 @@
 
         <!-- LOGIN AREA START (Register) -->
         <div class="ltn__login-area pb-110">
+             <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}" alt="Register Background" class="register-bg-img">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -78,4 +79,5 @@
             </div>
         </div>
         <!-- LOGIN AREA END -->
+         <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/register.css') }}">
 @endsection

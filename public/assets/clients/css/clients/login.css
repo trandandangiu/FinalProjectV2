@@ -1,0 +1,190 @@
+.login-custom-form {
+    background: rgba(0, 0, 0, 0.6);
+    /* nền mờ để nổi bật trên background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    /* chữ trắng cho hợp nền tối */
+}
+
+.login-custom-form input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.login-custom-form input::placeholder {
+    color: #ddd;
+}
+
+.login-custom-form .theme-btn-1 {
+    background: #ff6600;
+    /* nút cam nổi bật */
+    border: none;
+    transition: 0.3s;
+}
+
+.login-custom-form .theme-btn-1:hover {
+    background: #e65c00;
+}
+
+
+.account-create-custom {
+    background: rgba(0, 0, 0, 0.6);
+    /* nền mờ để nổi bật trên background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    /* chữ trắng cho hợp nền tối */
+}
+
+.account-create-custom h4 {
+    color: #ff6600;
+    /* tiêu đề cam nổi bật */
+    margin-bottom: 15px;
+}
+
+.account-create-custom p {
+    color: #ddd;
+    /* chữ mô tả sáng hơn */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.account-create-custom .black-btn {
+    background: #ff6600;
+    /* nút cam nổi bật */
+    border: none;
+    transition: 0.3s;
+}
+
+.account-create-custom .black-btn:hover {
+    background: #e65c00;
+}
+
+
+.ltn__login-area {
+    background-color: #000;
+    /* nền đen */
+    color: #fff;
+    /* chữ trắng nổi bật */
+    padding: 60px 0;
+}
+
+.ltn__login-area .section-title {
+    color: #ff6600;
+    /* tiêu đề cam nổi bật trên nền đen */
+}
+
+.ltn__login-area p {
+    color: #ddd;
+    /* chữ mô tả sáng hơn, dễ đọc */
+}
+
+.ltn__login-area input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.ltn__login-area input::placeholder {
+    color: #bbb;
+}
+
+.ltn__login-area .theme-btn-1 {
+    background: #ff6600;
+    /* nút cam nổi bật */
+    border: none;
+    transition: 0.3s;
+}
+
+.ltn__login-area .theme-btn-1:hover {
+    background: #e65c00;
+}
+
+.ltn__login-area {
+    background-color: #000;
+    /* nền đen */
+    color: #fff;
+    /* chữ trắng nổi bật */
+    padding: 60px 0;
+}
+
+.ltn__login-area .section-title {
+    color: #ff6600;
+    /* tiêu đề cam nổi bật trên nền đen */
+}
+
+.ltn__login-area p {
+    color: #ddd;
+    /* chữ mô tả sáng hơn, dễ đọc */
+}
+
+.ltn__login-area input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.ltn__login-area input::placeholder {
+    color: #bbb;
+}
+
+.ltn__login-area .theme-btn-1 {
+    background: #ff6600;
+    /* nút cam nổi bật */
+    border: none;
+    transition: 0.3s;
+}
+
+.ltn__login-area .theme-btn-1:hover {
+    background: #e65c00;
+}
+
+.ltn__login-area {
+    position: relative;
+    /* để ảnh bám theo khối này */
+    overflow: hidden;
+}
+
+.login-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* phủ ngang */
+    height: 100%;
+    /* phủ dọc */
+    object-fit: cover;
+    /* ảnh phủ đều, không méo */
+    opacity: 0.4;
+    /* mờ nhẹ */
+    animation: blinkBg 1.5s infinite ease-in-out;
+    /* hiệu ứng chớp nháy */
+    z-index: 0;
+    /* nằm dưới nội dung */
+}
+
+@keyframes blinkBg {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.ltn__login-area .container {
+    position: relative;
+    z-index: 1;
+    /* nội dung nằm trên ảnh */
+    color: #fff;
+    /* chữ trắng nổi bật */
+}

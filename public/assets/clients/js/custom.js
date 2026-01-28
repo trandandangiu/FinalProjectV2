@@ -153,6 +153,9 @@ $(document).ready(function () {
         });
     });
 
+
+
+
     //validate change-password account
     $("#change-password-form").submit(function (e) {
         e.preventDefault();
@@ -594,9 +597,10 @@ $(document).ready(function () {
                 if (response.success) {
                     $('input[name="ltn__name"]').val(response.data.full_name);
                     $('input[name="ltn__phone"]').val(response.data.phone);
-                    $('input[name="ltn__address"]').val(response.data.address); 
+                    $('input[name="ltn__address"]').val(response.data.address);
                     $('input[name="ltn__city"]').val(response.data.city);
-                    console.log('Fields populated successfully');
+                    $('input[name="ltn__city"]').val(response.data.id);
+
                 }
 
 

@@ -1,5 +1,5 @@
         <!-- FOOTER AREA START -->
-        <footer class="ltn__footer-area  ">
+        <footer class="ltn__footer-area">
             <div class="footer-top-area  section-bg-2 plr--5">
                 <div class="container-fluid">
                     <div class="row">
@@ -35,7 +35,8 @@
                                                 <i class="icon-mail"></i>
                                             </div>
                                             <div class="footer-address-info">
-                                                <p><a href="mailto:trithmgcs210852@fpt.edu.vn">trithmgcs210852@fpt.edu.vn</a>
+                                                <p><a
+                                                        href="mailto:trithmgcs210852@fpt.edu.vn">trithmgcs210852@fpt.edu.vn</a>
                                                 </p>
                                             </div>
                                         </li>
@@ -43,7 +44,8 @@
                                 </div>
                                 <div class="ltn__social-media mt-20">
                                     <ul>
-                                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
                                         <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                                         <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
@@ -108,8 +110,8 @@
                                             novalidate>
                                             <div id="mc_embed_signup_scroll">
                                                 <div class="mc-field-group">
-                                                    <input type="email" value="" name="EMAIL" class="required email"
-                                                        id="mce-EMAIL" placeholder="Email*">
+                                                    <input type="email" value="" name="EMAIL"
+                                                        class="required email" id="mce-EMAIL" placeholder="Email*">
                                                 </div>
                                                 <div id="mce-responses" class="clear">
                                                     <div class="response" id="mce-error-response" style="display:none">
@@ -124,8 +126,9 @@
                                                 </div>
                                                 <div class="clear">
                                                     <div class="btn-wrapper">
-                                                        <button class="theme-btn-1 btn" type="submit" value="Subscribe"
-                                                            name="subscribe" id="mc-embedded-subscribe"><i
+                                                        <button class="theme-btn-1 btn" type="submit"
+                                                            value="Subscribe" name="subscribe"
+                                                            id="mc-embedded-subscribe"><i
                                                                 class="fas fa-location-arrow"></i></button>
                                                     </div>
                                                 </div>

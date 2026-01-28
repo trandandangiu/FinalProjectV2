@@ -89,7 +89,7 @@
                                     </tbody>
                                 </table>
                                 <div class="btn-wrapper text-right text-end">
-                                    <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Tiến hành thanh toán</a>
+                                    <a href="{{ route('checkout.index') }}" class="theme-btn-1 btn btn-effect-1">Tiến hành thanh toán</a>
                                 </div>
                             </div>
                         @endif

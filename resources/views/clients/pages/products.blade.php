@@ -7,6 +7,9 @@
 @section('content')
     <!-- PRODUCT DETAILS AREA START -->
     <div class="ltn__product-area ltn__product-gutter">
+          <img src="{{ asset('assets/clients/img/banner/15.png') }}" 
+         alt="Background Banner" 
+         class="bg-img blur-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 order-lg-2 mb-120">
@@ -124,4 +127,6 @@
         </div>
     </div>
     <!-- PRODUCT DETAILS AREA END -->
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/products-blade.css') }}">
 @endsection
+      

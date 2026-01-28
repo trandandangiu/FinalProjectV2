@@ -30,4 +30,5 @@
             </div>
         </div>
     </div>
+      <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/account.css') }}">
 @endsection

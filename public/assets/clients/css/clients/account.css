@@ -1,0 +1,288 @@
+.ltn__tab-menu-list .nav a {
+  display: block;
+  padding: 14px 22px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #1a1a1a, #000); /* nền đen gradient */
+  color: #ff6600;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.ltn__tab-menu-list .nav a i {
+  margin-left: 10px;
+  color: #ff9933; /* icon cam sáng hơn */
+}
+
+.ltn__tab-menu-list .nav a:hover {
+  background: linear-gradient(135deg, #ff6600, #ff9933); /* hover gradient cam */
+  color: #fff;
+  transform: translateX(5px); /* hiệu ứng trượt nhẹ */
+}
+
+.ltn__tab-menu-list .nav a.active {
+  background: linear-gradient(135deg, #ff6600, #ff3300); /* tab active gradient cam đậm */
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255,102,0,0.7);
+}
+
+
+
+/* Dashboard Tab Content */
+.ltn__myaccount-tab-content-inner {
+  background: #000;              /* nền đen */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  color: #fff;                   /* toàn bộ chữ trắng */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ltn__myaccount-tab-content-inner strong {
+  color: #000;                  
+  font-weight: 700;
+}
+
+.ltn__myaccount-tab-content-inner a {
+  color: #fff;                   /* link trắng */
+  font-weight: 600;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+.ltn__myaccount-tab-content-inner a:hover {
+  color: #ff6600;                 /* hover cam nổi bật */
+}
+
+.ltn__myaccount-tab-content-inner span {
+  color: #000;                 
+  font-weight: 500;
+}
+
+
+
+/* //change password */
+.password-form-custom {
+  background: rgba(0,0,0,0.7);   /* nền đen mờ */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  color: #ff6600;                /* chữ cam nổi bật */
+}
+
+.password-form-custom label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 600;
+  color: #ff6600;
+}
+
+.password-form-custom input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid #ff6600;
+  border-radius: 6px;
+  color: #ff6600;
+}
+
+.password-form-custom input::placeholder {
+  color: #ff9966;
+}
+
+.password-form-custom .theme-btn-1 {
+  background: #ff6600;           /* nút cam nổi bật */
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.password-form-custom .theme-btn-1:hover {
+  background: #e65c00;           /* hover cam đậm */
+}
+
+
+/* background */
+
+.liton__wishlist-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.account-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;          /* phủ ngang */
+  height: 100%;         /* phủ dọc */
+  object-fit: cover;    /* ảnh phủ đều, không méo */
+  opacity: 0.5;         /* mờ nhẹ để chữ nổi bật */
+  z-index: 0;
+  animation: fadeBg 8s infinite ease-in-out; /* hiệu ứng fade mượt */
+}
+
+@keyframes fadeBg {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+.liton__wishlist-area .container {
+  position: relative;
+  z-index: 1;           /* nội dung nằm trên ảnh */
+  color: #fff;          /* chữ trắng nổi bật */
+}
+
+
+.logout-link {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #ff6600;       /* nền cam nổi bật */
+  color: #fff !important;    /* chữ trắng */
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.logout-link:hover {
+  background: #e65c00;       /* hover cam đậm */
+  box-shadow: 0 0 10px rgba(255,102,0,0.6);
+}
+
+.btn-view-cart {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #ff6600;       /* nền cam nổi bật */
+  color: #fff;               /* chữ trắng */
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-view-cart:hover {
+  background: #e65c00;       /* hover cam đậm */
+  box-shadow: 0 0 10px rgba(255,102,0,0.6);
+}
+
+/* //reset-password */
+.ltn_myaccount-tab-content-inner {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(30,30,30,0.9)); /* nền đen gradient */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  color: #fff; /* chữ trắng nổi bật */
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* Overlay cam mờ để tạo năng lượng */
+.ltn_myaccount-tab-content-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255,102,0,0.2), transparent 70%);
+  z-index: 0;
+}
+
+.ltn_myaccount-tab-content-inner .ltn__form-box {
+  position: relative;
+  z-index: 1; /* nội dung nằm trên overlay */
+}
+
+.ltn_myaccount-tab-content-inner h2 {
+  color: #ff6600; /* tiêu đề cam nổi bật */
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255,102,0,0.6);
+}
+
+.ltn_myaccount-tab-content-inner input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid #ff6600;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.ltn_myaccount-tab-content-inner input::placeholder {
+  color: #ccc;
+}
+
+.ltn_myaccount-tab-content-inner button {
+  background: #ff6600;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.ltn_myaccount-tab-content-inner button:hover {
+  background: #e65c00;
+  box-shadow: 0 0 12px rgba(255,102,0,0.7);
+}
+
+/* Container form */
+.ltn__form-box {
+  background: #fff;              /* nền trắng để chữ đen nổi bật */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  color: #000;                   /* chữ mặc định màu đen */
+}
+
+/* Label */
+.ltn__form-box label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000;                   /* label chữ đen */
+}
+
+/* Input */
+.ltn__form-box input[type="text"],
+.ltn__form-box input[type="email"],
+.ltn__form-box input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+  color: #000;                   /* chữ trong input màu đen */
+  font-size: 14px;
+}
+
+.ltn__form-box input:focus {
+  border-color: #ff6600;         /* viền cam khi focus */
+  outline: none;
+  box-shadow: 0 0 6px rgba(255,102,0,0.4);
+}
+
+/* Nút cập nhật */
+.ltn__form-box button {
+  background: #ff6600;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.ltn__form-box button:hover {
+  background: #e65c00;
+  box-shadow: 0 0 10px rgba(255,102,0,0.6);
+}

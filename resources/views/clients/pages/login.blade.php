@@ -7,6 +7,8 @@
 @section('content')
     <!-- LOGIN AREA START -->
     <div class="ltn__login-area pb-65">
+        <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}" alt="Login Background" class="login-bg-img">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -20,7 +22,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="account-login-inner">
-                        <form action="{{ route('post_login') }}" class="ltn__form-box contact-form-box" method="POST" id="login-form">
+                        <form action="{{ route('post_login') }}" class="ltn__form-box contact-form-box login-custom-form"
+                            method="POST" id="login-form">
                             @csrf
 
                             <input type="email" name="email" placeholder="Email*" required>
@@ -43,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="account-create text-center pt-50">
+                    <div class="account-create text-center pt-50 account-create-custom">
                         <h4>Chưa có tài khoản ?</h4>
                         <p>Thêm các mục danh sách mong muốn của bạn nhận các đề xuất được cá nhân hóa
                             kiểm tra nhanh hơn theo dõi đơn hàng của bạn đăng ký
@@ -57,4 +60,5 @@
         </div>
     </div>
     <!-- LOGIN AREA END -->
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/login.css') }}">
 @endsection
