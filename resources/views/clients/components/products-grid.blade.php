@@ -36,9 +36,9 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <div class="product-ratting">
-                                                        <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                        </ul>
+                                                        @include('clients.components.includes.rating', [
+                                                            'product' => $product,
+                                                        ])
                                                     </div>
                                                     <h2 class="product-title"><a
                                                             href="{{ route('products.detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a>

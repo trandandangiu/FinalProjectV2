@@ -24,12 +24,13 @@
                                         </div>
                                         <h1 class="slide-title animated ">Thực phẩm được yêu thích nhất <br> trong Phòng Gym
                                             của chúng tôi</h1>
-                                        <div class="slide-brief animated">
+                                        <div class="slide-brief animated ">
                                             <p>Chúng tôi cam kết mang đến những sản phẩm chất lượng cao, giúp bạn đạt được
                                                 mục tiêu thể hình một cách hiệu quả và an toàn.</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="{{route('products.index')}}" class="theme-btn-1 btn btn-effect-1 text-uppercase">Khám phá
+                                            <a href="{{ route('products.index') }}"
+                                                class="theme-btn-1 btn btn-effect-1 text-uppercase">Khám phá
                                                 sản phẩm</a>
                                         </div>
                                     </div>
@@ -51,12 +52,13 @@
                                         <h6 class="slide-sub-title ltn__secondary-color animated">// FITNESS APPAREL &
                                             SUPPLEMENTS</h6>
                                         <h1 class="slide-title animated">Thời Trang Tập Luyện <br> & Thực Phẩm Bổ Sung</h1>
-                                        <div class="slide-brief animated">
+                                        <div class="slide-brief animated ">
                                             <p>Từ quần áo tập chất lượng đến các dòng supplement chính hãng - tất cả để hỗ
                                                 trợ hành trình thể hình của bạn!</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="{{route('products.index')}}" class="theme-btn-1 btn btn-effect-1 text-uppercase">Xem Tất
+                                            <a href="{{ route('products.index') }}"
+                                                class="theme-btn-1 btn btn-effect-1 text-uppercase">Xem Tất
                                                 Cả Sản Phẩm</a>
                                             <a href="{{ route('about') }}" class="btn btn-transparent btn-effect-3"
                                                 style="color: #ffffff;">VỀ CHÚNG
@@ -107,8 +109,8 @@
                             <div class="ltn__banner-item banner-big">
                                 <div class="ltn__banner-img">
                                     <a href="{{ route('products.index') }}">
-                                        <img src="{{ asset('assets/clients/img/banner/15.png') }}" class="img-fluid rounded"
-                                            alt="Banner Image">
+                                        <img src="{{ asset('assets/clients/img/banner/15.png') }}"
+                                            class="img-fluid rounded" alt="Banner Image">
                                     </a>
                                 </div>
                             </div>
@@ -221,13 +223,13 @@
                             <div class="col-12">
                                 <div class="ltn__category-item ltn__category-item-3 text-center">
                                     <div class="ltn__category-item-img">
-                                        <a href="{{route('products.index')}}">
+                                        <a href="{{ route('products.index') }}">
                                             <img src="{{ asset('storage/' . $category->image) }}"
                                                 alt="{{ $category->name }}">
                                         </a>
                                     </div>
                                     <div class="ltn__category-item-name">
-                                        <h5><a href="{{route('products.index')}}">{{ $category->name }}</a></h5>
+                                        <h5><a href="{{ route('products.index') }}">{{ $category->name }}</a></h5>
                                         <h6>{{ $category->products->count() }} Sản Phẩm</h6>
                                     </div>
                                 </div>
@@ -298,15 +300,9 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <div class="product-ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                                <li><a href="#"><i
-                                                                            class="fas fa-star-half-alt"></i></a></li>
-                                                                <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                                <li class="review-total"> <a href="#"> (24)</a></li>
-                                                            </ul>
+                                                            @include('clients.components.includes.rating', [
+                                                                'product' => $product,
+                                                            ])
                                                         </div>
                                                         <h2 class="product-title">
                                                             <a href="product-details.html">{{ $product->name }}</a>
@@ -419,14 +415,9 @@
                             </div>
                             <div class="product-info">
                                 <div class="product-ratting">
-                                    <ul>
-                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li class="review-total"> <a href="#"> (24)</a></li>
-                                    </ul>
+                                    @include('clients.components.includes.rating', [
+                                        'product' => $product,
+                                    ])
                                 </div>
                                 <h2 class="product-title">
                                     <a href="product-details.html">{{ $product->name }}</a>

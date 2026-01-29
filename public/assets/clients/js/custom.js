@@ -612,4 +612,87 @@ $(document).ready(function () {
 
 
     });
-});
+    // HANDLE RATING PRODUCT
+    if (window.location.pathname.startsWith("/product")) {
+        let seletedRating = 0;
+
+        $('.rating-star').hover(function (e) {
+            let value = $(this).data('value');
+            hightlightStars(value);
+
+        }), function () {
+            hightlightStars(seletedRating);
+        }
+        $('.rating-star').click(function (e) {
+            e.preventDefault();
+            seletedRating = $(this).data("value");
+            $("#rating-value").val(seletedRating);
+            hightlightStars(seletedRating);
+        })
+
+        function hightlightStars(value) {
+            $(".rating-star i").each(function () {
+                let starValue = $(this).parent().data("value");
+                if (starValue <= value) {
+                    $(this).removeClass("far").addClass("fas"); //show star
+                } else {
+                    $(this).removeClass("fas").addClass("far"); //show star empty
+                }
+            });
+        }
+
+        //handle submit rating with AJAX
+        $("#review-form").submit(function (e) {
+            e.preventDefault();
+
+            let productId = $(this).data("product-id");
+            let rating = $("#rating-value").val();
+            let content = $("#review-content").val();
+
+            if (rating == 0) {
+                $("#review-content").html('<div class="alert alert-danger">Vui lòng chọn số sao!</div>')
+                return;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+
+
+            $.ajax({
+                url: '/review',
+                type: 'POST',
+                data: {
+                    product_id: productId,
+                    rating: rating,
+                    comment: content,
+                },
+                success: function (response) {
+                    $("#preview-content").val("");
+                    hightlightStars(0);
+                    seletedRating = 0;
+                    $(".ltn__comment-reply-area").hide();
+                    toastr.success(response.message);
+                    loadReviews(productId);
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.error);
+                }
+            });
+
+        });
+        function loadReviews(productId) {
+            $.ajax({
+                url: "/review/" + $productId,
+                type: 'POST',
+                success: function (response) {
+                    $(".ltn__comment-inner").html(response);
+
+                }
+            });
+
+        }
+    }
+}); 
