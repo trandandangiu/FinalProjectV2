@@ -695,4 +695,96 @@ $(document).ready(function () {
 
         }
     }
+
+
+    // HANDLE PAGE CONTACT
+    $("#contact-form").on("submit", function (e) {
+        let name = $('input[name="name"]').val();
+        let email = $('input[name="email"]').val();
+        let phone = $('input[name="phone"]').val();
+        let message = $('textarea[name="message"]').val();
+        let errorMessage = "";
+
+        if (name.length < 3) {
+            errorMessage += "Họ và tên phải có ít nhất 3 kí tự.<br>";
+        }
+        if (phone.length < 10 || phone.length > 11) {
+            errorMessage += "Họ và tên phải có ít nhất 3 kí tự.<br>";
+        }
+
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            errorMessage += "Họ và tên phải có ít nhất 3 kí tự.<br>";
+        }
+        if (errorMessage !== "") {
+            toastr.erro(errorMessage, "Lỗi");
+            e.preventDefault();
+        }
+    });
+
+    // HADLE WISHLIST
+    $(document).on('click', '.add-to-wishlist', function (e) {
+        e.preventDefault();
+        var $button = $(this);
+    
+        let productId = $button.data('id');
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url: '/wishlist/add',
+            type: 'POST',
+            data: {
+                product_id: productId,
+            },
+            success: function (response) {
+                if (response.status) {
+                  $("#liton_wishlist_modal-" + productId).modal("show");
+                }
+            },
+            error: function (xhr) {
+                alert('Có lỗi khi xảy ra với yêu cầu');
+            },
+            complete: function () {
+                $button.prop('disabled', false).html(originalText);
+            }
+        });
+    });
+//xoa danh sach yeu thich 
+     $(document).on('click', '.wishlist-product-remove', function (e) {
+        e.preventDefault();
+        var $button = $(this);
+    
+        let productId = $button.data('id');
+        let row= $(this).closest("tr");
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        $.ajax({
+            url: '/wishlist/remove',
+            type: 'POST',
+            data: {
+                product_id: productId,
+            },
+            success: function (response) {
+                if (response.status) {
+                 row.remove();
+                 toastr.success("Đã xóa sản phẩm ra khỏi giỏ hàng yêu thích")
+                }
+            },
+            error: function (xhr) {
+                alert('Có lỗi khi xảy ra với sản phẩm ưa thích');
+            },
+        });
+    });
+
+
 }); 

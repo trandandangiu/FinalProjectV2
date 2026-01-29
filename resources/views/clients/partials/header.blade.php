@@ -63,8 +63,8 @@
                                         </ul>
                                     </li>
                                     <li class="menu-icon"><a href="{{ route('products.index') }}">Cửa hàng</a></li>
-                                    <li><a href="{{ route('about') }}">Liên hệ</a></li>
-                                    <li class="special-link"><a href="{{ route('about') }}">NHẬN BÁO GIÁ</a></li>
+                                    <li><a href="{{ route('contact.index') }}">Liên hệ</a></li>
+                                    <li class="special-link"><a href="{{ route('contact.index') }}">NHẬN BÁO GIÁ</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -96,7 +96,7 @@
                                 <ul>
                                     @if (Auth::check())
                                         <li><a href="{{ route('login') }}">Yêu Thích</a></li>
-                                        <li><a href="{{ route('account') }}">Tài khoản</a></li>
+                                        <li><a href="{{ route('wishlist') }}">Tài khoản</a></li>
                                         <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                     @else
                                         <li><a href="{{ route('login') }}">Đăng nhập</a></li>

@@ -72,7 +72,7 @@
                                 <div class="footer-menu">
                                     <ul>
                                         <li><a href="order-tracking.html">Theo dõi đơn hàng</a></li>
-                                        <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                                        <li><a href="{{ route('wishlist') }}">Danh sách yêu thích</a></li>
                                         <li><a href="login.html">Đăng nhập</a></li>
                                         <li><a href="account.html">Tài khoản</a></li>
                                         <li><a href="about.html">Điều khoản & Điều kiện</a></li>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Clients\CheckoutController;
 use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\AuthController;
+use App\Http\Controllers\Clients\ContactController;
 use App\Http\Controllers\Clients\ForgotPasswordController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\OrderController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Clients\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Clients\ProductController;
 use App\Http\Controllers\Clients\ReviewController;
+use App\Http\Controllers\Clients\WishlistController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -72,8 +74,14 @@ Route::middleware(['auth.custom'])->group(function () {
 
 
     Route::post('/review', [ReviewController::class, 'createReview']);
-       Route::get('/review/{product}', [ReviewController::class, 'index']);
+    Route::get('/review/{product}', [ReviewController::class, 'index']);
+
+    Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::post('wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+     Route::post('wishlist/remove', [WishlistController::class, 'removeWishlistItem'])->name('wishlist.remove');
+
 });
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/filter', [ProductController::class, 'filter'])->name('products.filter');
@@ -91,6 +99,10 @@ Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove-cart', [CartController::class, 'removeCartItem'])->name('cart.remove-cart');
 
+
+//handle conttact 
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact/message', [ContactController::class, 'sendContact'])->name('contact');
 
 ////////////// Admin routes
 require __DIR__ . '/admin.php';

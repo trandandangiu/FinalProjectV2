@@ -1,0 +1,78 @@
+/* Contact Address Item */
+.ltn__contact-address-item {
+  padding: 40px 30px 20px;
+  text-align: center;
+  background-color: #000000; /* nền đen */
+  color: #ffffff;            /* chữ trắng */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.ltn__contact-address-item i {
+  background-color: var(--ltn__secondary-color); /* cam */
+  color: #000000; /* icon đen */
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 100%;
+  margin-bottom: 20px;
+  font-size: 22px;
+  box-shadow: var(--ltn__box-shadow-2);
+  transition: all 0.3s ease;
+}
+
+.ltn__contact-address-item:hover {
+  transform: translateY(-5px);
+}
+
+.ltn__contact-address-item:hover i {
+  background-color: #ff6600; /* cam sáng hơn khi hover */
+  color: #ffffff; /* icon trắng */
+}
+
+/* Contact Form Box */
+.contact-form-box {
+  background-color: #111111; /* nền xám đậm */
+  padding: 40px 50px 50px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+.contact-form-box input,
+.contact-form-box textarea {
+  background-color: #000000;
+  border: 1px solid #f36100;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.contact-form-box input::placeholder,
+.contact-form-box textarea::placeholder {
+  color: #888888;
+}
+
+.contact-form-box button {
+  background-color: #f36100;
+  color: #000000;
+  font-weight: 700;
+  padding: 12px 25px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.contact-form-box button:hover {
+  background-color: #ff6600;
+  color: #ffffff;
+}
+
+/* Google Map */
+.google-map {
+  height: 600px;
+  border: 4px solid #f36100;
+  border-radius: 10px;
+}
