@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <div class="ltn__checkout-inner">
                         <div class="ltn__checkout-single-content mt-50">
-                            <h4 class="title-2">Chi tiết thanh toán</h4>
+                            <h4 class=".">Chi tiết thanh toán</h4>
                             <div class="select-address">
                                 <div>
                                     <h6>Chọn địa chỉ khác</h6>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping-cart-total mt-50">
-                        <h4 class="title-2">Tổng sản phẩm</h4>
+                        <h4 class="hi">Tổng sản phẩm</h4>
                         <table class="table">
                             <tbody>
                                 @foreach ($cartItems as $item)
@@ -136,4 +136,5 @@
         </div>
     </div>
     <!-- WISHLIST AREA START -->
+    <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/checkout.css') }}">
 @endsection

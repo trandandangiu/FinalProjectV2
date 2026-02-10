@@ -95,8 +95,8 @@
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
                                     @if (Auth::check())
-                                        <li><a href="{{ route('login') }}">Yêu Thích</a></li>
-                                        <li><a href="{{ route('wishlist') }}">Tài khoản</a></li>
+                                        <li><a href="{{ route('wishlist') }}">Yêu Thích</a></li>
+                                        <li><a href="{{ route('account') }}">Tài khoản</a></li>
                                         <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                     @else
                                         <li><a href="{{ route('login') }}">Đăng nhập</a></li>
@@ -151,4 +151,4 @@
 @include('clients.partials.utilize_mobile')
 <!-- Utilize Mobile Menu End -->
 
-<div class="ltn__utilize-overlay"></div>
+{{-- <div class="ltn__utilize-overlay"></div> --}}

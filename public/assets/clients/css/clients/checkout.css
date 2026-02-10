@@ -1,0 +1,100 @@
+/* Tiêu đề h4, h5 */
+.ltn__checkout-area h4,
+.ltn__checkout-area h5 {
+    color: #000;              /* chữ đen rõ ràng */
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6600; /* điểm nhấn cam */
+    padding-bottom: 8px;
+}
+
+/* Tiêu đề phụ h6 */
+.ltn__checkout-area h6 {
+    color: #ff6600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Bảng tổng sản phẩm */
+.shoping-cart-total table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;          /* nền trắng cho dễ đọc */
+    border-radius: 8px;
+    overflow: hidden;
+}
+.shoping-cart-total table td {
+    padding: 15px 20px;        /* khoảng cách td thoáng hơn */
+    border-bottom: 1px solid #ddd;
+    color: #000;
+}
+.shoping-cart-total table tr:last-child td {
+    border-bottom: none;
+}
+.shoping-cart-total table strong {
+    color: #ff6600;
+}
+
+/* Input + Select */
+.ltn__checkout-area .input-item input,
+.ltn__checkout-area select {
+    width: 100%;
+    padding: 12px 15px;        /* khoảng cách trong ô thoáng */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: #000;
+    transition: border 0.3s;
+}
+.ltn__checkout-area .input-item input:focus,
+.ltn__checkout-area select:focus {
+    border-color: #ff6600;     /* viền cam khi focus */
+    outline: none;
+}
+
+/* Nút bấm */
+.ltn__checkout-area .theme-btn-1 {
+    background: #ff6600;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.ltn__checkout-area .theme-btn-1:hover {
+    background: #e65c00;
+}
+
+.ltn__payment-note {
+    color: #000;              /* chữ đen dễ đọc */
+    background: #f9f9f9;      /* nền sáng nhẹ để nổi bật */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;   /* khung viền nhẹ */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.liton__wishlist-area {
+    padding-top: 200px;   /* tăng khoảng cách phía trên */
+    padding-bottom: 200px; /* tăng khoảng cách phía dưới */
+}
+
+/* Tiêu đề h4 riêng cho Tổng sản phẩm */
+h4.hi {
+    color: #fff !important;   /* chữ trắng nổi bật */
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Nội dung ghi chú thanh toán */
+.ltn__payment-note p {
+    color: #000 !important;   /* chữ đen rõ ràng */
+    background: #f9f9f9;      /* nền sáng nhẹ để nổi bật */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+}

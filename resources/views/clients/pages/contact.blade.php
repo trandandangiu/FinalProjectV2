@@ -13,7 +13,7 @@
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="{{ asset('asset/clients/img/icons/10.png') }}" alt="Icon Image">
+                            {{-- <img src="{{ asset('assets/clients/img/icons/10.png') }}" alt="Icon Image"> --}}
                         </div>
                         <h3>Địa chỉ Email</h3>
                         <p>trithmgcs210852@fpt.edu.vn</p>
@@ -22,7 +22,7 @@
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="{{ 'asset/clients/img/icons/11.png' }}" alt="Icon Image">
+                            {{-- <img src="{{ 'asset/clients/img/icons/11.png' }}" alt="Icon Image"> --}}
                         </div>
                         <h3>Số điện thoại</h3>
                         <p>0827.777.721</p>
@@ -31,7 +31,7 @@
                 <div class="col-lg-4">
                     <div class="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                         <div class="ltn__contact-address-icon">
-                            <img src="{{ 'asset/clients/img/icons/12.png' }}" alt="Icon Image">
+                            {{-- <img src="{{ asset('assets/clients/img/icons/12.png') }}" alt="Icon Image"> --}}
                         </div>
                         <h3>Shop</h3>
                         <p>793/43 Trần Xuân Soạn, P.Tân Hưng, Q7</p>
@@ -72,8 +72,9 @@
                                 <textarea name="message" placeholder="Nhập tin nhắn"></textarea>
                             </div>
                             <div class="btn-wrapper mt-0">
-                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="Gửi"></button>
+                                <button class="btn btn-submit-fitness" type="submit">Gửi</button>
                             </div>
+
                             <p class="form-messege mb-0 mt-20"></p>
                         </form>
                     </div>

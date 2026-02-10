@@ -5,8 +5,7 @@
 @section('breadcrumb', 'Tài Khoản')
 @section('content')
     <!-- WISHLIST AREA START -->
-    <div class="liton__wishlist-area pb-70"> <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}"
-            alt="Account Background" class="account-bg-img">
+    <div class="liton__wishlist-area pb-120"> 
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -17,7 +16,7 @@
                                 <div class="col-lg-4">
                                     <div class="ltn__tab-menu-list mb-50">
                                         <div class="nav">
-                                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_dashboard">
+                                            <a class="active show" data-bs-toggle="tab" href="#liton_tab_dashboard head">
                                                 Bảng điều khiển <i class="fas fa-home"></i>
                                             </a>
                                             <a data-bs-toggle="tab" href="#liton_tab_orders">
@@ -40,16 +39,16 @@
                                         <!-- Dashboard Tab -->
                                         <div class="tab-pane fade active show" id="liton_tab_dashboard">
                                             <div class="ltn__myaccount-tab-content-inner">
-                                                <p>Hello <strong>{{ $user->email }}</strong> (not
-                                                    <strong>{{ $user->email }}</strong>?
+                                                <p> <strong>Hello {{ $user->email }}</strong>
+                                                    <strong>(not {{ $user->email }})</strong>?
                                                     <<small>
                                                         <a href="{{ route('logout') }}" class="logout-link">Đăng Xuất</a>
                                                         </small>
-                                                        )
+
                                                 </p>
-                                                <p>Từ bảng điều khiển tài khoản của bạn, bạn có thể xem <span>các đơn hàng
-                                                        gần đây</span>, quản lý <span>địa chỉ giao hàng và thanh
-                                                        toán</span>, và <span>chỉnh sửa mật khẩu cùng thông tin tài
+                                                <p><span>Từ bảng điều khiển tài khoản của bạn, bạn có thể xem các đơn hàng
+                                                        gần đây, quản lý địa chỉ giao hàng và thanh
+                                                        toán, và chỉnh sửa mật khẩu cùng thông tin tài
                                                         khoản</span>.</p>
                                             </div>
                                         </div>
@@ -88,7 +87,7 @@
                                                                     </td>
                                                                     <td>{{ number_format($order->total_price, 0, ',', '.') }}đ
                                                                     </td>
-                                                                    <td><a href="{{ route('order.show',$order->id) }}"
+                                                                    <td><a href="{{ route('order.show', $order->id) }}"
                                                                             class="btn-view-cart">Xem chi tiết</a></td>
                                                                 </tr>
                                                             @endforeach
@@ -101,7 +100,6 @@
                                         <!-- Address Tab -->
                                         <div class="tab-pane fade" id="liton_tab_address">
                                             <div class="ltn__myaccount-tab-content-inner">
-                                                <p>Các địa chỉ dưới đây sẽ được dùng làm mặc định khi bạn thanh toán.</p>
                                                 <table class="table">
                                                     <thead>
                                                         <tr>

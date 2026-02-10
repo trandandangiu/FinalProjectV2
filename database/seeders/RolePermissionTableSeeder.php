@@ -18,11 +18,10 @@ public function run(): void
     
     $allpermissions = Permission::all();
     
-    // Admin có tất cả permissions
+ 
     $adminRole->permissions()->sync($allpermissions->pluck('id'));
     
-    // Staff chỉ có 2 permissions: products và contact
-    // KHÔNG có categories, users, orders
+
     $staffPermissions = Permission::whereIn('name', [  
         'manager_products',  // Chỉ sản phẩm
         'manager_contact'    // Chỉ liên hệ

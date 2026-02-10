@@ -65,7 +65,6 @@
                                                     <input type="text" value="1" name="qtybutton"
                                                         class="cart-plus-minus-box" readonly
                                                         data-max="{{ $product->stock }}">
-
                                                 </div>
                                             </li>
                                             <li>

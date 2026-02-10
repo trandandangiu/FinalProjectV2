@@ -36,8 +36,8 @@
                                             <td class="wishlist-product-stock">
                                                 {{ $item->product->status == 'in_stock' ? 'còn hàng' : 'hết hàng' }}
                                             </td>
-                                            <td>
-                                                <a href="#" class="submit-button-1 add-to-cart-btn"
+                                            <td class="hello"> 
+                                                <a href="#" 
                                                     title="Thêm vào giỏ hàng" data-id="{{ $item->product->id }}">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span>THÊM VÀO GIỎ HÀNG</span>
@@ -46,7 +46,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="text-center">Danh sách yêu thích của bạn đang trống
+                                            <td colspan="6" class="text-center" style="color:#fff;">Danh sách yêu thích của bạn đang trống
                                             </td>
                                         </tr>
                                     @endforelse
@@ -60,4 +60,5 @@
         </div>
     </div>
     <!-- SHOPING CART AREA END -->
+        <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/wishlist.css') }}">
 @endsection

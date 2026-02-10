@@ -1,0 +1,30 @@
+.wishlist-product-remove {
+    color: #fff; /* trắng */
+}
+
+.wishlist-product-price {
+        color: #fff; /* trắng */
+}
+
+.wishlist-product-stock {
+     color: #fff; /* trắng */
+}
+
+.hello a {
+    background-color: #ff6600; /* nền cam */
+    color: #fff;              /* chữ trắng */
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hello a:hover {
+    background-color: #e65c00; /* cam đậm hơn khi hover */
+    transform: scale(1.05);    /* hơi phóng to */
+    cursor: pointer;           /* hiện bàn tay khi hover */
+}
+

@@ -74,3 +74,30 @@
   color: #ff6600;
   text-decoration: underline;
 }
+
+/* Style cho 4 ô input trong form */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background-color: #000000;   /* nền đen */
+  color: #ffffff;              /* chữ trắng */
+  border: 1px solid #f36100;   /* viền cam fitness */
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder màu xám nhạt để dễ đọc */
+input::placeholder {
+  color: #888888;
+}
+
+/* Khi focus vào input */
+input:focus {
+  outline: none;
+  border-color: #ff6600;       /* viền cam sáng hơn */
+  box-shadow: 0 0 8px rgba(243, 97, 0, 0.6);
+}

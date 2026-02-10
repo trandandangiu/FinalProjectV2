@@ -6,8 +6,8 @@
 
 @section('content')
     <!-- LOGIN AREA START -->
-    <div class="ltn__login-area pb-65">
-        <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}" alt="Login Background" class="login-bg-img">
+    <div class="ltn__login-area pb-100">
+        <img src="{{ asset('assets/clients/img/banner/login-bg.png') }}" alt="Login Background" class="login-bg-img ">
 
         <div class="container">
             <div class="row">

@@ -1,53 +1,57 @@
 /* BREADCRUMB AREA */
 .ltn__breadcrumb-area {
   position: relative;
-  padding: 80px 0;
+  padding: 180px 0 140px;
+  /* tăng chiều cao, thoáng hơn */
   color: #fff;
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  animation: zoomBg 15s ease-in-out infinite alternate; /* hiệu ứng zoom nền */
+  animation: zoomBg 15s ease-in-out infinite alternate;
+  /* hiệu ứng zoom nền */
 }
 
 .ltn__breadcrumb-area::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(255,102,0,0.2));
-  backdrop-filter: blur(4px);    /* kính mờ */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(255, 102, 0, 0.3));
   z-index: 0;
 }
 
 .ltn__breadcrumb-inner {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: fadeIn 1s ease;     /* hiệu ứng xuất hiện */
+  text-align: center;
+  /* căn giữa cho thoáng */
 }
 
 .ltn__breadcrumb-inner h1.section-title {
-  font-size: 42px;
-  font-weight: 800;
+  font-size: 56px;
+  /* chữ to, rõ ràng */
+  font-weight: 700;
+  /* đậm vừa phải */
   text-transform: uppercase;
   color: #fff;
-  text-shadow: 0 0 15px rgba(255,102,0,0.8); /* glow cam */
-  animation: slideInLeft 1s ease;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  /* giãn chữ nhẹ */
+  line-height: 1.3;
+  /* thoáng */
 }
 
+
 .ltn__breadcrumb-inner h6.section-subtitle {
-  font-size: 18px;
-  color: #ff6600;                /* subtitle cam nổi bật */
-  margin-bottom: 10px;
-  animation: slideInRight 1s ease;
+  font-size: 22px;
+  color: #ff6600;
+  margin-bottom: 25px;
 }
 
 .ltn__breadcrumb-list ul {
   list-style: none;
-  display: flex;
-  gap: 12px;
-  font-size: 16px;
+  display: inline-flex;
+  gap: 15px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -68,23 +72,13 @@
 
 /* Hiệu ứng nền zoom */
 @keyframes zoomBg {
-  from { background-size: 100%; }
-  to   { background-size: 110%; }
-}
+  from {
+    background-size: 100%;
+  }
 
-/* Hiệu ứng fade */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+  to {
+    background-size: 115%;
+  }
 
-/* Hiệu ứng slide chữ */
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to   { opacity: 1; transform: translateX(0); }
+  /* zoom mạnh hơn một chút */
 }

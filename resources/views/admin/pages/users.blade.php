@@ -66,12 +66,10 @@
                                                     @else
                                                         <button type="button" class="btn btn-danger btn-sm changeStatus"
                                                             data-user-id="{{ $user->id }}" data-status="deleted">
-                                                            <i class="fa fa-user"> </i> Chặn
-
+                                                            <i class="fa fa-user"> </i> Xóa
                                                         </button>
                                                         @endif
                                                 @endif
-
                                             </div>
                                         </div>
                                     </div>

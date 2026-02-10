@@ -2,50 +2,54 @@
     <span class="ltn__utilize-menu-title">Cart</span>
     <button class="ltn__utilize-close">×</button>
 </div>
+
 <div class="mini-cart-product-area ltn__scrollbar">
-        @php
-        $subtotal = 0;
-    @endphp
+    @php $subtotal = 0; @endphp
+
     @if (!empty($cartItems) && count($cartItems) > 0)
+        @foreach ($cartItems as $item)
+            @php
+                // Lấy product theo trạng thái đăng nhập
+                $product = Auth::check() ? $item->product : \App\Models\Product::find($item['product_id']);
+                $quantity = Auth::check() ? $item->quantity : $item['quantity'];
+            @endphp
 
-    @foreach ($cartItems as $item)
-    @php
-        $product = Auth::check() ? $item->product : \App\Models\Product::find($item['product_id']);
-        $quantity = Auth::check() ? $item->quantity : $item['quantity'];
-        $subtotal  += $quantity * $product->price;
-    @endphp
-    <div class="mini-cart-item clearfix">
-            <div class="mini-cart-img">
-                <a href="javascript:void(0)">
-                   <img src="{{ asset($product->firstImage->image_path ?? 'storage/uploads/products/default-product.png') }}" alt="Image">
-                </a>
-                <span class="mini-cart-item-delete" data-id="{{ $product->id }}">
-                    <i class="icon-cancel"></i></span>
-            </div>
-            <div class="mini-cart-info">
-                <h6><a href="#">{{ $product->name }}</a></h6>
-                <span class="mini-cart-quantity">{{ $quantity }} x {{ number_format($product->price, 0,',','.') }}</span>
-            </div>
-        </div>
-        
-    @endforeach
-        
+            @if($product)
+                @php $subtotal += $quantity * $product->price; @endphp
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="javascript:void(0)">
+                            <img src="{{ asset($product->firstImage->image_path ?? 'storage/uploads/products/default-product.png') }}" alt="Image">
+                        </a>
+                        <span class="mini-cart-item-delete" data-id="{{ $product->id }}">
+                            <i class="icon-cancel"></i>
+                        </span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">{{ $product->name }}</a></h6>
+                        <span class="mini-cart-quantity">
+                            {{ $quantity }} x {{ number_format($product->price, 0, ',', '.') }} đ
+                        </span>
+                    </div>
+                </div>
+            @else
+                {{-- fallback nếu sản phẩm không tồn tại --}}
+                <div class="mini-cart-item clearfix">
+                    <p>Sản phẩm này không còn tồn tại.</p>
+                </div>
+            @endif
+        @endforeach
     @else
-
+        <p>Giỏ hàng của bạn đang trống.</p>
     @endif
-
 </div>
+
 <div class="mini-cart-footer">
     <div class="mini-cart-sub-total">
-        <h5> Tổng tiền: <span>{{ number_format($subtotal, 0,',','.') }} vnd</span></h5>
+        <h5>Tổng tiền: <span>{{ number_format($subtotal, 0, ',', '.') }} đ</span></h5>
     </div>
     <div class="btn-wrapper">
         <a href="{{ route('cart.index') }}" class="theme-btn-1 btn btn-effect-1">Xem giỏ hàng</a>
         <a href="{{ route('cart.index') }}" class="theme-btn-2 btn btn-effect-2">Thanh toán</a>
     </div>
-
 </div>
-
-</div>
-</div>
-<!-- Utilize Cart Menu End -->

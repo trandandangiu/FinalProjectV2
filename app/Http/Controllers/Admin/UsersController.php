@@ -8,30 +8,51 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-  public function index(Request $request) {
+    public function index(Request $request)
+    {
         $users = User::with('role')->paginate(9);
-    return view('admin.pages.users', compact('users'));
-  }
-
-public function upgrade(Request $request)
-{
-    $userId = $request->user_id;
-    $user = User::find($userId);
-
-    if(!$user) {
-        return response()->json([
-            'status' => false,
-            'message' => 'Không tìm thấy người dùng.'
-        ], 404);
+        return view('admin.pages.users', compact('users'));
     }
 
-    $user->role_id = 2;
-    $user->save();
+    public function upgrade(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = User::find($userId);
 
-    return response()->json([
-        'status' => true,
-        'message' => 'Đã update thành nhân viên.'
-    ]);
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không tìm thấy người dùng.'
+            ], 404);
+        }
+
+        $user->role_id = 2;
+        $user->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Đã update thành nhân viên.'
+        ]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $userId = $request->user_id;
+        $status = $request->status;
+
+        $user = User::find($userId);
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => ' Không tìm thấy người dùng',
+            ]);
+        }
+        $user->status = $status;
+        $user->save();
+        return response()->json([
+
+            'status' => true,
+            'message' => 'Trạng thái người dùng đã được cập nhật  '
+        ]);
+    }
 }
-  }
-

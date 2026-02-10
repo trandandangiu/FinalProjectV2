@@ -6,7 +6,7 @@
 
 @section('content')
     <!-- PRODUCT DETAILS AREA START -->
-    <div class="ltn__product-area ltn__product-gutter">
+    <div class="ltn__product-area ltn__product-gutter mt-5">
           <img src="{{ asset('assets/clients/img/banner/15.png') }}" 
          alt="Background Banner" 
          class="bg-img blur-section">
@@ -25,7 +25,7 @@
                             </li>
                             <li>
                                 <div class="short-by text-center">
-                                    <select id="sort-by" name="sort_by" class="nice-select">
+                                    <select id="sort-by" name="sort_by" class="nice-select mt-3">
                                         <option value="">Sắp xếp mặc định</option>
                                         <option value="latest">Sắp xếp theo hàng mới về</option>
                                         <option value="price_asc">Sắp xếp theo giá: thấp đến cao</option>
@@ -52,7 +52,7 @@
                 <div class="col-lg-4  mb-120">
                     <aside class="sidebar ltn__shop-sidebar">
                         <!-- Category Widget -->
-                        <div class="widget ltn__menu-widget">
+                        <div class="widget ltn__menu-widget mt-3">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Danh mục sản phẩm</h4>
                             <ul>
                                 @foreach ($categories as $category)
