@@ -623,7 +623,6 @@ $(document).ready(function() {
         updateProfile(formData, "profile");
     });
 
-    // Submit đổi mật khẩu
     $("#change-password").on("submit", function (e) {
         e.preventDefault();
         let curPass = $("#current_password").val();
@@ -653,12 +652,9 @@ $(document).ready(function() {
               if (response.status) {
     toastr.success(response.message);
     
-    // Lấy type từ FormData object
     let updateType = formData.get("type"); 
 
     if (updateType === "profile") {
-        // Cập nhật text hiển thị ở danh sách thông tin bên trái
-        // Đảm bảo ID này khớp với các thẻ <span> hoặc <h3> ở cột bên trái
         $("#user-name").text(response.data.name);
         $("#user-phone").text(response.data.phone_number);
         $("#user-address").text(response.data.address);
@@ -670,7 +666,6 @@ $(document).ready(function() {
         
     } else if (updateType === "avatar") {
         $("#avatar-img").attr("src", response.avatar_url);
-        // Cập nhật ảnh nhỏ trên góc phải màn hình (header) nếu có
         $(".profile_info img, .nav-user-menu img").attr("src", response.avatar_url);
     }
 } else {

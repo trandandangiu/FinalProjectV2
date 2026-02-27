@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\NotificationsController;
+use App\Http\Middleware\DefaultAdminData;
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
@@ -24,13 +26,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 
-    Route::middleware(['auth.custom'])->group(function () {
+    Route::middleware(['auth.custom', DefaultAdminData::class])->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.pages.dashboard');
         })->name('admin.dashboard');
 
         Route::get('/account', [AccountController::class, 'index'])->name('admin.account');
-           Route::post('/profile/update', [AccountController::class, 'updateProfile']);
+        Route::post('/profile/update', [AccountController::class, 'updateProfile']);
+        Route::get('/notifications', [NotificationsController::class, 'index'])->name('admin.notifications.index');
 
         Route::middleware(['permission:manager_users'])->group(function () {
             Route::get('/users', [UsersController::class, 'index'])->name('admin.users.index');

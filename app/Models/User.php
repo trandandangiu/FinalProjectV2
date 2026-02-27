@@ -13,7 +13,7 @@ class User extends Authenticatable
     public $timestamps = true;
 
     protected $fillable = [
-        'name', 'email', 'password', 'status','avatar','address','role_id','activation_token','google_id','phone_number'
+        'name', 'email', 'password', 'status','avatar','address','role_id','activation_token','google_id',
     ];
 
     /**
@@ -75,9 +75,14 @@ class User extends Authenticatable
         return $this->status === 'deleted';
     }
 
-    public function getAvatarUrlAttribute()
-    {
-        return $this->avatar? asset('storage/' . $this->avatar) : asset('storage/uploads/users/default-avatar.png');
+   public function getAvatarUrlAttribute()
+{
+    
+    if ($this->avatar && \Illuminate\Support\Facades\Storage::disk('public')->exists($this->avatar)) {
+        return asset('storage/' . $this->avatar);
     }
+
+    return asset('storage/uploads/users/default-avatar.png');
+}
 
 }
