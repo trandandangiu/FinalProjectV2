@@ -32,7 +32,7 @@ class AdminStaffTableSeeder extends Seeder
             'status'=>'pending',
             'avatar'=>'',
             'address'=>'Ho Chi Minh City',
-            'role_id'=>'2',
+            'role_id'=>'1',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
