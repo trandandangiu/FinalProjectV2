@@ -9,7 +9,7 @@ class Order extends Model
 {
 
 use HasFactory;
-    protected $fillable = ['total_price', 'user_id', 'status', 'shipping_address'];
+    protected $fillable = ['total_price', 'user_id', 'status', 'shipping_address_id'];
 
 
     public function user()
@@ -24,7 +24,7 @@ use HasFactory;
 
     public function shippingAddress()
     {
-        return $this->belongsTo(ShippingAddress::class);
+        return $this->belongsTo(ShippingAddress::class, 'shipping_address_id');
     }
 
     public function payment()

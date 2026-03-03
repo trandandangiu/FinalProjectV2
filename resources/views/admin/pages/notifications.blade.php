@@ -36,21 +36,25 @@
                                                 <ul class="messages">
                                                     @foreach ($notifications as $notification)
                                                         <li>
-                                                            <img src="{{ asset("assets/admin/images/bell.png") }}" class="avatar"
-                                                                alt="Avatar">
+                                                            <img src="{{ asset('assets/admin/images/bell.png') }}"
+                                                                class="avatar" alt="Avatar">
                                                             <div class="message_date">
                                                                 <h2 class="date text-info">
                                                                     {{ $notification->created_at->format('d') }}</h2>
                                                                 <p class="month">
                                                                     {{ $notification->created_at->format('M Y') }}</p>
-                                                                    
+
                                                             </div>
                                                             <div class="message_wrapper">
-                                                               <a href="{{ "/admin" . $notification->link }}"> <h4 class="heading">{{ $notification->title }}</h4>
-                                                                <blockquote class="message">{{ Str::limit($notification->message, 10) }}</blockquote></a>
-                                                                <br /> 
-                                                                </blockquote>
-                                                                <br />
+                                                                <a href="{{ url('/admin' . $notification->link) }}"
+                                                                    class="notification-link"
+                                                                    data-id="{{ $notification->id }}">
+
+                                                                    <h4 class="heading">{{ $notification->title }}</h4>
+                                                                    <blockquote class="message">
+                                                                        {{ Str::limit($notification->message, 10) }}
+                                                                    </blockquote>
+                                                                </a>
                                                             </div>
                                                         </li>
                                                     @endforeach

@@ -503,178 +503,207 @@ $(document).ready(function () {
     /*****************************************************************
      * MANAGEMENT CONTACT
      *****************************************************************/
-$(document).on('click', '.contact_item', function (e) {
-    // Dùng .attr() để đảm bảo lấy giá trị mới nhất của từng phần tử
-    let contactName    = $(this).attr('data-name');
-    let contactEmail   = $(this).attr('data-email');
-    let contactMessage = $(this).attr('data-message');
-    let contactId      = $(this).attr('data-id');
-    let isReplied      = $(this).attr('data-is_replied');
+    $(document).on('click', '.contact_item', function (e) {
+        // Dùng .attr() để đảm bảo lấy giá trị mới nhất của từng phần tử
+        let contactName = $(this).attr('data-name');
+        let contactEmail = $(this).attr('data-email');
+        let contactMessage = $(this).attr('data-message');
+        let contactId = $(this).attr('data-id');
+        let isReplied = $(this).attr('data-is_replied');
 
-    // Đổ dữ liệu vào khung hiển thị (Content Mail)
-    $(".mail_view .sender-info strong").text(contactName);
-    $(".mail_view .sender-info span").text('(' + contactEmail + ')');
-    $(".mail_view .view_mail p").text(contactMessage);
-console.log("Bạn vừa click vào email:", $(this).attr('data-email'));
-    $('.mail_view').show();
+        // Đổ dữ liệu vào khung hiển thị (Content Mail)
+        $(".mail_view .sender-info strong").text(contactName);
+        $(".mail_view .sender-info span").text('(' + contactEmail + ')');
+        $(".mail_view .view_mail p").text(contactMessage);
+        console.log("Bạn vừa click vào email:", $(this).attr('data-email'));
+        $('.mail_view').show();
 
-    // Cập nhật thông tin cho nút "Gửi phản hồi"
-    if (isReplied != 0) {
-        $("#compose").hide(); 
-    } else {
-        $("#compose").show();
-        // QUAN TRỌNG: Gán lại email mới cho nút Send mỗi khi click item khác nhau
-        $('.send-reply-contact').attr('data-email', contactEmail);
-        $('.send-reply-contact').attr('data-id', contactId);
-    }
-});
-
-$(document).on('click', '.send-reply-contact', function (e) {
-    e.preventDefault();
-    let button = $(this);
-    
-    // Lấy data đã được set ở bước trên
-    let email = button.data('email');
-    let contactId = button.data('id');
-    
-
-    let message = $("#editor-contact").val().trim(); 
-
-    if (message === "") {
-        toastr.warning("Bạn chưa nhập nội dung phản hồi!");
-        return;
-    }
-
-    // Hiệu ứng chờ (optional)
-    button.prop('disabled', true).text('Sending...');
-
-    $.ajax({
-        type: 'POST',
-        url: "/admin/contact/reply",
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
-        },
-        data: {
-            email: email,
-            message: message,
-            contact_id: contactId,
-        },
-        success: function (response) {
-            if (response.status) {
-                toastr.success(response.message);
-                $(".mail_view").hide();
-                $(".compose").hide(); // Ẩn khung soạn thảo (class của bạn là .compose)
-                $("#editor-contact").val(""); // Xóa nội dung cũ
-                
-                // Cập nhật trạng thái tại chỗ trên giao diện (đổi màu icon)
-                $(`.contact_item[data-id="${contactId}"]`).find('i.fa-circle').css('color', 'red');
-                $(`.contact_item[data-id="${contactId}"]`).data('is_replied', 1);
-            } else {
-                toastr.error(response.message);
-            }
-        },
-        error: function (xhr, status, error) {
-            alert('An error occurred: ' + error);
-        },
-        complete: function() {
-            button.prop('disabled', false).text('Send');
+        // Cập nhật thông tin cho nút "Gửi phản hồi"
+        if (isReplied != 0) {
+            $("#compose").hide();
+        } else {
+            $("#compose").show();
+            // QUAN TRỌNG: Gán lại email mới cho nút Send mỗi khi click item khác nhau
+            $('.send-reply-contact').attr('data-email', contactEmail);
+            $('.send-reply-contact').attr('data-id', contactId);
         }
     });
-});
+
+    $(document).on('click', '.send-reply-contact', function (e) {
+        e.preventDefault();
+        let button = $(this);
+
+        // Lấy data đã được set ở bước trên
+        let email = button.data('email');
+        let contactId = button.data('id');
+
+
+        let message = $("#editor-contact").val().trim();
+
+        if (message === "") {
+            toastr.warning("Bạn chưa nhập nội dung phản hồi!");
+            return;
+        }
+
+        // Hiệu ứng chờ (optional)
+        button.prop('disabled', true).text('Sending...');
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/contact/reply",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            },
+            data: {
+                email: email,
+                message: message,
+                contact_id: contactId,
+            },
+            success: function (response) {
+                if (response.status) {
+                    toastr.success(response.message);
+                    $(".mail_view").hide();
+                    $(".compose").hide(); // Ẩn khung soạn thảo (class của bạn là .compose)
+                    $("#editor-contact").val(""); // Xóa nội dung cũ
+
+                    // Cập nhật trạng thái tại chỗ trên giao diện (đổi màu icon)
+                    $(`.contact_item[data-id="${contactId}"]`).find('i.fa-circle').css('color', 'red');
+                    $(`.contact_item[data-id="${contactId}"]`).data('is_replied', 1);
+                } else {
+                    toastr.error(response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('An error occurred: ' + error);
+            },
+            complete: function () {
+                button.prop('disabled', false).text('Send');
+            }
+        });
+    });
 
     /*****************************************************************
      * MANAGEMENT PROFILE
      *****************************************************************/
-$(document).ready(function() {
-    // Toggle form đổi mật khẩu
-    $(".form-change-pass").on("click", function () {
-        $("#change-password").toggle();
-        $(this).text($("#change-password").is(":visible") ? "Hủy đổi mật khẩu" : "Đổi mật khẩu");
-    });
+    $(document).ready(function () {
+        // Toggle form đổi mật khẩu
+        $(".form-change-pass").on("click", function () {
+            $("#change-password").toggle();
+            $(this).text($("#change-password").is(":visible") ? "Hủy đổi mật khẩu" : "Đổi mật khẩu");
+        });
 
-    // Upload ảnh
-    $(".update-image").click(function () { $("#avatar").trigger("click"); });
+        // Upload ảnh
+        $(".update-image").click(function () { $("#avatar").trigger("click"); });
 
-    $("#avatar").on("change", function () {
-        let file = this.files[0];
-        if (file) {
+        $("#avatar").on("change", function () {
+            let file = this.files[0];
+            if (file) {
+                let formData = new FormData();
+                formData.append("type", "avatar");
+                formData.append("avatar", file);
+                updateProfile(formData, "avatar");
+            }
+        });
+
+        // Submit thông tin cá nhân
+        $("#update-profile").on("submit", function (e) {
+            e.preventDefault();
+            let name = $("#name").val().trim();
+            let phone = $("#phone").val().trim();
+            let address = $("#address").val().trim();
+
+            if (name.length < 3) return toastr.error("Tên quá ngắn");
+            if (!/^(0\d{9})$/.test(phone)) return toastr.error("SĐT không hợp lệ");
+
             let formData = new FormData();
-            formData.append("type", "avatar");
-            formData.append("avatar", file);
-            updateProfile(formData, "avatar");
+            formData.append('type', "profile");
+            formData.append("name", name);
+            formData.append("phone", phone);
+            formData.append("address", address);
+            updateProfile(formData, "profile");
+        });
+
+        $("#change-password").on("submit", function (e) {
+            e.preventDefault();
+            let curPass = $("#current_password").val();
+            let newPass = $("#new_password").val();
+            let confPass = $("#confirm_password").val();
+
+            if (newPass.length < 6) return toastr.error("Mật khẩu mới ít nhất 6 ký tự");
+            if (newPass !== confPass) return toastr.error("Xác nhận mật khẩu không khớp");
+
+            let formData = new FormData();
+            formData.append('type', "password");
+            formData.append("current_password", curPass);
+            formData.append("new_password", newPass);
+            formData.append("confirm_password", confPass);
+            updateProfile(formData, "password");
+        });
+
+        function updateProfile(formData, type) {
+            $.ajax({
+                url: "profile/update",
+                type: "POST",
+                headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.status) {
+                        toastr.success(response.message);
+
+                        let updateType = formData.get("type");
+
+                        if (updateType === "profile") {
+                            $("#user-name").text(response.data.name);
+                            $("#user-phone").text(response.data.phone_number);
+                            $("#user-address").text(response.data.address);
+
+                        } else if (updateType === "password") {
+                            $("#change-password")[0].reset();
+                            $("#change-password").hide();
+                            $(".form-change-pass").text("Đổi mật khẩu");
+
+                        } else if (updateType === "avatar") {
+                            $("#avatar-img").attr("src", response.avatar_url);
+                            $(".profile_info img, .nav-user-menu img").attr("src", response.avatar_url);
+                        }
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function () { toastr.error("Lỗi kết nối máy chủ!"); }
+            });
         }
     });
 
-    // Submit thông tin cá nhân
-    $("#update-profile").on("submit", function (e) {
+
+    /*****************************************************************
+     * MANAGEMENT Notigications
+     *****************************************************************/
+    $(document).on('click', '.notification-link', function (e) {
         e.preventDefault();
-        let name = $("#name").val().trim();
-        let phone = $("#phone").val().trim();
-        let address = $("#address").val().trim();
+        let noti_id = $(this).data("id");
+        let targetUrl = $(this).attr('href');
 
-        if (name.length < 3) return toastr.error("Tên quá ngắn");
-        if (!/^(0\d{9})$/.test(phone)) return toastr.error("SĐT không hợp lệ");
-
-        let formData = new FormData();
-        formData.append('type', "profile");
-        formData.append("name", name);
-        formData.append("phone", phone);
-        formData.append("address", address);
-        updateProfile(formData, "profile");
-    });
-
-    $("#change-password").on("submit", function (e) {
-        e.preventDefault();
-        let curPass = $("#current_password").val();
-        let newPass = $("#new_password").val();
-        let confPass = $("#confirm_password").val();
-
-        if (newPass.length < 6) return toastr.error("Mật khẩu mới ít nhất 6 ký tự");
-        if (newPass !== confPass) return toastr.error("Xác nhận mật khẩu không khớp");
-
-        let formData = new FormData();
-        formData.append('type', "password");
-        formData.append("current_password", curPass);
-        formData.append("new_password", newPass);
-        formData.append("confirm_password", confPass);
-        updateProfile(formData, "password");
-    });
-
-    function updateProfile(formData, type) {
         $.ajax({
-            url: "profile/update",
-            type: "POST",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-              if (response.status) {
-    toastr.success(response.message);
-    
-    let updateType = formData.get("type"); 
-
-    if (updateType === "profile") {
-        $("#user-name").text(response.data.name);
-        $("#user-phone").text(response.data.phone_number);
-        $("#user-address").text(response.data.address);
-        
-    } else if (updateType === "password") {
-        $("#change-password")[0].reset();
-        $("#change-password").hide();
-        $(".form-change-pass").text("Đổi mật khẩu");
-        
-    } else if (updateType === "avatar") {
-        $("#avatar-img").attr("src", response.avatar_url);
-        $(".profile_info img, .nav-user-menu img").attr("src", response.avatar_url);
-    }
-} else {
-    toastr.error(response.message);
-}
+            type: 'POST',
+            url: "notifications/update",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
             },
-            error: function () { toastr.error("Lỗi kết nối máy chủ!"); }
+            dataType: "json",
+            data: {
+                id: noti_id,
+            },
+            success: function (response) {
+                console.log("Cập nhật thành công", response);
+                window.location.href = targetUrl;
+            },
+            error: function (xhr) {
+                console.error("Lỗi rồi:", xhr.responseText);
+            }
         });
-    }
-});
+    });
 
 });

@@ -6,18 +6,18 @@
  *     // code here
  * });
  */
-(function($,sr){
+(function ($, sr) {
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
     var debounce = function (func, threshold, execAsap) {
-      var timeout;
+        var timeout;
 
-        return function debounced () {
+        return function debounced() {
             var obj = this, args = arguments;
-            function delayed () {
+            function delayed() {
                 if (!execAsap)
-                    func.apply(obj, args); 
-                timeout = null; 
+                    func.apply(obj, args);
+                timeout = null;
             }
 
             if (timeout)
@@ -25,14 +25,14 @@
             else if (execAsap)
                 func.apply(obj, args);
 
-            timeout = setTimeout(delayed, threshold || 100); 
+            timeout = setTimeout(delayed, threshold || 100);
         };
     };
 
     // smartresize 
-    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+    jQuery.fn[sr] = function (fn) { return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
-})(jQuery,'smartresize');
+})(jQuery, 'smartresize');
 /**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -678,58 +678,45 @@ function init_skycons() {
 
 
 function init_chart_doughnut() {
-
     if (typeof (Chart) === 'undefined') { return; }
 
-    console.log('init_chart_doughnut');
+    console.log('canvasDoughnutCategory');
 
-    if ($('.canvasDoughnut').length) {
-
-        var chart_doughnut_settings = {
-            type: 'doughnut',
-            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-            data: {
-                labels: [
-                    "Symbian",
-                    "Blackberry",
-                    "Other",
-                    "Android",
-                    "IOS"
-                ],
-                datasets: [{
-                    data: [15, 20, 30, 10, 30],
-                    backgroundColor: [
-                        "#BDC3C7",
-                        "#9B59B6",
-                        "#E74C3C",
-                        "#26B99A",
-                        "#3498DB"
-                    ],
-                    hoverBackgroundColor: [
-                        "#CFD4D8",
-                        "#B370CF",
-                        "#E95E4F",
-                        "#36CAAB",
-                        "#49A9EA"
-                    ]
-                }]
-            },
-            options: {
-                legend: false,
-                responsive: false
-            }
-        }
-
-        $('.canvasDoughnut').each(function () {
-
+    if ($('.canvasDoughnutCategory').length) {
+        $('.canvasDoughnutCategory').each(function () {
             var chart_element = $(this);
-            var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);
 
+            // Lấy data từ attribute
+            var categoryLabels = JSON.parse(chart_element.attr('data-labels'));
+            var categoryCounts = JSON.parse(chart_element.attr('data-counts'));
+
+            var chart_doughnut_settings = {
+                type: 'doughnut',
+                data: {
+                    labels: categoryLabels,
+                    datasets: [{
+                        data: categoryCounts,
+                        backgroundColor: [
+                            "#BDC3C7", "#9B59B6", "#E74C3C", "#26B99A", "#3498DB",
+                        ],
+                        hoverBackgroundColor: [
+                            "#CFD4D8", "#B370CF", "#E95E4F", "#36CAAB", "#49A9EA",
+                            "#F1C40F", "#9b59b6", "#16a085", "#d35400", "#27AE60"
+                        ]
+                    }]
+                },
+                options: {
+                    legend: false,
+                    responsive: false
+                }
+            };
+
+            // Khởi tạo chart ngay tại đây
+            new Chart(chart_element[0], chart_doughnut_settings);
         });
-
     }
-
 }
+
 
 function init_gauge() {
 
@@ -2173,22 +2160,23 @@ function init_charts() {
 
     // Bar chart
 
-    if ($('#mybarChart').length) {
+    if ($('#revenueBarChart').length) {
 
-        var ctx = document.getElementById("mybarChart");
-        var mybarChart = new Chart(ctx, {
+        var ctx = document.getElementById("revenueBarChart");
+
+        //get data form data attr
+        var labels = JSON.parse(ctx.getAttribute('data-labels'));
+                var values = JSON.parse(ctx.getAttribute('data-values'));
+
+        var revenueBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Doanh thu ',
                     backgroundColor: "#26B99A",
-                    data: [51, 30, 40, 28, 92, 50, 45]
-                }, {
-                    label: '# of Votes',
-                    backgroundColor: "#03586A",
-                    data: [41, 56, 25, 48, 72, 34, 12]
-                }]
+                    data: values // total revenue monthly
+                }] 
             },
 
             options: {
