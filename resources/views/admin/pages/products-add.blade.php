@@ -6,11 +6,7 @@
     <!-- page content -->
     <div class="right_col" role="main">
         <div class="">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>Thêm sản phẩm</h3>
-                </div>
-            </div>
+    
 
             <div class="clearfix"></div>
 
@@ -29,7 +25,7 @@
                         </div>
                         <div class="x_content">
                             <br />
-                            <form action ="{{ route('admin.product.add') }}" id="add-product" method="POST"
+                            <form action ="{{ route('admin.products.store') }}" id="add-product" method="POST"
                                 class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 <div class="item form-group">
@@ -40,7 +36,6 @@
                                             class="form-control">
                                     </div>
                                 </div>
-
 
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="product-name">Danh mục
@@ -70,7 +65,7 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="product-price">Giá
                                         <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="product-price" name="price" required="required"
+                                        <input type="number" id="product-price" name="price" required="required"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -79,7 +74,7 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="product-stock">Số lượng
                                         <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="product-stock" name="stock" required="required"
+                                        <input type="number" id="product-stock" name="stock" required="required"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -99,8 +94,8 @@
                                         ảnh</label>
                                     <div class="col-md-6 col-sm-6 ">
                                         <label class="custom-file-upload" for="product-images">Chọn ảnh</label>
-                                        <input type="file" name="images[]" id="product-images" accept="image/*" multiple
-                                            required>
+                                        <input type="file" name="images" id="product-images" accept="image/*" multiple
+                                            required style="display: none">
                                         <div id="images-preview-container"></div>
                                     </div>
                                 </div>
@@ -124,4 +119,5 @@
         </div>
     </div>
     <!-- /page content -->
+     
 @endsection

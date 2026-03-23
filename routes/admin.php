@@ -28,12 +28,12 @@ Route::prefix('admin')->group(function () {
 
 
     Route::middleware(['auth.custom', DefaultAdminData::class])->group(function () {
-        Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
         Route::get('/account', [AccountController::class, 'index'])->name('admin.account');
         Route::post('/profile/update', [AccountController::class, 'updateProfile']);
         Route::get('/notifications', [NotificationsController::class, 'index'])->name('admin.notifications.index');
-          Route::post('/notifications/update', [NotificationsController::class, 'update']);
+        Route::post('/notifications/update', [NotificationsController::class, 'update']);
 
         Route::middleware(['permission:manager_users'])->group(function () {
             Route::get('/users', [UsersController::class, 'index'])->name('admin.users.index');
@@ -51,9 +51,8 @@ Route::prefix('admin')->group(function () {
         });
 
         Route::middleware(['permission:manager_products'])->group(function () {
-            Route::get('/products/add', [ProductController::class, 'showFormAddProduct'])->name('admin.product.add');
-            Route::post('/products/add', [ProductController::class, 'addProduct'])->name('admin.products.add');
-
+            Route::get('/products/add', [ProductController::class, 'showFormAddProduct'])->name('admin.products.add');
+            Route::post('/products/add', [ProductController::class, 'addProduct'])->name('admin.products.store');
             Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
             Route::post('/products/update', [ProductController::class, 'updateProduct'])->name('admin.products.update');
             Route::post('/products/delete', [ProductController::class, 'deleteProduct']);

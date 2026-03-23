@@ -6,11 +6,6 @@
     <!-- page content -->
     <div class="right_col" role="main">
         <div class="">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>Danh sách tất cả danh mục </h3>
-                </div>
-            </div>
 
             <div class="clearfix"></div>
             <div class="row">
@@ -30,9 +25,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
-                                    <p class="text-muted font-13 m-b-30">
-                                        Trang quản lý danh mục
-                                    </p>
+                              
                                     <table id="datatable-buttons" class="table table-striped table-bordered"
                                         style="width:100%">
                                         <thead>
@@ -65,7 +58,7 @@
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-app btn-delete-category" data-id="{{ $category->id }}"><i class="fa fa-close">
-                                                                Xóa
+                                                                xóa
                                                             </i></a>
                                                     </td>
                                                 </tr>
@@ -153,4 +146,5 @@
                     </div>
                 </div>
             </div>
+          
         @endsection

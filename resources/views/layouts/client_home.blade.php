@@ -9,7 +9,7 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Place favicon.png in the root directory -->
     <link rel="shortcut icon" href="{{ asset('assets/clients/img/favicon.png') }}" type="image/x-icon" />
@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="{{ asset('assets/clients/css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/clients/css/responsive.css') }}">
-    
+
     <link rel="stylesheet" href="{{ asset('assets/clients/css/clients/home-blade.css') }}">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    
+
     {{-- Import custom-css --}}
     <link rel ="stylesheet" href = "{{ asset('assets/clients/css/custom.css') }}">
 </head>
@@ -39,7 +39,7 @@
         <main>
             @yield('content')
         </main>
-
+        @include('clients.partials.chat_ai')
         @include('clients.partials.footer_home')
     </div>
 
@@ -62,6 +62,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- javaScript -->
     <script src="{{ asset('assets/clients/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/clients/js/chat.js') }}"></script>
+
 </body>
 
 </html>

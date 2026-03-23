@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,12 +27,31 @@ class UsersController extends Controller
             ], 404);
         }
 
-        $user->role_id = 2;
-        $user->save();
+        $staffRoleId = Role::where('name', 'staff')->value('id');
+        $customerRoleId = Role::where('name', 'customer')->value('id');
+
+        if ($user->role_id == $customerRoleId) {
+            $user->role_id = $staffRoleId;
+            $user->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'Đã update thành nhân viên.'
+            ]);
+        }
+        // Nếu hiện tại là staff thì chuyển ngược về customer
+        if ($user->role_id == $staffRoleId) {
+            $user->role_id = $customerRoleId;
+            $user->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Đã chuyển về khách hàng.'
+            ]);
+        }
 
         return response()->json([
-            'status' => true,
-            'message' => 'Đã update thành nhân viên.'
+            'status' => false,
+            'message' => 'Không thể cập nhật role.'
         ]);
     }
 

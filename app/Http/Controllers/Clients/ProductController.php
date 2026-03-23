@@ -15,6 +15,8 @@ class ProductController extends Controller
     {
         $categories = \App\Models\Category::with('products')->get();
         $products = \App\Models\Product::with('firstImage')->where('status', 'in_stock')->paginate(9);
+   
+      
             return view('clients.pages.products', compact('categories', 'products'));
     }
 

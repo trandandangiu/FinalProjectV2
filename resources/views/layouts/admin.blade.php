@@ -60,9 +60,6 @@
 
 
 
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{{ asset('/assets/admin/css/CustomAdmin.css') }}">
-
 </head>
 
 <body class="nav-md">

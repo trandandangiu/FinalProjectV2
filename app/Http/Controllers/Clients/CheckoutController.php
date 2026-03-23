@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
+use App\Models\Notification;
 use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,7 +99,17 @@ class CheckoutController extends Controller
             //xóa giỏ hàng khi đặt hàng thành công 
             CartItem::where('user_id', $user->id)->delete();
             DB::commit();
-            toastr()->success('Đặt hàng thành công');
+             
+
+            Notification::create([
+                'user_id' =>  $user->id,
+                'type' => 'order',
+                'message' => "Bạn có đơn hàng mới từ" . $user->email,
+                'link' => '/orders',
+                'is_read' => 0
+
+            ]);
+                  toastr()->success('Đặt hàng thành công');
             return redirect()->route('account');
         } catch (\Exception $e) {
             toastr()->error('Có lỗi xảy ra, vui lòng thử lại');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Clients\ChatController;
 use App\Http\Controllers\Clients\CheckoutController;
 use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\AccountController;
@@ -103,6 +104,11 @@ Route::post('/cart/remove-cart', [CartController::class, 'removeCartItem'])->nam
 //handle conttact 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact/message', [ContactController::class, 'sendContact'])->name('contact');
+
+
+// Chat Ai 
+Route::get('/chat/messages', [ChatController::class, 'fetchMessages']);
+Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 
 ////////////// Admin routes
 require __DIR__ . '/admin.php';

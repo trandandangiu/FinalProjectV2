@@ -52,7 +52,7 @@
             <div class="col-md-4 col-sm-4 ">
                 <div class="x_panel tile fixed_height_320 overflow_hidden">
                     <div class="x_title">
-                        <h2>Danh Muc</h2>
+                        <h2>Danh Mục</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -70,10 +70,10 @@
                                 </th>
                                 <th>
                                     <div class="col-lg-7 col-md-7 col-sm-7 ">
-                                        <p class="">Danh muc </p>
+                                        <p class="">Danh mục </p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 ">
-                                        <p class="">San pham</p>
+                                        <p class="">Sản phẩm</p>
                                     </div>
                                 </th>
                             </tr>
@@ -134,16 +134,16 @@
                                 @foreach ($topSellingProducts as $item)
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td><img src="{{ asset('storage/' . $item->image_url) }}" alt=""
-                                                width="50" height="50"></td>
+                                        <td><img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}"
+                                                width="50" height="50">
+                                        </td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ number_format($item->price, 0, ',', '.') }} đ</td>
                                         <td>{{ $item->total_sold }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
-
+                        </table> 
                     </div>
                 </div>
             </div>
@@ -256,4 +256,6 @@
         </div>
     </div>
     <!-- /page content -->
+  
+
 @endsection

@@ -12,7 +12,7 @@
                                 <img src="{{ $userAdmin->avatar_url }}" alt="">Admin
                             </a>
                             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.account') }}"> Tai khoan</a>
+                                <a class="dropdown-item" href="{{ route('admin.account') }}"> Tài khoản</a>
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}"><i
                                         class="fa fa-sign-out pull-right"></i> Đăng xuất</a>
                             </div>
@@ -95,4 +95,6 @@
                 </nav>
             </div>
         </div>
+           <link href="{{ asset('assets/admin/css/admin.css') }}" rel="stylesheet">
+
         <!-- /top navigation -->

@@ -1,21 +1,23 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('admin.dashboard') }}" class="site_title"><i class="fa fa-paw"></i> <span>PANTHRIX</span></a>
+            <a href="{{ route('admin.dashboard') }}" class="site_title"> <span>PANTHRIX</span></a>
         </div>
 
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
         <div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="{{ $userAdmin->avatar_url }}" alt="..." class="img-circle profile_img">
+            <div class="profile_pic" style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <img src="{{ $userAdmin->avatar_url }}" alt="..." class="profile_img"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
             <div class="profile_info">
                 <span>Xin Chào,</span>
                 <h2>Admin</h2>
             </div>
         </div>
+
         <!-- /menu profile quick info -->
 
         <br />
@@ -31,11 +33,13 @@
                     <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> Dashboard </a></li>
 
                     @if ($adminUser->role->permissions->contains('name', 'manager_users'))
-                        <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i> Quản lý người dùng </a></li>
+                        <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i> Quản lý người dùng
+                            </a></li>
                     @endif
 
                     @if ($adminUser->role->permissions->contains('name', 'manager_categories'))
-                        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-lock"></i> Quản lý danh mục <span class="fa fa-chevron-down"></span></a>
+                        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-lock"></i> Quản lý danh mục
+                                <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('admin.categories.add') }}">Thêm danh mục</a></li>
                                 <li><a href="{{ route('admin.categories.index') }}">Danh sách danh mục</a></li>
@@ -44,7 +48,8 @@
                     @endif
 
                     @if ($adminUser->role->permissions->contains('name', 'manager_products'))
-                        <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-desktop"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
+                        <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-desktop"></i> Quản lý sản phẩm
+                                <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ route('admin.products.add') }}">Thêm sản phẩm</a></li>
                                 <li><a href="{{ route('admin.products.index') }}">Danh sách sản phẩm</a></li>
@@ -53,11 +58,13 @@
                     @endif
 
                     @if ($adminUser->role->permissions->contains('name', 'manager_orders'))
-                        <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-edit"></i> Quản lý đơn hàng </a></li>
+                        <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-edit"></i> Quản lý đơn hàng
+                            </a></li>
                     @endif
 
                     @if ($adminUser->role->permissions->contains('name', 'manager_contact'))
-                        <li><a href="{{ route('admin.contact.index') }}"><i class="fa fa-edit"></i> Quản lý liên hệ </a></li>
+                        <li><a href="{{ route('admin.contact.index') }}"><i class="fa fa-edit"></i> Quản lý liên hệ
+                            </a></li>
                     @endif
                 </ul>
             </div>
@@ -73,3 +80,4 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
+<link href="{{ asset('assets/admin/css/side-bar.css') }}" rel="stylesheet">

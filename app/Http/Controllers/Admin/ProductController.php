@@ -7,10 +7,10 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
-use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class ProductController extends Controller
 {
@@ -27,14 +27,12 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'description' => 'nullable|string',
-            'images' => 'required|array',
+            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-
         $slug = Str::slug($request->name) . '-' . time();
 
-        //create product
         $product = Product::create([
             'name' => $request->name,
             'slug' => $slug,
@@ -46,13 +44,14 @@ class ProductController extends Controller
             'status' => 'in_stock',
         ]);
 
-        //handle images uploads
+
+        $manager = new ImageManager(new Driver());
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $path = "uploads/products/" . $imageName;
 
-                $resizedImage = Image::make($image)->resize(600, 600)->encode();
+                $resizedImage = $manager->read($image)->resize(600, 600)->encode();
 
                 Storage::disk('public')->put($path, $resizedImage);
 
@@ -62,9 +61,9 @@ class ProductController extends Controller
                 ]);
             }
         }
+
         return redirect()->route('admin.products.add')->with('success', 'Thêm sản phẩm thành công.');
     }
-
     public function index()
     {
         $products = Product::with('category', 'images')->get();
@@ -104,7 +103,9 @@ class ProductController extends Controller
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $path = 'uploads/products/' . $imageName;
-                $resizedImage = Image::make($image)
+
+                $manager = new ImageManager(new Driver());
+                $resizedImage = $manager->read($image)
                     ->resize(600, 600)
                     ->encode();
                 Storage::disk('public')->put($path, $resizedImage);

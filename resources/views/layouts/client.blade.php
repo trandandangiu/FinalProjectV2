@@ -28,22 +28,25 @@
     <link rel ="stylesheet" href = "{{ asset('assets/clients/css/custom.css') }}">
 </head>
 
-<body>   
-    
+<body>
+
     <div class="wrapper">
-    @include('clients.partials.header')
-    @hasSection('breadcrumb')
-        @include('clients.partials.breadcrumb')
-    @endif
-    <main>
-        @yield('content')
-    </main>
+        @include('clients.partials.header')
+        @hasSection('breadcrumb')
+            @include('clients.partials.breadcrumb')
+        @endif
+        <main>
+            @yield('content')
+        </main>
 
-    @include('clients.partials.feature')
+        @include('clients.partials.feature')
+        @include('clients.partials.footer')
+        @include('clients.partials.chat_ai')
 
-    @include('clients.partials.footer')
+
+
     </div>
-   
+
     <div class="preloader d-none" id="preloader">
         <div class="preloader-inner">
             <div class="spinner">
@@ -63,6 +66,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- javaScript -->
     <script src="{{ asset('assets/clients/js/custom.js') }}"></script>
+        <script src="{{ asset('assets/clients/js/chat.js') }}"></script>
+
+
 </body>
 
 </html>

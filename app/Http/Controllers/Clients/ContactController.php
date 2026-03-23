@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function Flasher\Toastr\Prime\toastr;
 
@@ -36,6 +38,8 @@ class ContactController extends Controller
             'message' => $request->message,
             'is_replied' => 0
         ]);
+      
+
         toastr()->success('Gửi thành công ! Quản trị viên sẽ sớm liên hệ với bạn.');
         return redirect()->back();
     }

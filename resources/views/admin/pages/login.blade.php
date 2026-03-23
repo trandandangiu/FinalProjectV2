@@ -12,14 +12,12 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="{{ asset('assets/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="{{ asset('assets/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/admin/build/css/custom.min.css') }}" rel="stylesheet">
+
+
 </head>
 
 <body class="login">
@@ -30,14 +28,16 @@
             <div class="animate form login_form">
                 <section class="login_content">
                     <form action="{{ route('admin.login.post') }}" method="POST">
-                         @csrf
-                    
+                        @csrf
+
                         <h1>Đăng nhập</h1>
                         <div>
-                            <input type="text" class="form-control" name="email" placeholder="email" required="" />
+                            <input type="text" class="form-control" name="email" placeholder="Email"
+                                required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" name="password" placeholder="Mật khẩu" required="" />
+                            <input type="password" class="form-control" name="password" placeholder="Mật khẩu"
+                                required="" />
                         </div>
                         <div>
                             <button type="submit" class="btn btn-default submit">Đăng nhập</button>
@@ -45,17 +45,11 @@
 
 
                         <div class="separator">
-                            <p class="change_link">New to site?
-                                <a href="#signup" class="to_register"> Create Account </a>
-                            </p>
-
                             <div class="clearfix"></div>
                             <br />
 
                             <div>
-                                <h1><i class="fa fa-paw"></i>PanthrixShop</h1>
-                                <p>©2026 All Rights Reserved. TRAN HUYNH MINH TRI is a Bootstrap 4 template. Privacy and
-                                    Terms</p>
+                                <h1><i class=""></i>Panthrix Shop</h1>
                             </div>
                         </div>
                     </form>
@@ -64,6 +58,8 @@
 
         </div>
     </div>
+
+
 </body>
 
 </html>

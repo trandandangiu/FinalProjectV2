@@ -2166,7 +2166,7 @@ function init_charts() {
 
         //get data form data attr
         var labels = JSON.parse(ctx.getAttribute('data-labels'));
-                var values = JSON.parse(ctx.getAttribute('data-values'));
+        var values = JSON.parse(ctx.getAttribute('data-values'));
 
         var revenueBarChart = new Chart(ctx, {
             type: 'bar',
@@ -2176,7 +2176,7 @@ function init_charts() {
                     label: 'Doanh thu ',
                     backgroundColor: "#26B99A",
                     data: values // total revenue monthly
-                }] 
+                }]
             },
 
             options: {
