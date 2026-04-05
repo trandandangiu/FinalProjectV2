@@ -143,7 +143,7 @@ class ChatController extends Controller
             }
         }
 
-        // 5) Lưu phản hồi bot
+
         $botMsg = ChatMessage::create([
             'user_id'     => $userId,
             'guest_token' => $userId ? null : $guestToken,
@@ -151,7 +151,7 @@ class ChatController extends Controller
             'message'     => $aiReplyText,
         ]);
 
-        // 6) Trả về JSON cho frontend
+
         Log::info('Gemini status', [$response->status()]);
         Log::info('Gemini body', [$response->body()]);
 

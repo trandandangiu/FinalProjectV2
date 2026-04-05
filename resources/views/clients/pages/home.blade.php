@@ -160,7 +160,7 @@
             <!-- ABOUT US AREA END -->
 
             <!-- CATEGORY AREA START -->
-            <div class="ltn__category-area section-bg-1-- ltn__primary-bg before-bg-1 bg-image bg-overlay-theme-black-5--0 pt-115 pb-90"
+            <div class="ltn__category-area"
                 data-bg="img/bg/5.jpg">
                 <div class="container">
                     <div class="row">

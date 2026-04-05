@@ -1,126 +1,147 @@
 <!-- Floating Chat Widget -->
 <div id="chat-widget">
-  <!-- Nút toggle -->
-  <div id="chat-toggle">💬</div>
+    <!-- Nút toggle -->
+    <div id="chat-toggle">💬</div>
 
-  <!-- Khung chat -->
-  <div id="chat-box" class="hidden">
-    <div id="chat-header">
-      <span>Hỗ trợ trực tuyến</span>
-      <button id="chat-close">&#9587;</button>
+    <!-- Khung chat -->
+    <div id="chat-box" class="hidden">
+        <div id="chat-header">
+            <span>Hỗ trợ trực tuyến</span>
+            <button id="chat-close">&#9587;</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+            <input type="text" id="message-input" placeholder="Nhập tin nhắn...">
+            <button id="send-btn">Gửi</button>
+        </div>
     </div>
-    <div id="chat-messages"></div>
-    <div id="chat-input">
-      <input type="text" id="message-input" placeholder="Nhập tin nhắn...">
-      <button id="send-btn">Gửi</button>
-    </div>
-  </div>
 
-  <!-- Nút scroll lên (để đồng bộ với JS) -->
-  <div id="scrollUp" class="hidden">⬆️</div>
+    <!-- Nút scroll lên (để đồng bộ với JS) -->
+    <div id="scrollUp" class="hidden">⬆️</div>
 </div>
 
 <style>
-  #chat-widget {
-    position: fixed;
-    bottom: 140px;
-    right: 3%;
-    font-family: Arial, sans-serif;
-    z-index: 9999;
-  }
+    #chat-widget {
+        position: fixed;
+        bottom: 120px;
+        right: 3%;
+        font-family: 'Segoe UI', sans-serif;
+        z-index: 9999;
+    }
 
-  #chat-toggle {
-    background: #007bff;
-    color: #fff;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  }
+    #chat-toggle {
+        background: #4a90e2;
+        color: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 26px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease;
+    }
 
-  #chat-box {
-    width: 300px;
-    height: 400px;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    margin-top: 10px;
-  }
+    #chat-toggle:hover {
+        background: #357ab8;
+    }
 
-  #chat-box.hidden { display: none; }
-  #scrollUp.hidden { display: none; }
+    #chat-box {
+        width: 320px;
+        height: 440px;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+    }
 
-  #chat-header {
-    background: #007bff;
-    color: #fff;
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px 8px 0 0;
-  }
+    #chat-box.hidden {
+        display: none;
+    }
 
-  #chat-messages {
-    flex: 1;
-    padding: 8px;
-    overflow-y: auto;
-    background: #f9f9f9;
-  }
+    #chat-header {
+        background: #4a90e2;
+        color: #fff;
+        padding: 10px 12px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12px 12px 0 0;
+    }
 
-  #chat-input {
-    display: flex;
-    border-top: 1px solid #ccc;
-  }
+    #chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        background: #f5f7fa;
+    }
 
-  #chat-input input {
-    flex: 1;
-    padding: 8px;
-    border: none;
-  }
+    #chat-input {
+        display: flex;
+        border-top: 1px solid #ddd;
+    }
 
-  #chat-input button {
-    padding: 8px 12px;
-    border: none;
-    background: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
+    #chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        font-size: 14px;
+    }
 
-  /* Bong bóng chat */
-  .user-msg {
-    background: #007bff;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 10px;
-    margin: 4px 0;
-    text-align: right;
-  }
+    #chat-input button {
+        padding: 10px 14px;
+        border: none;
+        background: #4a90e2;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-  .bot-msg {
-    background: #e9ecef;
-    color: #000;
-    padding: 6px 10px;
-    border-radius: 10px;
-    margin: 4px 0;
-    text-align: left;
-  }
+    #chat-input button:hover {
+        background: #357ab8;
+    }
 
-  #scrollUp {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    background: #007bff;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    .user-msg {
+        background: #4a90e2;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 16px;
+        margin: 6px 0;
+        text-align: right;
+        max-width: 80%;
+        margin-left: auto;
+    }
+
+    .bot-msg {
+        background: #e0e0e0;
+        color: #000;
+        padding: 8px 12px;
+        border-radius: 16px;
+        margin: 6px 0;
+        text-align: left;
+        max-width: 80%;
+    }
+
+    #scrollUp {
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        background: #4a90e2;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    #scrollUp:hover {
+        background: #357ab8;
+    }
 </style>

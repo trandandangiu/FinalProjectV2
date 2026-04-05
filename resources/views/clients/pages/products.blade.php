@@ -7,7 +7,7 @@
 @section('content')
     <!-- PRODUCT DETAILS AREA START -->
     <div class="ltn__product-area ltn__product-gutter mt-5">
-          <img src="{{ asset('assets/clients/img/banner/15.png') }}" 
+          <img src="{{ asset('assets/clients/img/banner/17.jpg') }}" 
          alt="Background Banner" 
          class="bg-img blur-section">
         <div class="container">

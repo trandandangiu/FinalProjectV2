@@ -74,3 +74,85 @@
     align-items: center;
     margin : 10px 0; 
 }
+
+.ltn__banner-area {
+  background-color: #1a1a2e;   /* xanh đậm sang trọng */
+  color: #f1f1f1;              /* chữ xám nhạt dễ nhìn */
+}
+
+
+.ltn__banner-area {
+  background-color: #1a1a2e;   /* xanh đậm sang trọng */
+  color: #f1f1f1;              /* chữ xám nhạt dễ nhìn */
+}
+
+
+.ltn__slider-area {
+  background-color: #000;   /* nền đen */
+  color: #fff;              /* chữ trắng để dễ đọc */
+}
+
+.ltn__category-area {
+  background-color: #000; /* nền đen để che khoảng trắng */
+  background-size: cover; /* ảnh nền phủ toàn bộ */
+  background-position: center;
+}
+
+.ltn__category-area.section-bg-1-- {
+  padding-top: 40px;  /* giảm khoảng trắng trên */
+  padding-bottom: 40px; /* giảm khoảng trắng dưới */
+}
+
+
+.ltn__price-filter-widget {
+  background-color: #000;   /* nền đen */
+  color: #ff6600;           /* chữ cam */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.ltn__price-filter-widget a {
+  color: #ff6600;           /* link cam */
+}
+
+.ltn__price-filter-widget a:hover {
+  color: #fff;              /* hover trắng để nổi bật */
+}
+
+.wishlist-product-remove {
+    color: #fff; /* trắng */
+}
+
+.wishlist-product-price {
+        color: #fff; /* trắng */
+}
+
+.wishlist-product-stock {
+     color: #fff; /* trắng */
+}
+
+.hello a {
+    background-color: #ff6600; /* nền cam */
+    color: #fff;              /* chữ trắng */
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hello a:hover {
+    background-color: #e65c00; /* cam đậm hơn khi hover */
+    transform: scale(1.05);    /* hơi phóng to */
+    cursor: pointer;           /* hiện bàn tay khi hover */
+}
+
+.ltn__category-area {
+  background-color: #f5f5f5 !important; /* sáng sủa hơn */
+  color: #333 !important;
+}
+
+
+
