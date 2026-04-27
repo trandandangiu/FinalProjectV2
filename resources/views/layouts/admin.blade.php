@@ -19,7 +19,7 @@
     <link href="{{ asset('assets/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{ asset('assets/admin/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
-
+    
     <!-- bootstrap-progressbar -->
     <link href="{{ asset('assets/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}"
         rel="stylesheet">
